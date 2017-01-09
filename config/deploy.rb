@@ -58,14 +58,3 @@ namespace :deploy do
   end
   after :published, :bower_and_npm_install
 end
-
-namespace :deploy do
-  task :build do 
-    on roles(:app), in: :sequence, wait: 5 do 
-      within release_path do 
-        execute :grunt, "build"
-      end
-    end
-  end
-  after :bower_and_npm_install, :build
-end
