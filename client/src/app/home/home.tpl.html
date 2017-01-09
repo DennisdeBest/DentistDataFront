@@ -1,0 +1,1599 @@
+<div class="pure-g">
+  <div class="island3 pure-u-1 pure-u-lg-2-3">
+    <h3>Fiche clinique DTM</h3>
+  </div>
+</div>
+
+<div>
+  <h4>Information patient</h4>
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s5">
+          <label for="">Identifiant du patient</label>
+          <input type="text">
+        </div>
+        <div class="input-field col s2">
+          <select>
+            <option value="" disabled selected>Sexe</option>
+            <option value="1">Homme</option>
+            <option value="2">Femme</option>
+          </select>
+          <label>Sexe</label>
+        </div>
+        <div class="input-field col s5">
+          <label for="">Profession</label>
+          <input type="text">
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="input-field col s6">
+      <label for="">Date de naissance</label>
+      <input type="date" class="datepicker">
+    </div>
+      <div class="input-field col s6">
+      <label for="">Date de la consultation</label>
+      <input type="date" class="datepicker">
+      <!--Mettre la date d'aujourd'hui comme base-->
+      </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea"></textarea>
+          <label for="textarea1">Bilan de santé</label>
+        </div>
+        </div>
+
+
+      <div>
+        <h4>1. Motif de la consultation</h4>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="douleur" class="materialize-textarea"></textarea>
+            <label for="douleur">Douleurs</label>
+          </div>
+          </div>
+        <p>
+          <input type="checkbox" class="filled-in" id="no-douleur" />
+          <label for="no-douleur">Pas de douleur</label>
+        </p>
+        <p>
+          <input type="checkbox" class="filled-in" id="machoire" />
+          <label for="machoire">Douleur dans la mâchoire, tempe, oreille ou en avant de l’oreille</label>
+        </p>
+        <p>
+          <input type="checkbox" class="filled-in" id="spontanee" />
+          <label for="spontanee">Douleur spontanée</label>
+        </p>
+        <p>
+          <input type="checkbox" class="filled-in" id="orale" />
+          <label for="orale">Douleur provoquée par une fonction/parafonction orale</label>
+        </p>
+      </div>
+
+      <div>
+        <h4>2. Evaluation de la douleur</h4>
+
+        <!--CANVAS-->
+
+        <label for="">Douleur 1</label>
+        <input type="text">
+
+        <label for="">EVA</label>
+        <!--Selecteur tactile-->
+
+        <label for="">Date de début</label>
+        <input type="date">
+
+        <label for="">Qualité</label>
+        <input type="text">
+
+        <label for="">Durée</label>
+        <input type="text">
+
+        <label for="">Fréquence</label>
+        <input type="text">
+
+        <label for="">Circonstances du début</label>
+        <input type="text">
+
+        <label for="">Modifié par</label>
+        <input type="text">
+
+        <label for="">Traitement</label>
+        <input type="text">
+
+        <button>Questionnaire DN4</button>
+        <input type="text">
+
+        <button>Ajouter une douleur</button>
+        <button>Supprimer une douleur</button>
+      </div>
+
+      <div>
+        <h4>3. Environnement</h4>
+        <input type="checkbox">
+        <label for="">Négatif</label>
+
+        <input type="checkbox">
+        <label for="">Non renseigné</label>
+
+        <label for="">Familial</label>
+        <input type="text">
+
+        <label for="">Social</label>
+        <input type="text">
+
+        <label for="">Professionnel</label>
+        <input type="text">
+
+        <label for="">Score EDAS 21</label>
+        <button>Questionnaire EDAS 21</button>
+
+        <label for="">Anxiété</label>
+        <input type="text">
+
+        <label for="">Dépression</label>
+        <input type="text">
+
+        <label for="">Stress</label>
+        <input type="text">
+      </div>
+
+      <div>
+        <h4>4. Troubles de la posture</h4>
+        <input type="checkbox">
+        <label for="">Négatif</label>
+
+        <input type="checkbox">
+        <label for="">Non renseigné</label>
+
+        <input type="checkbox">
+        <label for="">Rachidienne</label>
+        <input type="text">
+
+        <input type="checkbox">
+        <label for="">Céphalique</label>
+        <input type="text">
+      </div>
+
+      <div>
+        <h4>5. Troubles du sommeil</h4>
+        <input type="checkbox">
+        <label for="">Négatif</label>
+
+        <input type="checkbox">
+        <label for="">Non renseigné</label>
+
+        <p>Souffrez-vous du syndrome d'apnées/hypopnées obstructives du sommeil ? </p>
+        <input type="radio" value="0">
+        <label for="">Oui</label>
+        <input type="radio" value="1">
+        <label for="">Non</label>
+
+        <label for="">Autres symptômes</label>
+        <input type="text">
+
+        <label for="">Traitement</label>
+        <input type="text">
+
+        <button>Questionnaire PSQI</button>
+        <label for="">Score PSQI</label>
+        <input type="text">
+
+        <button>Questionnaire ISI</button>
+        <label for="">Score ISI</label>
+        <input type="text">
+      </div>
+
+      <div>
+        <h4>6. Troubles oculaires</h4>
+        <input type="checkbox">
+        <label for="">Négatif</label>
+
+        <input type="checkbox">
+        <label for="">Non renseigné</label>
+
+        <input type="text">
+      </div>
+
+      <div>
+        <h4>7. Habitudes nocives</h4>
+        <input type="checkbox">
+        <label for="">Négatif</label>
+
+        <input type="checkbox">
+        <label for="">Non renseigné</label>
+
+        <input type="checkbox">
+        <label for="">Onycophagie</label>
+
+        <input type="checkbox">
+        <label for="">Mordillement des lèvres/style/objets</label>
+
+        <input type="checkbox">
+        <label for="">Bruxisme d'éveil</label>
+
+        <input type="checkbox">
+        <label for="">Chewing-gum</label>
+
+        <input type="checkbox">
+        <label for="">Tabac</label>
+
+        <input type="checkbox">
+        <label for="">Autres</label>
+
+        <input type="text">
+      </div>
+
+      <div>
+        <h4>8. Dysfonctionnements oro-ligaux</h4>
+        <input type="checkbox">
+        <label for="">Négatif</label>
+
+        <input type="checkbox">
+        <label for="">Non renseigné</label>
+
+        <input type="checkbox">
+        <label for="">Dysfonctionnements orolinguaux</label>
+
+        <input type="checkbox">
+        <label for="">Déglutition atypique</label>
+
+        <input type="text">
+
+        <button>Score de Friedman</button>
+        <label for="">Score de Friedman</label>
+        <input type="text">
+
+        <button>Score de Mallampati</button>
+        <label for="">Score de Mallampati</label>
+        <input type="text">
+      </div>
+
+      <div>
+        <h4>9. Traumatisme</h4>
+        <input type="checkbox">
+        <label for="">Négatif</label>
+
+        <input type="checkbox">
+        <label for="">Non renseigné</label>
+
+        <input type="text">
+      </div>
+
+      <div>
+        <h4>10. Observations complémentaires</h4>
+        <input type="checkbox">
+        <label for="">Négatif</label>
+
+        <input type="checkbox">
+        <label for="">Non renseigné</label>
+      </div>
+
+      <div id="div12">
+        <div id="titre12">
+          <h2>12. Rapports Incisifs :
+            <label>
+              <input type="checkbox"/>
+              Négatif
+            </label>
+            <label>
+              <input type="checkbox"/>
+              Non Renseigné
+            </label>
+          </h2>
+        </div>
+        <div id="champs12">
+          <p>Dent de référence : </p>
+          <div>
+            <label>
+              <input type="checkbox"/>
+              11
+            </label>
+            <label>
+              <input type="checkbox"/>
+              21
+            </label>
+            <label>
+              <input type="checkbox"/>
+              Autre <input type="text"/>
+            </label>
+          </div>
+          <div>
+            <label>
+              <input type="checkbox"/>
+              31
+            </label>
+            <label>
+              <input type="checkbox"/>
+              41
+            </label>
+            <label>
+              <input type="checkbox"/>
+              Autre <input type="text"/>
+            </label>
+          </div>
+          <div>
+            <p>Surplomb horizontal : </p>
+            <label>
+              <input type="number"/>
+              mm
+            </label>
+            <label>
+              <input type="checkbox"/>
+              Si négatif
+            </label>
+          </div>
+          <div>
+            <p>Recouvrement vertical : </p>
+            <label>
+              <input type="number"/>
+              mm
+            </label>
+            <label>
+              <input type="checkbox"/>
+              Si négatif
+            </label>
+          </div>
+          <div>
+            <p>Existe-t-il un décalage des milieux inter-incisifs ?</p>
+            <label>
+              <input type="checkbox"/>
+              Oui
+              <label>
+                <input type="number"/>
+                mm
+              </label>
+            </label>
+            <label>
+              <input type="checkbox"/>
+              Non
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div id="div13">
+        <div id="titre13">
+          <h2>13. Mouvements d'ouverture, latéralités et propulsion :
+            <label>
+              <input type="checkbox"/>
+              Négatif
+            </label>
+            <label>
+              <input type="checkbox"/>
+              Non Renseigné
+            </label>
+          </h2>
+        </div>
+        <div id="champs13">
+          <table>
+            <thead>
+              <tr>
+                <th> </th>
+                <th colspan="3">Côté droit</th>
+                <th colspan="3">Côté gauche</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ouverture non douloureuse :
+                  <label>
+                    <input type="number"/>
+                    mm
+                  </label>
+                </td>
+                <td>
+                  Douleur provoquée
+                </td>
+                <td>
+                  Est-elle identique à la douleur habituelle ?
+                </td>
+                <td>
+                  Douleur(s) référée(s)
+                </td>
+                <td>
+                  Douleur provoquée
+                </td>
+                <td>
+                  Est-elle identique à la douleur habituelle ?
+                </td>
+                <td>
+                  Douleur(s) référée(s)
+                </td>
+              </tr>
+
+              <tr>
+                <td>Ouv. max. non assistée :
+                  <label>
+                    <input type="number"/>
+                    mm
+                  </label>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>Ouv. max. assistée :
+                  <label>
+                    <input type="number"/>
+                    mm
+                  </label>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  Ouv. contre résistance :
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  Fermeture contre résistance :
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>Latéralité droite :
+                  <label>
+                    <input type="number"/>
+                    mm
+                  </label>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>Latéralité droite assistée :
+                  <label>
+                    <input type="number"/>
+                    mm
+                  </label>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  Latéralité droite contre résistance :
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>Latéralité gauche :
+                  <label>
+                    <input type="number"/>
+                    mm
+                  </label>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>Latéralité gauche assistée :
+                  <label>
+                    <input type="number"/>
+                    mm
+                  </label>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  Latéralité gauche contre résistance :
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>Propulsion :
+                  <label>
+                    <input type="number"/>
+                    mm
+                  </label>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  Propulsion contre résistance :
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            <p>Est-ce que l'un des mouvements effectués vous a déclenché des maux de tête ? </p>
+            <label>
+              <input type="checkbox">
+              Oui
+            </label>
+            <label>
+              <input type="checkbox">
+              Non
+            </label>
+          </div>
+          <div>
+            <label>
+              Si Oui lesquels ?
+              <input type="text">
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div id="div14">
+        <div id="titre14">
+          <h2>14. Trajet d'ouverture / fermeture :
+            <label>
+              <input type="checkbox"/>
+              Négatif
+            </label>
+            <label>
+              <input type="checkbox"/>
+              Non Renseigné
+            </label>
+          </h2>
+        </div>
+        <div id="champs14">
+          <p>Forme du trajet d'ouverture : </p>
+          <label>
+            <input type="checkbox"/>
+            Rectiligne
+          </label>
+          <label>
+            <input type="checkbox"/>
+            Réflexion corrigée à droite
+          </label>
+          <label>
+            <input type="checkbox"/>
+            Réflexion corrigée à gauche
+          </label>
+          <label>
+            <input type="checkbox"/>
+            Déviation non corrigée à droite
+          </label>
+          <label>
+            <input type="checkbox"/>
+            Déviation non corrigée à gauche
+          </label>
+        </div>
+        <div>
+          Canvas à foutre ici
+        </div>
+      </div>
+
+      <div id="div15">
+        <div id="titre15">
+          <h2>15. Bruits articulaires lors des mouvements fonctionnels :
+            <label>
+              <input type="checkbox"/>
+              Négatif
+            </label>
+            <label>
+              <input type="checkbox"/>
+              Non Renseigné
+            </label>
+          </h2>
+        </div>
+        <div id="champs15">
+          <table>
+            <thead>
+              <tr>
+                <th colspan="2"> </th>
+                <th colspan="2">Praticien</th>
+                <th colspan="2">Patient</th>
+                <th colspan="2"> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td> </td>
+                <td> </td>
+                <td>Claquement</td>
+                <td>Crépitement</td>
+                <td>Claquement</td>
+                <td>Crépitement</td>
+                <td>Douleur</td>
+                <td>Douleur habituelle ?</td>
+              </tr>
+
+              <tr>
+                <td rowspan="2">Ouverture </td>
+                <td>
+                  ATM droite
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  ATM gauche
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td rowspan="2">Fermeture </td>
+                <td>
+                  ATM droite
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  ATM gauche
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td rowspan="2">Latéralité gauche </td>
+                <td>
+                  ATM droite
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  ATM gauche
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td rowspan="2">Latéralité droite </td>
+                <td>
+                  ATM droite
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  ATM gauche
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td rowspan="2">Propulsion </td>
+                <td>
+                  ATM droite
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  ATM gauche
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <input type="checkbox"/>
+                </td>
+                <td>
+                  <select>
+                    <option></option>
+                    <option>M. temporal droit</option>
+                    <option>M. temporal gauche</option>
+                    <option>M. masséter droit</option>
+                    <option>M. masséter gauche</option>
+                    <option>Atm droit</option>
+                    <option>Atm gauche</option>
+                    <option>Autres <input type="text"></option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="div16">
+        <div id="titre16">
+
+        </div>
+        <div id="champs16">
+
+        </div>
+      </div>
+<!-- ..... -->
+
+    </form>
+  </div>
+</div>
