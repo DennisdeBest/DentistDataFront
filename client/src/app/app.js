@@ -3,6 +3,7 @@
 
   $(document).ready(function() {
     $('select').material_select();
+    $('.collapsible').collapsible();
   });
 
   angular.element(document).ready(function() {

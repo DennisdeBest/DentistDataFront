@@ -4,9 +4,9 @@
   </div>
 </div>
 
-<div>
+<ul class="collapsible" data-collapsible="expandable">
+  <li>
   <h4>Information patient</h4>
-  <div class="row">
     <form class="col s12">
       <div class="row">
         <div class="input-field col s5">
@@ -26,8 +26,6 @@
           <input type="text">
         </div>
       </div>
-
-
       <div class="row">
         <div class="input-field col s6">
           <label for="">Date de naissance</label>
@@ -39,13 +37,13 @@
           <!--Mettre la date d'aujourd'hui comme base-->
         </div>
       </div>
-
       <div class="row">
         <div class="input-field col s12">
           <textarea id="textarea1" class="materialize-textarea"></textarea>
           <label for="textarea1">Bilan de santé</label>
         </div>
-      </div>
+      </li>
+    </ul>
 
 
 
@@ -74,6 +72,7 @@
           <label for="orale">Douleur provoquée par une fonction/parafonction orale</label>
         </p>
       </div>
+    </div>
 
       <div>
         <h4>2. Evaluation de la douleur</h4>
@@ -200,7 +199,6 @@
               <label for="">Stress</label>
               <input type="text">
             </div>
-
         </div>
 
         <div>
@@ -252,14 +250,14 @@
           </div>
       </div>
       <div class="row">
-      <a class="waves-effect waves-light btn col s2">Questionnaire PSQI</a>
+      <a class="waves-effect waves-light btn col s4">Questionnaire PSQI</a>
         <div class="input-field col s3">
           <label for="">Score PSQI</label>
           <input type="text">
         </div>
     </div>
     <div class="row">
-    <a class="waves-effect waves-light btn col s2">Questionnaire ISI</a>
+    <a class="waves-effect waves-light btn col s4">Questionnaire ISI</a>
       <div class="input-field col s3">
         <label for="">Score ISI</label>
         <input type="text">
@@ -268,56 +266,60 @@
 
         <div>
           <h4>6. Troubles oculaires</h4>
-          <input type="checkbox" class="filled-in" id="negatif4" />
-          <label for="negatif4">Négatif</label>
-          <input type="checkbox" class="filled-in" id="non4" />
-          <label for="non4">Non renseigné</label>
+          <input type="checkbox" class="filled-in" id="negatif5" />
+          <label for="negatif5">Négatif</label>
+          <input type="checkbox" class="filled-in" id="non5" />
+          <label for="non5">Non renseigné</label>
 
-          <input type="text">
+          <div class="row">
+            <div class="input-field col s12">
+              <input type="text">
+            </div>
+        </div>
         </div>
 
         <div>
           <h4>7. Habitudes nocives</h4>
-          <input type="checkbox">
-          <label for="">Négatif</label>
+          <input type="checkbox" class="filled-in" id="negatif6" />
+          <label for="negatif6">Négatif</label>
+          <input type="checkbox" class="filled-in" id="non6" />
+          <label for="non6">Non renseigné</label>
 
-          <input type="checkbox">
-          <label for="">Non renseigné</label>
+          <input type="checkbox" class="filled-in" id="onycophagie" />
+          <label for="onycophagie">Onycophagie</label>
 
-          <input type="checkbox">
-          <label for="">Onycophagie</label>
+          <input type="checkbox" class="filled-in" id="mordillement" />
+          <label for="mordillement">Mordillement des lèvres/style/objets</label>
 
-          <input type="checkbox">
-          <label for="">Mordillement des lèvres/style/objets</label>
+          <input type="checkbox" class="filled-in" id="bruxisme" />
+          <label for="bruxisme">Bruxisme d'éveil</label>
 
-          <input type="checkbox">
-          <label for="">Bruxisme d'éveil</label>
+          <input type="checkbox" class="filled-in" id="gum" />
+          <label for="gum">Chewing-gum</label>
 
-          <input type="checkbox">
-          <label for="">Chewing-gum</label>
+          <input type="checkbox" class="filled-in" id="tabac" />
+          <label for="tabac">Tabac</label>
 
-          <input type="checkbox">
-          <label for="">Tabac</label>
-
-          <input type="checkbox">
-          <label for="">Autres</label>
+          <input type="checkbox" class="filled-in" id="autres" />
+          <label for="autres">Autres</label>
 
           <input type="text">
         </div>
 
         <div>
           <h4>8. Dysfonctionnements oro-ligaux</h4>
-          <input type="checkbox">
-          <label for="">Négatif</label>
 
-          <input type="checkbox">
-          <label for="">Non renseigné</label>
+          <input type="checkbox" class="filled-in" id="negatif7" />
+          <label for="negatif7">Négatif</label>
 
-          <input type="checkbox">
-          <label for="">Dysfonctionnements orolinguaux</label>
+          <input type="checkbox" class="filled-in" id="non7" />
+          <label for="non7">Non renseigné</label>
 
-          <input type="checkbox">
-          <label for="">Déglutition atypique</label>
+          <input type="checkbox" class="filled-in" id="dysfonctionnements" />
+          <label for="dysfonctionnements">Dysfonctionnements orolinguaux</label>
+
+          <input type="checkbox" class="filled-in" id="deglutition" />
+          <label for="deglutition">Déglutition atypique</label>
 
           <input type="text">
 

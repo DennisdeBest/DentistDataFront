@@ -67,9 +67,9 @@ module.run(["$templateCache", function($templateCache) {
     "  </div>\n" +
     "</div>\n" +
     "\n" +
-    "<div>\n" +
+    "<ul class=\"collapsible\" data-collapsible=\"expandable\">\n" +
+    "  <li>\n" +
     "  <h4>Information patient</h4>\n" +
-    "  <div class=\"row\">\n" +
     "    <form class=\"col s12\">\n" +
     "      <div class=\"row\">\n" +
     "        <div class=\"input-field col s5\">\n" +
@@ -89,8 +89,6 @@ module.run(["$templateCache", function($templateCache) {
     "          <input type=\"text\">\n" +
     "        </div>\n" +
     "      </div>\n" +
-    "\n" +
-    "\n" +
     "      <div class=\"row\">\n" +
     "        <div class=\"input-field col s6\">\n" +
     "          <label for=\"\">Date de naissance</label>\n" +
@@ -102,13 +100,13 @@ module.run(["$templateCache", function($templateCache) {
     "          <!--Mettre la date d'aujourd'hui comme base-->\n" +
     "        </div>\n" +
     "      </div>\n" +
-    "\n" +
     "      <div class=\"row\">\n" +
     "        <div class=\"input-field col s12\">\n" +
     "          <textarea id=\"textarea1\" class=\"materialize-textarea\"></textarea>\n" +
     "          <label for=\"textarea1\">Bilan de santé</label>\n" +
     "        </div>\n" +
-    "      </div>\n" +
+    "      </li>\n" +
+    "    </ul>\n" +
     "\n" +
     "\n" +
     "\n" +
@@ -137,6 +135,7 @@ module.run(["$templateCache", function($templateCache) {
     "          <label for=\"orale\">Douleur provoquée par une fonction/parafonction orale</label>\n" +
     "        </p>\n" +
     "      </div>\n" +
+    "    </div>\n" +
     "\n" +
     "      <div>\n" +
     "        <h4>2. Evaluation de la douleur</h4>\n" +
@@ -263,7 +262,6 @@ module.run(["$templateCache", function($templateCache) {
     "              <label for=\"\">Stress</label>\n" +
     "              <input type=\"text\">\n" +
     "            </div>\n" +
-    "\n" +
     "        </div>\n" +
     "\n" +
     "        <div>\n" +
@@ -315,14 +313,14 @@ module.run(["$templateCache", function($templateCache) {
     "          </div>\n" +
     "      </div>\n" +
     "      <div class=\"row\">\n" +
-    "      <a class=\"waves-effect waves-light btn col s2\">Questionnaire PSQI</a>\n" +
+    "      <a class=\"waves-effect waves-light btn col s4\">Questionnaire PSQI</a>\n" +
     "        <div class=\"input-field col s3\">\n" +
     "          <label for=\"\">Score PSQI</label>\n" +
     "          <input type=\"text\">\n" +
     "        </div>\n" +
     "    </div>\n" +
     "    <div class=\"row\">\n" +
-    "    <a class=\"waves-effect waves-light btn col s2\">Questionnaire ISI</a>\n" +
+    "    <a class=\"waves-effect waves-light btn col s4\">Questionnaire ISI</a>\n" +
     "      <div class=\"input-field col s3\">\n" +
     "        <label for=\"\">Score ISI</label>\n" +
     "        <input type=\"text\">\n" +
@@ -331,56 +329,60 @@ module.run(["$templateCache", function($templateCache) {
     "\n" +
     "        <div>\n" +
     "          <h4>6. Troubles oculaires</h4>\n" +
-    "          <input type=\"checkbox\" class=\"filled-in\" id=\"negatif4\" />\n" +
-    "          <label for=\"negatif4\">Négatif</label>\n" +
-    "          <input type=\"checkbox\" class=\"filled-in\" id=\"non4\" />\n" +
-    "          <label for=\"non4\">Non renseigné</label>\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"negatif5\" />\n" +
+    "          <label for=\"negatif5\">Négatif</label>\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"non5\" />\n" +
+    "          <label for=\"non5\">Non renseigné</label>\n" +
     "\n" +
-    "          <input type=\"text\">\n" +
+    "          <div class=\"row\">\n" +
+    "            <div class=\"input-field col s12\">\n" +
+    "              <input type=\"text\">\n" +
+    "            </div>\n" +
+    "        </div>\n" +
     "        </div>\n" +
     "\n" +
     "        <div>\n" +
     "          <h4>7. Habitudes nocives</h4>\n" +
-    "          <input type=\"checkbox\">\n" +
-    "          <label for=\"\">Négatif</label>\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"negatif6\" />\n" +
+    "          <label for=\"negatif6\">Négatif</label>\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"non6\" />\n" +
+    "          <label for=\"non6\">Non renseigné</label>\n" +
     "\n" +
-    "          <input type=\"checkbox\">\n" +
-    "          <label for=\"\">Non renseigné</label>\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"onycophagie\" />\n" +
+    "          <label for=\"onycophagie\">Onycophagie</label>\n" +
     "\n" +
-    "          <input type=\"checkbox\">\n" +
-    "          <label for=\"\">Onycophagie</label>\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"mordillement\" />\n" +
+    "          <label for=\"mordillement\">Mordillement des lèvres/style/objets</label>\n" +
     "\n" +
-    "          <input type=\"checkbox\">\n" +
-    "          <label for=\"\">Mordillement des lèvres/style/objets</label>\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"bruxisme\" />\n" +
+    "          <label for=\"bruxisme\">Bruxisme d'éveil</label>\n" +
     "\n" +
-    "          <input type=\"checkbox\">\n" +
-    "          <label for=\"\">Bruxisme d'éveil</label>\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"gum\" />\n" +
+    "          <label for=\"gum\">Chewing-gum</label>\n" +
     "\n" +
-    "          <input type=\"checkbox\">\n" +
-    "          <label for=\"\">Chewing-gum</label>\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"tabac\" />\n" +
+    "          <label for=\"tabac\">Tabac</label>\n" +
     "\n" +
-    "          <input type=\"checkbox\">\n" +
-    "          <label for=\"\">Tabac</label>\n" +
-    "\n" +
-    "          <input type=\"checkbox\">\n" +
-    "          <label for=\"\">Autres</label>\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"autres\" />\n" +
+    "          <label for=\"autres\">Autres</label>\n" +
     "\n" +
     "          <input type=\"text\">\n" +
     "        </div>\n" +
     "\n" +
     "        <div>\n" +
     "          <h4>8. Dysfonctionnements oro-ligaux</h4>\n" +
-    "          <input type=\"checkbox\">\n" +
-    "          <label for=\"\">Négatif</label>\n" +
     "\n" +
-    "          <input type=\"checkbox\">\n" +
-    "          <label for=\"\">Non renseigné</label>\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"negatif7\" />\n" +
+    "          <label for=\"negatif7\">Négatif</label>\n" +
     "\n" +
-    "          <input type=\"checkbox\">\n" +
-    "          <label for=\"\">Dysfonctionnements orolinguaux</label>\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"non7\" />\n" +
+    "          <label for=\"non7\">Non renseigné</label>\n" +
     "\n" +
-    "          <input type=\"checkbox\">\n" +
-    "          <label for=\"\">Déglutition atypique</label>\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"dysfonctionnements\" />\n" +
+    "          <label for=\"dysfonctionnements\">Dysfonctionnements orolinguaux</label>\n" +
+    "\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"deglutition\" />\n" +
+    "          <label for=\"deglutition\">Déglutition atypique</label>\n" +
     "\n" +
     "          <input type=\"text\">\n" +
     "\n" +
