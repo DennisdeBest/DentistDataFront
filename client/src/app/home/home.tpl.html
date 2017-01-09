@@ -88,7 +88,7 @@
 
         <label for=""><b>Fond douloureux </b>(0=pas de douleur | 10=douleur maximale)</label>
         <p class="range-field">
-          <input type="range" id="fond" min="0" max="10" />
+          <input type="range" id="fond" min="0" max="1000" />
         </p>
         <label for=""><b>Pic douloureux </b>(0=pas de douleur | 10=douleur maximale)</label>
         <p class="range-field">
@@ -182,85 +182,96 @@
             </div>
           </div>
 
-          <label for="">Score EDAS 21</label>
-          <a class="waves-effect waves-light btn">Questionnaire EDAS 21</a>
+
 
           <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s4">
+            <a class="waves-effect waves-light btn">Questionnaire EDAS 21</a>
+          </div>
+            <div class="input-field col s2">
               <label for="">Anxiété</label>
               <input type="text">
             </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s2">
               <label for="">Dépression</label>
               <input type="text">
             </div>
-          </div>
-
-
-          <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s2">
               <label for="">Stress</label>
               <input type="text">
             </div>
-          </div>
+
         </div>
 
         <div>
           <h4>4. Troubles de la posture</h4>
-          <input type="checkbox">
-          <label for="">Négatif</label>
+            <input type="checkbox" class="filled-in" id="negatif2" />
+            <label for="negatif2">Négatif</label>
+            <input type="checkbox" class="filled-in" id="non2" />
+            <label for="non2">Non renseigné</label>
 
-          <input type="checkbox">
-          <label for="">Non renseigné</label>
-
-          <input type="checkbox">
-          <label for="">Rachidienne</label>
-          <input type="text">
-
-          <input type="checkbox">
-          <label for="">Céphalique</label>
-          <input type="text">
+            <div class="row">
+              <div class="input-field col s12">
+                <label for="">Rachidienne</label>
+                <input type="text">
+              </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <label for="">Céphalique </label>
+              <input type="text">
+            </div>
+        </div>
         </div>
 
         <div>
           <h4>5. Troubles du sommeil</h4>
-          <input type="checkbox">
-          <label for="">Négatif</label>
+          <input type="checkbox" class="filled-in" id="negatif3" />
+          <label for="negatif3">Négatif</label>
+          <input type="checkbox" class="filled-in" id="non3" />
+          <label for="non3">Non renseigné</label>
 
-          <input type="checkbox">
-          <label for="">Non renseigné</label>
+          <p>Souffrez-vous du syndrome d'apnées/hypopnées obstructives du sommeil ?
+            <input class="with-gap" name="group1" type="radio" id="oui4"  />
+            <label for="oui4">Oui</label>
+            <input class="with-gap" name="group1" type="radio" id="non4"  />
+            <label for="non4">Non</label>
+          </p>
 
-          <p>Souffrez-vous du syndrome d'apnées/hypopnées obstructives du sommeil ? </p>
-          <input type="radio" value="0">
-          <label for="">Oui</label>
-          <input type="radio" value="1">
-          <label for="">Non</label>
+          <div class="row">
+            <div class="input-field col s12">
+              <label for="">Autres symptômes</label>
+              <input type="text">
+            </div>
+        </div>
 
-          <label for="">Autres symptômes</label>
-          <input type="text">
-
-          <label for="">Traitement</label>
-          <input type="text">
-
-          <button>Questionnaire PSQI</button>
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="">Traitement</label>
+            <input type="text">
+          </div>
+      </div>
+      <div class="row">
+      <a class="waves-effect waves-light btn col s2">Questionnaire PSQI</a>
+        <div class="input-field col s3">
           <label for="">Score PSQI</label>
           <input type="text">
-
-          <button>Questionnaire ISI</button>
-          <label for="">Score ISI</label>
-          <input type="text">
         </div>
+    </div>
+    <div class="row">
+    <a class="waves-effect waves-light btn col s2">Questionnaire ISI</a>
+      <div class="input-field col s3">
+        <label for="">Score ISI</label>
+        <input type="text">
+      </div>
+  </div>
 
         <div>
           <h4>6. Troubles oculaires</h4>
-          <input type="checkbox">
-          <label for="">Négatif</label>
-
-          <input type="checkbox">
-          <label for="">Non renseigné</label>
+          <input type="checkbox" class="filled-in" id="negatif4" />
+          <label for="negatif4">Négatif</label>
+          <input type="checkbox" class="filled-in" id="non4" />
+          <label for="non4">Non renseigné</label>
 
           <input type="text">
         </div>

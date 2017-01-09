@@ -1,12 +1,12 @@
 (function() {
   'use strict';
 
-  angular.element(document).ready(function() {
-    angular.bootstrap(document, ['app']);
-  });
-
   $(document).ready(function() {
     $('select').material_select();
+  });
+
+  angular.element(document).ready(function() {
+    angular.bootstrap(document, ['app']);
   });
 
   function MainCtrl($log) {
