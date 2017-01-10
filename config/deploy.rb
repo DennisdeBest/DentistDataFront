@@ -41,7 +41,6 @@ set :deploy_to, '/var/www/dev.dentist-data.fr'
 set :default_env, { 
   path: [
     "#{shared_path}/node_modules/bower/bin", 
-    "#{shared_path}/node_modules/grunt-cli/bin",
     "$PATH"].join(":")
 }
 
@@ -53,6 +52,7 @@ namespace :deploy do
       within release_path do 
         execute :npm, "install"
         execute :bower, "install"
+        execute :gulp, "build"
       end
     end
   end

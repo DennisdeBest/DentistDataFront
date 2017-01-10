@@ -4,7 +4,7 @@
 module.exports = {
   port: 3000,
   uiPort: 3001,
-  tmp: 'build/tmp',
+  tmp: 'client/tmp',
   dist: 'build/dist',
   base: 'client',
   tpl: 'client/src/**/*.tpl.html',
