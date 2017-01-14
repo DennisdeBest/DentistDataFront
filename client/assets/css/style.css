@@ -1,0 +1,357 @@
+body{
+  overflow: hidden;
+  background-color: #e8e8e8;
+  margin: 0;
+}
+
+@font-face {
+    font-family: "bebas";
+    src: url('../font/BEBAS___.TTF');
+}
+
+@font-face {
+    font-family: "pacifico";
+    src: url('../font/Pacifico.ttf');
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:900);
+
+::selection{
+  background-color: #0386c9;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: #0386c9;
+  color: white;
+}
+
+.nav-wrapper {
+  background-color: #0386c9;
+  border-bottom: 5px solid #dbd9d9;
+}
+
+.brand-logo{
+  font-family: "pacifico", Helvetica, Arial, sans-serif;
+  margin-left: 1%;
+  color: white;
+}
+
+a{
+  font-family: "happy", Helvetica, Arial, sans-serif;
+}
+
+#test{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #e8e8e8;
+}
+
+.marge{
+  width: 50%;
+  font-family: "bebas", Helvetica, Arial, sans-serif;
+}
+
+.marge2{
+  width: 50%;
+  font-family: "roboto", Helvetica, Arial, sans-serif;
+  font-weight: 900;
+}
+
+.titre{
+  font-family: "pacifico", Helvetica, Arial, sans-serif;
+  color: #0386c9;
+  text-align: center;
+    font-size: 2vw;
+    padding: 2%;
+}
+
+.marge{
+  color: #bfbfbf !important;
+  font-size: 1em !important;
+  padding-bottom: 4vh;
+  margin: 0 auto;
+  width: 40vw;
+}
+
+.marge2{
+  color: #8b8b8b !important;
+}
+
+.select-dropdown{
+  border-bottom: 3px solid #dbd9d9 !important;
+}
+
+span{
+  color: #0386c9 !important;
+}
+
+.blanc {
+  background-color: white;
+}
+
+#headerMrS img, #headerMrS2 img{
+  height: 30vh;
+  width: 21vh;
+  -moz-box-shadow: 0px 30px 80px 0px #2f2f2f;
+  -webkit-box-shadow: 0px 30px 80px 0px #2f2f2f;
+  -o-box-shadow: 0px 30px 80px 0px #2f2f2f;
+  box-shadow: 0px 30px 80px 0px #2f2f2f;
+  filter:progid:DXImageTransform.Microsoft.Shadow(color=#2f2f2f, Direction=180, Strength=80);
+}
+
+.header {
+  position: fixed;
+  bottom: 2%;
+  padding-top: auto;
+  text-align: center;
+  font-family: "pacifico", Helvetica, Arial, sans-serif;
+  font-size: 3vh;
+  color: #0386c9;
+}
+
+.sorties{
+  left: 60%;
+  margin-left: -10.5vh;
+  height: auto;
+}
+
+.ensalle{
+  left: 40%;
+  margin-left: -10.5vh;
+}
+
+.alpha{
+  z-index: 99998;
+  position: fixed;
+  top: 0%;
+  right: 0%;
+}
+
+.alpha img{
+  width: 60px;
+
+}
+
+.alpha2{
+  z-index: 1;
+  position: fixed;
+  bottom: 0%;
+  right: 0%;
+}
+
+.alpha2 img{
+  width: 150px;
+}
+
+.aide{
+  z-index: 30;
+  position: fixed;
+  bottom: 1%;
+  left: 1%;
+}
+
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.envoie{
+  font-family: "pacifico", Helvetica, Arial, sans-serif;
+  text-align: center;
+  color: #009f45;
+  font-size: 3vh;
+}
+
+.no{
+  font-family: "pacifico", Helvetica, Arial, sans-serif;
+  text-align: center;
+  color: #af1c29;
+  font-size: 3vh;
+}
+
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.modalDialog > div {
+	width: 50vw;
+	position: relative;
+	margin: 5% auto;
+	padding: 10px 20px 13px 20px;
+	border-radius: 10px;
+	background-color: #e8e8e8;
+}
+
+.espace{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  font-family: "pacifico", Helvetica, Arial, sans-serif;
+  font-size: 1.5em;
+  color: #0386c9;
+  padding-bottom: 5%;
+}
+
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: 5px;
+	text-align: center;
+	top: 5px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+  z-index: 99999;
+}
+
+    /* label color */
+   .input-field label {
+     color: #0386c9;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #0386c9;
+   }
+   .input-field textarea[type=text]:focus + label {
+     color: #0386c9;
+   }
+   .input-field input[type=email]:focus + label {
+     color: #0386c9;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #0386c9;
+     box-shadow: 0 1px 0 0 #0386c9;
+   }
+   .input-field textarea[type=text]:focus {
+     border-bottom: 1px solid #0386c9;
+     box-shadow: 0 1px 0 0 #0386c9;
+   }
+   .input-field input[type=email]:focus {
+     border-bottom: 1px solid #0386c9;
+     box-shadow: 0 1px 0 0 #0386c9;
+   }
+
+.close:hover { background: #0386c9; }
+
+.btnchercher{
+  font-family: "bebas", Helvetica, Arial, sans-serif;
+}
+
+.btn1{
+  width: 10%;
+  float: left;
+}
+
+.btn{
+  padding: 0 0;
+}
+
+.btn2{
+  width: 89%;
+  float: left;
+}
+
+.trou{
+  height: 10px;
+  width: 1%;
+  float: left;
+}
+
+.loader{
+    z-index: 99999;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: #0386C9;
+}
+
+.support{
+  margin-top: -15%;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+}
+
+.support img{
+  width: 100%;
+  z-index: 0;
+}
+
+.owl-item img{
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(80%, transparent) , to(rgba(250, 250, 250, 0.1)));
+}
+
+.owl-stage{
+  padding-bottom: 12%;
+}
+
+@media screen and (max-width: 1024px) {
+  .titre{
+    font-size: 20px;
+  }
+  .modalDialog {
+  	height: auto;
+  }
+  .modalDialog > div {
+  	width: 100vw;
+    height: auto;
+    margin: 0;
+    border-radius: 0px;
+  }
+  .close {
+    line-height: 30px;
+  	right: 10px;
+  	top: 10px;
+    width: 30px;
+  }
+  .headerMrS2, .ensalle, .faded2, .faded, .headerMrS2 .sorties{
+    display: none;
+  }
+  .marge{
+    width: 80%;
+  }
+  .owl-item .active img{
+    height: 80vh !important;
+    width: 50vh !important;
+  }
+
+  .owl-carousel{
+    height: 80vh;
+    width: 50vh !important;
+  }
+
+  .support{
+    margin-top: -5%;
+  }
+
+  .owl-stage{
+    padding-bottom: 3%;;
+
+  }
+}
