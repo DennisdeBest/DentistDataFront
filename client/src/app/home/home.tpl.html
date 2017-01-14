@@ -389,11 +389,11 @@
             <div id="titre11">
               <h2>11. Palpation(s) douloureuse(s) des muscles masticateurs, des atm et des muscles cervico-scapulaires :
                 <label>
-                  <input type="checkbox"/>
+                  <input type="checkbox" ng-model="Checkbox11Negatif"/>
                   Négatif
                 </label>
                 <label>
-                  <input type="checkbox"/>
+                  <input type="checkbox" ng-model="Checkbox11NonRenseigne"/>
                   Non Renseigné
                 </label>
               </h2>
@@ -436,10 +436,10 @@
                       Temporal postérieur
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11TempPost1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11TempPost2"/>
                     </td>
                     <td>
                       <select>
@@ -454,10 +454,10 @@
                       </select>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11TempPost3"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11TempPost4"/>
                     </td>
                     <td>
                       <select>
@@ -477,10 +477,10 @@
                       Temporal moyen
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11TempMoy1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11TempMoy2"/>
                     </td>
                     <td>
                       <select>
@@ -495,10 +495,10 @@
                       </select>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11TempMoy3"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11TempMoy4"/>
                     </td>
                     <td>
                       <select>
@@ -518,10 +518,10 @@
                       Temporal antérieur
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11TempAnt1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11TempAnt2"/>
                     </td>
                     <td>
                       <select>
@@ -536,10 +536,10 @@
                       </select>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11TempAnt3"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11TempAnt4"/>
                     </td>
                     <td>
                       <select>
@@ -555,19 +555,25 @@
                     </td>
                   </tr>
                   <tr>
-                    <p>Est-ce que la palpation des muscles temporaux provoque des maux de tête identiques à ceux ressentis habituellement ?</p>
-                    <input type="radio" name="group11" value="Oui"/>
-                    <input type="radio" name="group11" value="Non"/>
+                    <td>
+                      <p>Est-ce que la palpation des muscles temporaux provoque des maux de tête identiques à ceux ressentis habituellement ?</p>
+                    </td>
+                    <td>
+                      <input type="radio" name="group11" value="Oui" ng-model="Radio11PalpationOui"/>
+                    </td>
+                    <td>
+                      <input type="radio" name="group11" value="Non" ng-model="Radio11PalpationNon"/>
+                    </td>
                   </tr>
                   <tr>
                     <td>
                       Masséter (origine angle mdb)
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11MasseterOri1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11MasseterOri2"/>
                     </td>
                     <td>
                       <select>
@@ -582,10 +588,10 @@
                       </select>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11MasseterOri3"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11MasseterOri4"/>
                     </td>
                     <td>
                       <select>
@@ -605,10 +611,10 @@
                       Masséter (corps)
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11MasseterCorps1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11MasseterCorps2"/>
                     </td>
                     <td>
                       <select>
@@ -623,10 +629,10 @@
                       </select>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11MasseterCorps3"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11MasseterCorps4"/>
                     </td>
                     <td>
                       <select>
@@ -646,10 +652,10 @@
                       Masséter (insertion zygomatique)
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11MasseterInsert1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11MasseterInsert2"/>
                     </td>
                     <td>
                       <select>
@@ -664,10 +670,10 @@
                       </select>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11MasseterInsert3"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11MasseterInsert4"/>
                     </td>
                     <td>
                       <select>
@@ -683,17 +689,19 @@
                     </td>
                   </tr>
                   <tr>
-                    <p>ATM</p>
+                    <td>
+                      <p>ATM</p>
+                    </td>
                   </tr>
                   <tr>
                     <td>
                       Pôle latéral 0,5 kg
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Pole1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Pole2"/>
                     </td>
                     <td>
                       <select>
@@ -708,10 +716,10 @@
                       </select>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Pole3"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Pole4"/>
                     </td>
                     <td>
                       <select>
@@ -731,10 +739,10 @@
                       Autour du pôle latéral 1 kg
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11AutourPole1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11AutourPole2"/>
                     </td>
                     <td>
                       <select>
@@ -749,10 +757,10 @@
                       </select>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11AutourPole3"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11AutourPole4"/>
                     </td>
                     <td>
                       <select>
@@ -768,17 +776,19 @@
                     </td>
                   </tr>
                   <tr>
-                    <p>Autres muscles masticateurs</p>
+                    <td>
+                      <p>Autres muscles masticateurs</p>
+                    </td>
                   </tr>
                   <tr>
                     <td>
                       Digastrique (région md post)
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Digastrique1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Digastrique2"/>
                     </td>
                     <td>
                       <select>
@@ -793,10 +803,10 @@
                       </select>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Digastrique3"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Digastrique4"/>
                     </td>
                     <td>
                       <select>
@@ -816,10 +826,10 @@
                       Ptérygoïdien médial (région submd)
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11PteryMed1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11PteryMed2"/>
                     </td>
                     <td>
                       <select>
@@ -834,10 +844,10 @@
                       </select>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11PteryMed3"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11PteryMed4"/>
                     </td>
                     <td>
                       <select>
@@ -857,10 +867,10 @@
                       Aire du ptérygoïdien latéral
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11PteryLat1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11PteryLat2"/>
                     </td>
                     <td>
                       <select>
@@ -875,10 +885,10 @@
                       </select>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11PteryLat3"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11PteryLat4"/>
                     </td>
                     <td>
                       <select>
@@ -898,10 +908,10 @@
                       Tendon du temporal
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Tendon1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Tendon2"/>
                     </td>
                     <td>
                       <select>
@@ -916,10 +926,10 @@
                       </select>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Tendon3"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Tendon4"/>
                     </td>
                     <td>
                       <select>
@@ -935,17 +945,19 @@
                     </td>
                   </tr>
                 <tr>
-                  <p>Autres muscles cervico-scapulaires 0,5kg</p>
+                  <td>
+                    <p>Autres muscles cervico-scapulaires 0,5kg</p>
+                  </td>
                 </tr>
                   <tr>
                     <td>
                       Sterno-cléido-mastoïdien
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Sterno1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Sterno2"/>
                     </td>
                     <td>
                       <select>
@@ -960,10 +972,10 @@
                       </select>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Sterno3"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Sterno4"/>
                     </td>
                     <td>
                       <select>
@@ -983,54 +995,10 @@
                       Trapèze
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Trapeze1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
-                    </td>
-                    <td>
-                      <select>
-                        <option></option>
-                        <option>M. temporal droit</option>
-                        <option>M. temporal gauche</option>
-                        <option>M. masséter droit</option>
-                        <option>M. masséter gauche</option>
-                        <option>Atm droit</option>
-                        <option>Atm gauche</option>
-                        <option>Autres <input type="text"></option>
-                      </select>
-                    </td>
-                    <td>
-                      <input type="checkbox"/>
-                    </td>
-                    <td>
-                      <input type="checkbox"/>
-                    </td>
-                    <td>
-                      <select>
-                        <option></option>
-                        <option>M. temporal droit</option>
-                        <option>M. temporal gauche</option>
-                        <option>M. masséter droit</option>
-                        <option>M. masséter gauche</option>
-                        <option>Atm droit</option>
-                        <option>Atm gauche</option>
-                        <option>Autres <input type="text"></option>
-                      </select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <p>Autre(s) muscle(s)</p>
-                  </tr>
-                  <tr>
-                    <td>
-                      <input type="text"/>
-                    </td>
-                    <td>
-                      <input type="checkbox"/>
-                    </td>
-                    <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Trapeze2"/>
                     </td>
                     <td>
                       <select>
@@ -1045,10 +1013,10 @@
                       </select>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Trapeze3"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11Trapeze4"/>
                     </td>
                     <td>
                       <select>
@@ -1065,13 +1033,18 @@
                   </tr>
                   <tr>
                     <td>
-                      <input type="text"/>
+                      <p>Autre(s) muscle(s)</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="text" ng-model="Text11AutreMuscle1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11AutreMuscle11"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11AutreMuscle12"/>
                     </td>
                     <td>
                       <select>
@@ -1086,10 +1059,10 @@
                       </select>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11AutreMuscle13"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11AutreMuscle14"/>
                     </td>
                     <td>
                       <select>
@@ -1106,13 +1079,13 @@
                   </tr>
                   <tr>
                     <td>
-                      <input type="text"/>
+                      <input type="text" ng-model="Text11AutreMuscle2"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11AutreMuscle21"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11AutreMuscle22"/>
                     </td>
                     <td>
                       <select>
@@ -1127,10 +1100,51 @@
                       </select>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11AutreMuscle23"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox11AutreMuscle24"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="text" ng-model="Text11AutreMuscle3"/>
+                    </td>
+                    <td>
+                      <input type="checkbox" ng-model="Checkbox11AutreMuscle31"/>
+                    </td>
+                    <td>
+                      <input type="checkbox" ng-model="Checkbox11AutreMuscle32"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox" ng-model="Checkbox11AutreMuscle33"/>
+                    </td>
+                    <td>
+                      <input type="checkbox" ng-model="Checkbox11AutreMuscle34"/>
                     </td>
                     <td>
                       <select>
