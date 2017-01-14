@@ -61,6 +61,10 @@ catch(err) { module = angular.module("templates", []); }
 module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("src/app/home/home.tpl.html",
+    "\n" +
+    "\n" +
+    "\n" +
+    "\n" +
     "<div class=\"pure-g\">\n" +
     "  <div class=\"island3 pure-u-1 pure-u-lg-2-3\">\n" +
     "    <h3>Fiche clinique DTMm</h3>\n" +
