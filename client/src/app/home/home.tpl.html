@@ -1,3 +1,4 @@
+
 <div class="pure-g">
   <div class="island3 pure-u-1 pure-u-lg-2-3">
     <h3>Fiche clinique DTM</h3>
@@ -11,8 +12,9 @@
       <form class="col s12">
         <div class="row">
           <div class="input-field col s5">
-            <label for="">Identifiant du patient</label>
-            <input type="text">
+            <label>Identifiant du patient</label>
+
+            <input type="text" ng-model="form.Text0ID">
           </div>
           <div class="input-field col s2">
             <select>
@@ -23,24 +25,24 @@
             <label>Sexe</label>
           </div>
           <div class="input-field col s5">
-            <label for="">Profession</label>
-            <input type="text">
+            <label>Profession</label>
+            <input type="text" ng-model="form.Text0Profession">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <label for="">Date de naissance</label>
-            <input type="date" class="datepicker">
+            <label>Date de naissance</label>
+            <input type="date" class="datepicker" ng-model="form.Date0DateNaissance">
           </div>
           <div class="input-field col s6">
-            <label for="">Date de la consultation</label>
-            <input type="date" class="datepicker">
+            <label>Date de la consultation</label>
+            <input type="date" class="datepicker" ng-model="form.Date0DateConsult">
             <!--Mettre la date d'aujourd'hui comme base-->
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <textarea id="textarea1" class="materialize-textarea"></textarea>
+            <textarea id="textarea1" class="materialize-textarea" ng-model="form.Textarea0BilanSante"></textarea>
             <label for="textarea1">Bilan de santé</label>
           </div>
         </div>
@@ -48,33 +50,33 @@
       <li>
         <div class="collapsible-header"><i class="material-icons">filter_drama</i>
           1. Motif de la consultation
-          <input type="checkbox" class="filled-in" id="negatif1" />
+          <input type="checkbox" class="filled-in" id="negatif1" ng-model="form.Checkbox1Negatif"/>
           <label for="negatif1">Négatif</label>
-          <input type="checkbox" class="filled-in" id="non1" />
+          <input type="checkbox" class="filled-in" id="non1" ng-model="form.Checkbox1NonRenseigne"/>
           <label for="non1">Non renseigné</label>
         </div>
         <div class="collapsible-body">
 
           <div class="row">
             <div class="input-field col s12">
-              <textarea id="douleur" class="materialize-textarea"></textarea>
+              <textarea id="douleur" class="materialize-textarea" ng-model="form.Textarea1Douleurs"></textarea>
               <label for="douleur">Douleurs</label>
             </div>
           </div>
           <p>
-            <input type="checkbox" class="filled-in" id="no-douleur" />
+            <input type="checkbox" class="filled-in" id="no-douleur" ng-model="form.Checkbox1NoDouleurs"/>
             <label for="no-douleur">Pas de douleur</label>
           </p>
           <p>
-            <input type="checkbox" class="filled-in" id="machoire" />
+            <input type="checkbox" class="filled-in" id="machoire" ng-model="form.Checkbox1DouleursMachoire"/>
             <label for="machoire">Douleur dans la mâchoire, tempe, oreille ou en avant de l’oreille</label>
           </p>
           <p>
-            <input type="checkbox" class="filled-in" id="spontanee" />
+            <input type="checkbox" class="filled-in" id="spontanee" ng-model="form.Checkbox1DouleursSpontane"/>
             <label for="spontanee">Douleur spontanée</label>
           </p>
           <p>
-            <input type="checkbox" class="filled-in" id="orale" />
+            <input type="checkbox" class="filled-in" id="orale" ng-model="form.Checkbox1DouleursOrale"/>
             <label for="orale">Douleur provoquée par une fonction/parafonction orale</label>
           </p>
         </div>
@@ -84,9 +86,9 @@
     <li>
       <div class="collapsible-header"><i class="material-icons">filter_drama</i>
         2. Evaluation de la douleur
-        <input type="checkbox" class="filled-in" id="negatif2" />
+        <input type="checkbox" class="filled-in" id="negatif2" ng-model="form.Checkbox2Negatif"/>
         <label for="negatif2">Négatif</label>
-        <input type="checkbox" class="filled-in" id="non2" />
+        <input type="checkbox" class="filled-in" id="non2" ng-model="form.Checkbox2NonRenseigne"/>
         <label for="non2">Non renseigné</label>
       </div>
       <div class="collapsible-body">
@@ -94,106 +96,103 @@
         <!--CANVAS-->
         <div class="row">
           <div class="input-field col s12">
-            <label for="">Douleur 1</label>
-            <input type="text">
+            <label>Douleur 1</label>
+            <input type="text" ng-model="form.Text2DouleurUn">
           </div>
         </div>
 
-        <label for=""><b>Fond douloureux </b>(0=pas de douleur | 10=douleur maximale)</label>
+        <label><b>Fond douloureux </b>(0=pas de douleur | 10=douleur maximale)</label>
         <p class="range-field">
-          <input type="range" id="fond" min="0" max="1000" />
+          <input type="range" id="fond" min="0" max="1000" ng-model="form.Range2FondDouleur"/>
         </p>
-        <label for=""><b>Pic douloureux </b>(0=pas de douleur | 10=douleur maximale)</label>
+        <label><b>Pic douloureux </b>(0=pas de douleur | 10=douleur maximale)</label>
         <p class="range-field">
-          <input type="range" id="pic" min="0" max="10" />
+          <input type="range" id="pic" min="0" max="10" ng-model="form.Range2PicDouleur"/>
         </p>
 
 
         <div class="row">
           <div class="input-field col s12">
-            <label for="">Date de début</label>
-            <input type="date" class="datepicker">
+            <label>Date de début</label>
+            <input type="date" class="datepicker" ng-model="form.Date2DateDebut">
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <label for="">Qualité</label>
-              <input type="text">
+              <label>Qualité</label>
+              <input type="text" ng-model="form.Text2Qualite">
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
-              <label for="">Durée</label>
-              <input type="text">
+              <label>Durée</label>
+              <input type="text" ng-model="form.Text2Duree">
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
-              <label for="">Fréquence</label>
-              <input type="text">
+              <label>Fréquence</label>
+              <input type="text" ng-model="form.Text2Frequence">
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
-              <label for="">Circonstances du début</label>
-              <input type="text">
+              <label>Circonstances du début</label>
+              <input type="text" ng-model="form.Text2Circonstance">
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
-              <label for="">Modifié par</label>
-              <input type="text">
+              <label>Modifié par</label>
+              <input type="text" ng-model="form.Text2Modifier">
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
-              <label for="">Traitement</label>
-              <input type="text">
+              <label>Traitement</label>
+              <input type="text" ng-model="form.Text2Traitement">
             </div>
           </div>
 
           <a class="waves-effect waves-light btn">Questionnaire DN4</a>
-          <input type="text">
 
           <a class="waves-effect waves-light btn">Ajouter une douleur</a>
           <a class="waves-effect waves-light btn">Supprimer une douleur</a>
 
-          <div>
-          </div>
-        </li>
+      </li>
 
 
         <li>
           <div class="collapsible-header"><i class="material-icons">filter_drama</i>
             3. Environnement
-            <input type="checkbox" class="filled-in" id="negatif3" />
+            <input type="checkbox" class="filled-in" id="negatif3" ng-model="form.Checkbox3Negatif"/>
             <label for="negatif3">Négatif</label>
-            <input type="checkbox" class="filled-in" id="non3" />
+            <input type="checkbox" class="filled-in" id="non3" ng-model="form.Checkbox3NonRenseigne"/>
             <label for="non3">Non renseigné</label>
           </div>
           <div class="collapsible-body">
             <div class="row">
               <div class="input-field col s12">
-                <label for="">Familial</label>
-                <input type="text">
+                <label>Familial</label>
+                <input type="text" ng-model="form.Text3Familial">
               </div>
             </div>
 
             <div class="row">
               <div class="input-field col s12">
-                <label for="">Social</label>
-                <input type="text">
+                <label>Social</label>
+                <input type="text"ng-model="form.Text3Social">
               </div>
             </div>
 
             <div class="row">
               <div class="input-field col s12">
-                <label for="">Professionnel</label>
-                <input type="text">
+                <label>Professionnel</label>
+                <input type="text" ng-model="form.Text3Professionnel">
               </div>
             </div>
 
@@ -204,16 +203,16 @@
                 <a class="waves-effect waves-light btn">Questionnaire EDAS 21</a>
               </div>
               <div class="input-field col s2">
-                <label for="">Anxiété</label>
-                <input type="text">
+                <label>Anxiété</label>
+                <input type="text" ng-model="form.Text3Anxiete">
               </div>
               <div class="input-field col s2">
-                <label for="">Dépression</label>
-                <input type="text">
+                <label>Dépression</label>
+                <input type="text" ng-model="form.Text3Depression">
               </div>
               <div class="input-field col s2">
-                <label for="">Stress</label>
-                <input type="text">
+                <label>Stress</label>
+                <input type="text" ng-model="form.Text3Stress">
               </div>
             </div>
           </div>
@@ -222,23 +221,23 @@
           <li>
             <div class="collapsible-header"><i class="material-icons">filter_drama</i>
               4. Troubles de la posture
-              <input type="checkbox" class="filled-in" id="negatif4" />
+              <input type="checkbox" class="filled-in" id="negatif4" ng-model="form.Checkbox4Negatif"/>
               <label for="negatif4">Négatif</label>
-              <input type="checkbox" class="filled-in" id="non4" />
+              <input type="checkbox" class="filled-in" id="non4" ng-model="form.Checkbox4NonRenseigne"/>
               <label for="non4">Non renseigné</label>
             </div>
             <div class="collapsible-body">
 
           <div class="row">
             <div class="input-field col s12">
-              <label for="">Rachidienne</label>
-              <input type="text">
+              <label>Rachidienne</label>
+              <input type="text" ng-model="form.Text4Rachidienne">
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <label for="">Céphalique </label>
-              <input type="text">
+              <label>Céphalique </label>
+              <input type="text" ng-model="form.Text4Cephalique">
             </div>
           </div>
         </div>
@@ -246,13 +245,13 @@
 
         <div>
           <h4>5. Troubles du sommeil</h4>
-          <input type="checkbox" class="filled-in" id="negatif3" />
+          <input type="checkbox" class="filled-in" id="negatif5" ng-model="form.Checkbox5Negatif"/>
           <label for="negatif3">Négatif</label>
-          <input type="checkbox" class="filled-in" id="non3" />
+          <input type="checkbox" class="filled-in" id="non5" ng-model="form.Checkbox5NonRenseigne"/>
           <label for="non3">Non renseigné</label>
 
           <p>Souffrez-vous du syndrome d'apnées/hypopnées obstructives du sommeil ?
-            <input class="with-gap" name="group1" type="radio" id="oui4"  />
+            <input class="with-gap" name="group1" type="radio" id="oui4"/>
             <label for="oui4">Oui</label>
             <input class="with-gap" name="group1" type="radio" id="non4"  />
             <label for="non4">Non</label>
@@ -260,118 +259,894 @@
 
           <div class="row">
             <div class="input-field col s12">
-              <label for="">Autres symptômes</label>
-              <input type="text">
+              <label>Autres symptômes</label>
+              <input type="text" ng-model="form.Text5Symptomes">
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
-              <label for="">Traitement</label>
-              <input type="text">
+              <label>Traitement</label>
+              <input type="text" ng-model="form.Text5Traitement">
             </div>
           </div>
           <div class="row">
             <a class="waves-effect waves-light btn col s4">Questionnaire PSQI</a>
             <div class="input-field col s3">
-              <label for="">Score PSQI</label>
-              <input type="text">
+              <label>Score PSQI</label>
+              <input type="text" ng-model="form.Text5ScorePSQI">
             </div>
           </div>
           <div class="row">
             <a class="waves-effect waves-light btn col s4">Questionnaire ISI</a>
             <div class="input-field col s3">
-              <label for="">Score ISI</label>
-              <input type="text">
+              <label>Score ISI</label>
+              <input type="text" ng-model="form.Text5ScoreISI">
             </div>
           </div>
 
           <div>
             <h4>6. Troubles oculaires</h4>
-            <input type="checkbox" class="filled-in" id="negatif5" />
+            <input type="checkbox" class="filled-in" id="negatif6" ng-model="form.Checkbox6Negatif"/>
             <label for="negatif5">Négatif</label>
-            <input type="checkbox" class="filled-in" id="non5" />
+            <input type="checkbox" class="filled-in" id="non6" ng-model="form.Checkbox6NonRenseigne"/>
             <label for="non5">Non renseigné</label>
 
             <div class="row">
               <div class="input-field col s12">
-                <input type="text">
+                <textarea ng-model="form.Text6TroublesOculaires"></textarea>
               </div>
             </div>
           </div>
 
           <div>
             <h4>7. Habitudes nocives</h4>
-            <input type="checkbox" class="filled-in" id="negatif6" />
+            <input type="checkbox" class="filled-in" id="negatif7" ng-model="form.Checkbox7Negatif"/>
             <label for="negatif6">Négatif</label>
-            <input type="checkbox" class="filled-in" id="non6" />
+            <input type="checkbox" class="filled-in" id="non7" ng-model="form.Checkbox7NonRenseigne"/>
             <label for="non6">Non renseigné</label>
 
-            <input type="checkbox" class="filled-in" id="onycophagie" />
+            <input type="checkbox" class="filled-in" id="onycophagie" ng-model="form.Checkbox7Onycophagie"/>
             <label for="onycophagie">Onycophagie</label>
 
-            <input type="checkbox" class="filled-in" id="mordillement" />
+            <input type="checkbox" class="filled-in" id="mordillement" ng-model="form.Checkbox7Mordillement"/>
             <label for="mordillement">Mordillement des lèvres/style/objets</label>
 
-            <input type="checkbox" class="filled-in" id="bruxisme" />
+            <input type="checkbox" class="filled-in" id="bruxisme" ng-model="form.Checkbox7Bruxisme"/>
             <label for="bruxisme">Bruxisme d'éveil</label>
 
-            <input type="checkbox" class="filled-in" id="gum" />
+            <input type="checkbox" class="filled-in" id="gum" ng-model="form.Checkbox7ChewingGum"/>
             <label for="gum">Chewing-gum</label>
 
-            <input type="checkbox" class="filled-in" id="tabac" />
+            <input type="checkbox" class="filled-in" id="tabac" ng-model="form.Checkbox7Tabac"/>
             <label for="tabac">Tabac</label>
 
-            <input type="checkbox" class="filled-in" id="autres" />
+            <input type="checkbox" class="filled-in" id="autres" ng-model="form.Checkbox7Autres"/>
             <label for="autres">Autres</label>
 
-            <input type="text">
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea ng-model="form.Text7Complement"></textarea>
+              </div>
+            </div>
           </div>
 
           <div>
             <h4>8. Dysfonctionnements oro-ligaux</h4>
-
-            <input type="checkbox" class="filled-in" id="negatif7" />
+            <input type="checkbox" class="filled-in" id="negatif8" ng-model="form.Checkbox8Negatif"/>
             <label for="negatif7">Négatif</label>
-
-            <input type="checkbox" class="filled-in" id="non7" />
+            <input type="checkbox" class="filled-in" id="non8" ng-model="form.Checkbox8NonRenseigne"/>
             <label for="non7">Non renseigné</label>
 
-            <input type="checkbox" class="filled-in" id="dysfonctionnements" />
+            <input type="checkbox" class="filled-in" id="dysfonctionnements" ng-model="form.Checkbox8Dysfontion"/>
             <label for="dysfonctionnements">Dysfonctionnements orolinguaux</label>
 
-            <input type="checkbox" class="filled-in" id="deglutition" />
+            <input type="checkbox" class="filled-in" id="deglutition" ng-model="form.Checkbox8Deglutition"/>
             <label for="deglutition">Déglutition atypique</label>
 
-            <input type="text">
+            <input type="text" ng-model="form.Text8Complement">
 
             <button>Score de Friedman</button>
-            <label for="">Score de Friedman</label>
-            <input type="text">
+            <label>Score de Friedman</label>
+            <input type="text" ng-model="form.Text8ScoreFriedman">
 
             <button>Score de Mallampati</button>
-            <label for="">Score de Mallampati</label>
-            <input type="text">
+            <label>Score de Mallampati</label>
+            <input type="text" ng-model="form.Text8ScoreMallampati">
           </div>
 
           <div>
             <h4>9. Traumatisme</h4>
-            <input type="checkbox">
-            <label for="">Négatif</label>
+            <input type="checkbox" ng-model="form.Checkbox9Negatif">
+            <label>Négatif</label>
 
-            <input type="checkbox">
-            <label for="">Non renseigné</label>
+            <input type="checkbox" ng-model="form.Checkbox9NonRenseigne">
+            <label>Non renseigné</label>
 
-            <input type="text">
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea ng-model="form.Text9Complement"></textarea>
+              </div>
+            </div>
           </div>
 
           <div>
             <h4>10. Observations complémentaires</h4>
-            <input type="checkbox">
-            <label for="">Négatif</label>
+            <input type="checkbox" ng-model="form.Checkbox10Negatif">
+            <label>Négatif</label>
 
-            <input type="checkbox">
-            <label for="">Non renseigné</label>
+            <input type="checkbox" ng-model="form.Checkbox10NonRenseigne">
+            <label>Non renseigné</label>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea ng-model="form.Text10Complement"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div id="div11">
+            <div id="titre11">
+              <h2>11. Palpation(s) douloureuse(s) des muscles masticateurs, des atm et des muscles cervico-scapulaires :
+                <label>
+                  <input type="checkbox"/>
+                  Négatif
+                </label>
+                <label>
+                  <input type="checkbox"/>
+                  Non Renseigné
+                </label>
+              </h2>
+            </div>
+            <div id="champs11">
+              <table>
+                <thead>
+                <tr>
+                  <th> </th>
+                  <th colspan="3">Côté droit</th>
+                  <th colspan="3">Côté gauche</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      Muscles 1kg
+                    </td>
+                    <td>
+                      Douleur provoquée
+                    </td>
+                    <td>
+                      Est-elle identique à la douleur habituelle ?
+                    </td>
+                    <td>
+                      Douleur(s) référée(s)
+                    </td>
+                    <td>
+                      Douleur provoquée
+                    </td>
+                    <td>
+                      Est-elle identique à la douleur habituelle ?
+                    </td>
+                    <td>
+                      Douleur(s) référée(s)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Temporal postérieur
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Temporal moyen
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Temporal antérieur
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <p>Est-ce que la palpation des muscles temporaux provoque des maux de tête identiques à ceux ressentis habituellement ?</p>
+                    <input type="radio" name="group11" value="Oui"/>
+                    <input type="radio" name="group11" value="Non"/>
+                  </tr>
+                  <tr>
+                    <td>
+                      Masséter (origine angle mdb)
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Masséter (corps)
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Masséter (insertion zygomatique)
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <p>ATM</p>
+                  </tr>
+                  <tr>
+                    <td>
+                      Pôle latéral 0,5 kg
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Autour du pôle latéral 1 kg
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <p>Autres muscles masticateurs</p>
+                  </tr>
+                  <tr>
+                    <td>
+                      Digastrique (région md post)
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Ptérygoïdien médial (région submd)
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Aire du ptérygoïdien latéral
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Tendon du temporal
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                <tr>
+                  <p>Autres muscles cervico-scapulaires 0,5kg</p>
+                </tr>
+                  <tr>
+                    <td>
+                      Sterno-cléido-mastoïdien
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Trapèze
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <p>Autre(s) muscle(s)</p>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="text"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="text"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="text"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <input type="checkbox"/>
+                    </td>
+                    <td>
+                      <select>
+                        <option></option>
+                        <option>M. temporal droit</option>
+                        <option>M. temporal gauche</option>
+                        <option>M. masséter droit</option>
+                        <option>M. masséter gauche</option>
+                        <option>Atm droit</option>
+                        <option>Atm gauche</option>
+                        <option>Autres <input type="text"></option>
+                      </select>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
           </div>
 
           <div id="div12">
@@ -391,29 +1166,29 @@
               <p>Dent de référence : </p>
               <div>
                 <label>
-                  <input type="checkbox"/>
+                  <input type="radio" name="group3"/>
                   11
                 </label>
                 <label>
-                  <input type="checkbox"/>
+                  <input type="radio" name="group3"/>
                   21
                 </label>
                 <label>
-                  <input type="checkbox"/>
+                  <input type="radio" name="group3"/>
                   Autre <input type="text"/>
                 </label>
               </div>
               <div>
                 <label>
-                  <input type="checkbox"/>
+                  <input type="radio" name="group4"/>
                   31
                 </label>
                 <label>
-                  <input type="checkbox"/>
+                  <input type="radio" name="group4"/>
                   41
                 </label>
                 <label>
-                  <input type="checkbox"/>
+                  <input type="radio" name="group4"/>
                   Autre <input type="text"/>
                 </label>
               </div>
@@ -474,7 +1249,6 @@
               <table>
                 <thead>
                   <tr>
-                    <th> </th>
                     <th colspan="3">Côté droit</th>
                     <th colspan="3">Côté gauche</th>
                   </tr>
