@@ -1167,11 +1167,11 @@
             <div id="titre12">
               <h2>12. Rapports Incisifs :
                 <label>
-                  <input type="checkbox"/>
+                  <input type="checkbox" ng-model="Checkbox12Negatif"/>
                   Négatif
                 </label>
                 <label>
-                  <input type="checkbox"/>
+                  <input type="checkbox" ng-model="Checkbox12NonRenseigne"/>
                   Non Renseigné
                 </label>
               </h2>
@@ -1180,66 +1180,66 @@
               <p>Dent de référence : </p>
               <div>
                 <label>
-                  <input type="radio" name="group3"/>
+                  <input type="radio" name="group3" ng-model="Radio12Dent11"/>
                   11
                 </label>
                 <label>
-                  <input type="radio" name="group3"/>
+                  <input type="radio" name="group3" ng-model="Radio12Dent21"/>
                   21
                 </label>
                 <label>
-                  <input type="radio" name="group3"/>
-                  Autre <input type="text"/>
+                  <input type="radio" name="group3" ng-model="Radio12DentAutre1"/>
+                  Autre <input type="text" ng-model="Radio12DentAutre1Choix"/>
                 </label>
               </div>
               <div>
                 <label>
-                  <input type="radio" name="group4"/>
+                  <input type="radio" name="group4" ng-model="Radio12Dent31"/>
                   31
                 </label>
                 <label>
-                  <input type="radio" name="group4"/>
+                  <input type="radio" name="group4" ng-model="Radio12Dent41"/>
                   41
                 </label>
                 <label>
-                  <input type="radio" name="group4"/>
-                  Autre <input type="text"/>
+                  <input type="radio" name="group4" ng-model="Radio12DentAutre2"/>
+                  Autre <input type="text" ng-model="Radio12DentAutre2Choix"/>
                 </label>
               </div>
               <div>
                 <p>Surplomb horizontal : </p>
                 <label>
-                  <input type="number"/>
+                  <input type="number" ng-model="Number12Surplomb"/>
                   mm
                 </label>
                 <label>
-                  <input type="checkbox"/>
+                  <input type="checkbox" ng-model="Checkbox12Surplomb"/>
                   Si négatif
                 </label>
               </div>
               <div>
                 <p>Recouvrement vertical : </p>
                 <label>
-                  <input type="number"/>
+                  <input type="number" ng-model="Number12Recouvrement"/>
                   mm
                 </label>
                 <label>
-                  <input type="checkbox"/>
+                  <input type="checkbox" ng-model="Checkbox12Recouvrement"/>
                   Si négatif
                 </label>
               </div>
               <div>
                 <p>Existe-t-il un décalage des milieux inter-incisifs ?</p>
                 <label>
-                  <input type="checkbox"/>
+                  <input type="radio" name="group12" ng-model="Radio12DecalageOui"/>
                   Oui
                   <label>
-                    <input type="number"/>
+                    <input type="number" ng-model="Number12DecalageOui"/>
                     mm
                   </label>
                 </label>
                 <label>
-                  <input type="checkbox"/>
+                  <input type="radio" name="group12" ng-model="Radio12DecalageNon"/>
                   Non
                 </label>
               </div>
@@ -1250,11 +1250,11 @@
             <div id="titre13">
               <h2>13. Mouvements d'ouverture, latéralités et propulsion :
                 <label>
-                  <input type="checkbox"/>
+                  <input type="checkbox" ng-model="Checkbox13Negatif"/>
                   Négatif
                 </label>
                 <label>
-                  <input type="checkbox"/>
+                  <input type="checkbox" ng-model="Checkbox13NonRenseigne"/>
                   Non Renseigné
                 </label>
               </h2>
