@@ -22,10 +22,10 @@
 <div id="loginPopin" class="" ng-show="showLoginPopin">
   <div class="modal-content">
     <h4>Login</h4>
-    <label>Username : </label><input id="loginUsername" type="text"/>
-    <label>Password : </label><input id="loginPassword" type="password"/>
+    <label>Username : </label><input ng-model="loginUsername" type="text"/>
+    <label>Password : </label><input ng-model="loginPassword" type="password"/>
   </div>
   <div class="modal-footer">
-    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    <button id="loginAction" class="waves-effect waves-light btn light-blue darken-3" ng-click="loginAction()">Connexion</button>
   </div>
 </div>
