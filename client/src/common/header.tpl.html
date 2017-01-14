@@ -7,14 +7,25 @@
         <li><a href ui-sref="root.propos">{{ 'à propos' | uppercase }}</a></li>
         <li><a href ui-sref="root.nous">{{ 'qui somme nous ?' | uppercase }}</a></li>
         <li><a href ui-sref="root.pourquoi">{{ 'pourquoi ce site ?' | uppercase }}</a></li>
-        <li><a class="waves-effect waves-light btn light-blue darken-3">Connexion</a></li>
+        <li><button id="loginButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="createLoginPopin()">Connexion</button></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li><a href ui-sref="root.home">{{ 'home' | uppercase }}</a></li>
         <li><a href ui-sref="root.propos">{{ 'à propos' | uppercase }}</a></li>
         <li><a href ui-sref="root.nous">{{ 'qui sommes nous ?' | uppercase }}</a></li>
         <li><a href ui-sref="root.pourquoi">{{ 'pourquoi ce site ?' | uppercase }}</a></li>
-        <li><a class="waves-effect waves-light btn light-blue darken-3">Connexion</a></li>
+        <li><button id="loginButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="createLoginPopin()">Connexion</button></li>
       </ul>
     </div>
   </nav>
+
+<div id="loginPopin" class="" ng-show="showLoginPopin">
+  <div class="modal-content">
+    <h4>Login</h4>
+    <label>Username : </label><input id="loginUsername" type="text"/>
+    <label>Password : </label><input id="loginPassword" type="password"/>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>
