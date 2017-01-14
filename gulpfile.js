@@ -193,7 +193,7 @@ gulp.task('serve', ['build'], function() {
     },
     notify: false,
     logPrefix: pkg.name,
-    server: ['build', 'client']
+    server: ['client']
   });
 
   gulp.watch(config.html, reload);
