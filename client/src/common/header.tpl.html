@@ -7,38 +7,31 @@
         <li><a href ui-sref="root.propos">{{ 'à propos' | uppercase }}</a></li>
         <li><a href ui-sref="root.nous">{{ 'qui somme nous ?' | uppercase }}</a></li>
         <li><a href ui-sref="root.pourquoi">{{ 'pourquoi ce site ?' | uppercase }}</a></li>
-        <li><button id="loginButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="createLoginPopin()">Connexion</button></li>
+        <li><a id="loginButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="createLoginPopin()">Connexion</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li><a href ui-sref="root.home">{{ 'home' | uppercase }}</a></li>
         <li><a href ui-sref="root.propos">{{ 'à propos' | uppercase }}</a></li>
         <li><a href ui-sref="root.nous">{{ 'qui sommes nous ?' | uppercase }}</a></li>
         <li><a href ui-sref="root.pourquoi">{{ 'pourquoi ce site ?' | uppercase }}</a></li>
-        <li><button id="loginButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="createLoginPopin()">Connexion</button></li>
+        <li><a id="loginButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="createLoginPopin()">Connexion</a></li>
       </ul>
     </div>
   </nav>
 
-<div id="loginPopin" class="" ng-show="showLoginPopin">
-  <div class="modal-content" ng-hide="showRegisterPopin">
-    <h4>Login</h4>
-    <label>Username : </label><input ng-model="loginUsername" type="text"/>
-    <label>Password : </label><input ng-model="loginPassword" type="password"/>
-  </div>
-  <div class="modal-footer" ng-hide="showRegisterPopin">
-    <button id="loginAction" class="waves-effect waves-light btn light-blue darken-3" ng-click="loginAction()">Connexion</button>
-    <button id="registerAction" class="waves-effect waves-light btn light-blue darken-3" ng-click="registerAction()">Register</button>
-  </div>
-
-  <div class="modal-content" ng-show="showRegisterPopin">
-    <h4>Login</h4>
-    <label>Username : </label><input ng-model="registerUsername" type="text"/>
-    <label>Email : </label><input ng-model="registerEmail" type="text"/>
-    <label>Password : </label><input ng-model="registerPassword" type="password"/>
-    <label>Repeat password : </label><input ng-model="registerPasswordRepeat" type="password"/>
-  </div>
-  <div class="modal-footer" ng-show="showRegisterPopin">
-    <button id="loginAction" class="waves-effect waves-light btn light-blue darken-3" ng-click="loginAction()">Connexion</button>
-    <button id="registerAction" class="waves-effect waves-light btn light-blue darken-3" ng-click="registerAction()">Register</button>
+<div id="loginPopin" class="modal-content" ng-show="showLoginPopin">
+    <div class="row">
+      <a class="close" href="#!" title="Close" ng-click="createLoginPopin()">X</a>
+      <div class="input-field col s4 marge2">
+        <input name="loginUsername" id="loginUsername" type="text" class="validate text-blue text-darken-2">
+        <label for="loginUsername">Username</label>
+      </div>
+      <div class="input-field col s4 marge2">
+        <input name="loginPassword" id="loginPassword" type="password" class="validate text-blue text-darken-2">
+        <label for="loginPassword">Password</label>
+      </div>
+      <div class="input-field col s4 marge2">
+    <a href="#!" id="loginButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="createLoginPopin()">Connexion</a>
+</div>
   </div>
 </div>

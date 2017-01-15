@@ -40,17 +40,34 @@ module.run(["$templateCache", function($templateCache) {
     "        <li><a href ui-sref=\"root.propos\">{{ 'à propos' | uppercase }}</a></li>\n" +
     "        <li><a href ui-sref=\"root.nous\">{{ 'qui somme nous ?' | uppercase }}</a></li>\n" +
     "        <li><a href ui-sref=\"root.pourquoi\">{{ 'pourquoi ce site ?' | uppercase }}</a></li>\n" +
-    "        <li><a class=\"waves-effect waves-light btn light-blue darken-3\">Connexion</a></li>\n" +
+    "        <li><a id=\"loginButton\" class=\"waves-effect waves-light btn light-blue darken-3\" ng-click=\"createLoginPopin()\">Connexion</a></li>\n" +
     "      </ul>\n" +
     "      <ul class=\"side-nav\" id=\"mobile-demo\">\n" +
     "        <li><a href ui-sref=\"root.home\">{{ 'home' | uppercase }}</a></li>\n" +
     "        <li><a href ui-sref=\"root.propos\">{{ 'à propos' | uppercase }}</a></li>\n" +
     "        <li><a href ui-sref=\"root.nous\">{{ 'qui sommes nous ?' | uppercase }}</a></li>\n" +
     "        <li><a href ui-sref=\"root.pourquoi\">{{ 'pourquoi ce site ?' | uppercase }}</a></li>\n" +
-    "        <li><a class=\"waves-effect waves-light btn light-blue darken-3\">Connexion</a></li>\n" +
+    "        <li><a id=\"loginButton\" class=\"waves-effect waves-light btn light-blue darken-3\" ng-click=\"createLoginPopin()\">Connexion</a></li>\n" +
     "      </ul>\n" +
     "    </div>\n" +
     "  </nav>\n" +
+    "\n" +
+    "<div id=\"loginPopin\" class=\"modal-content\" ng-show=\"showLoginPopin\">\n" +
+    "    <div class=\"row\">\n" +
+    "      <a class=\"close\" href=\"#!\" title=\"Close\" ng-click=\"createLoginPopin()\">X</a>\n" +
+    "      <div class=\"input-field col s4 marge2\">\n" +
+    "        <input name=\"loginUsername\" id=\"loginUsername\" type=\"text\" class=\"validate text-blue text-darken-2\">\n" +
+    "        <label for=\"loginUsername\">Username</label>\n" +
+    "      </div>\n" +
+    "      <div class=\"input-field col s4 marge2\">\n" +
+    "        <input name=\"loginPassword\" id=\"loginPassword\" type=\"password\" class=\"validate text-blue text-darken-2\">\n" +
+    "        <label for=\"loginPassword\">Password</label>\n" +
+    "      </div>\n" +
+    "      <div class=\"input-field col s4 marge2\">\n" +
+    "    <a href=\"#!\" id=\"loginButton\" class=\"waves-effect waves-light btn light-blue darken-3\" ng-click=\"createLoginPopin()\">Connexion</a>\n" +
+    "</div>\n" +
+    "  </div>\n" +
+    "</div>\n" +
     "");
 }]);
 })();
@@ -62,12 +79,9 @@ module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("src/app/home/home.tpl.html",
     "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
     "<div class=\"pure-g\">\n" +
     "  <div class=\"island3 pure-u-1 pure-u-lg-2-3\">\n" +
-    "    <h3>Fiche clinique DTMm</h3>\n" +
+    "    <h3>Fiche clinique DTM</h3>\n" +
     "  </div>\n" +
     "</div>\n" +
     "\n" +
@@ -78,8 +92,9 @@ module.run(["$templateCache", function($templateCache) {
     "      <form class=\"col s12\">\n" +
     "        <div class=\"row\">\n" +
     "          <div class=\"input-field col s5\">\n" +
-    "            <label for=\"\">Identifiant du patient</label>\n" +
-    "            <input type=\"text\">\n" +
+    "            <label>Identifiant du patient</label>\n" +
+    "\n" +
+    "            <input type=\"text\" ng-model=\"form.Text0ID\">\n" +
     "          </div>\n" +
     "          <div class=\"input-field col s2\">\n" +
     "            <select>\n" +
@@ -90,24 +105,24 @@ module.run(["$templateCache", function($templateCache) {
     "            <label>Sexe</label>\n" +
     "          </div>\n" +
     "          <div class=\"input-field col s5\">\n" +
-    "            <label for=\"\">Profession</label>\n" +
-    "            <input type=\"text\">\n" +
+    "            <label>Profession</label>\n" +
+    "            <input type=\"text\" ng-model=\"form.Text0Profession\">\n" +
     "          </div>\n" +
     "        </div>\n" +
     "        <div class=\"row\">\n" +
     "          <div class=\"input-field col s6\">\n" +
-    "            <label for=\"\">Date de naissance</label>\n" +
-    "            <input type=\"date\" class=\"datepicker\">\n" +
+    "            <label>Date de naissance</label>\n" +
+    "            <input type=\"date\" class=\"datepicker\" ng-model=\"form.Date0DateNaissance\">\n" +
     "          </div>\n" +
     "          <div class=\"input-field col s6\">\n" +
-    "            <label for=\"\">Date de la consultation</label>\n" +
-    "            <input type=\"date\" class=\"datepicker\">\n" +
+    "            <label>Date de la consultation</label>\n" +
+    "            <input type=\"date\" class=\"datepicker\" ng-model=\"form.Date0DateConsult\">\n" +
     "            <!--Mettre la date d'aujourd'hui comme base-->\n" +
     "          </div>\n" +
     "        </div>\n" +
     "        <div class=\"row\">\n" +
     "          <div class=\"input-field col s12\">\n" +
-    "            <textarea id=\"textarea1\" class=\"materialize-textarea\"></textarea>\n" +
+    "            <textarea id=\"textarea1\" class=\"materialize-textarea\" ng-model=\"form.Textarea0BilanSante\"></textarea>\n" +
     "            <label for=\"textarea1\">Bilan de santé</label>\n" +
     "          </div>\n" +
     "        </div>\n" +
@@ -115,33 +130,33 @@ module.run(["$templateCache", function($templateCache) {
     "      <li>\n" +
     "        <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
     "          1. Motif de la consultation\n" +
-    "          <input type=\"checkbox\" class=\"filled-in\" id=\"negatif1\" />\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"negatif1\" ng-model=\"form.Checkbox1Negatif\"/>\n" +
     "          <label for=\"negatif1\">Négatif</label>\n" +
-    "          <input type=\"checkbox\" class=\"filled-in\" id=\"non1\" />\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"non1\" ng-model=\"form.Checkbox1NonRenseigne\"/>\n" +
     "          <label for=\"non1\">Non renseigné</label>\n" +
     "        </div>\n" +
     "        <div class=\"collapsible-body\">\n" +
     "\n" +
     "          <div class=\"row\">\n" +
     "            <div class=\"input-field col s12\">\n" +
-    "              <textarea id=\"douleur\" class=\"materialize-textarea\"></textarea>\n" +
+    "              <textarea id=\"douleur\" class=\"materialize-textarea\" ng-model=\"form.Textarea1Douleurs\"></textarea>\n" +
     "              <label for=\"douleur\">Douleurs</label>\n" +
     "            </div>\n" +
     "          </div>\n" +
     "          <p>\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"no-douleur\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"no-douleur\" ng-model=\"form.Checkbox1NoDouleurs\"/>\n" +
     "            <label for=\"no-douleur\">Pas de douleur</label>\n" +
     "          </p>\n" +
     "          <p>\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"machoire\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"machoire\" ng-model=\"form.Checkbox1DouleursMachoire\"/>\n" +
     "            <label for=\"machoire\">Douleur dans la mâchoire, tempe, oreille ou en avant de l’oreille</label>\n" +
     "          </p>\n" +
     "          <p>\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"spontanee\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"spontanee\" ng-model=\"form.Checkbox1DouleursSpontane\"/>\n" +
     "            <label for=\"spontanee\">Douleur spontanée</label>\n" +
     "          </p>\n" +
     "          <p>\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"orale\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"orale\" ng-model=\"form.Checkbox1DouleursOrale\"/>\n" +
     "            <label for=\"orale\">Douleur provoquée par une fonction/parafonction orale</label>\n" +
     "          </p>\n" +
     "        </div>\n" +
@@ -151,9 +166,9 @@ module.run(["$templateCache", function($templateCache) {
     "    <li>\n" +
     "      <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
     "        2. Evaluation de la douleur\n" +
-    "        <input type=\"checkbox\" class=\"filled-in\" id=\"negatif2\" />\n" +
+    "        <input type=\"checkbox\" class=\"filled-in\" id=\"negatif2\" ng-model=\"form.Checkbox2Negatif\"/>\n" +
     "        <label for=\"negatif2\">Négatif</label>\n" +
-    "        <input type=\"checkbox\" class=\"filled-in\" id=\"non2\" />\n" +
+    "        <input type=\"checkbox\" class=\"filled-in\" id=\"non2\" ng-model=\"form.Checkbox2NonRenseigne\"/>\n" +
     "        <label for=\"non2\">Non renseigné</label>\n" +
     "      </div>\n" +
     "      <div class=\"collapsible-body\">\n" +
@@ -161,106 +176,103 @@ module.run(["$templateCache", function($templateCache) {
     "        <!--CANVAS-->\n" +
     "        <div class=\"row\">\n" +
     "          <div class=\"input-field col s12\">\n" +
-    "            <label for=\"\">Douleur 1</label>\n" +
-    "            <input type=\"text\">\n" +
+    "            <label>Douleur 1</label>\n" +
+    "            <input type=\"text\" ng-model=\"form.Text2DouleurUn\">\n" +
     "          </div>\n" +
     "        </div>\n" +
     "\n" +
-    "        <label for=\"\"><b>Fond douloureux </b>(0=pas de douleur | 10=douleur maximale)</label>\n" +
+    "        <label><b>Fond douloureux </b>(0=pas de douleur | 10=douleur maximale)</label>\n" +
     "        <p class=\"range-field\">\n" +
-    "          <input type=\"range\" id=\"fond\" min=\"0\" max=\"1000\" />\n" +
+    "          <input type=\"range\" id=\"fond\" min=\"0\" max=\"1000\" ng-model=\"form.Range2FondDouleur\"/>\n" +
     "        </p>\n" +
-    "        <label for=\"\"><b>Pic douloureux </b>(0=pas de douleur | 10=douleur maximale)</label>\n" +
+    "        <label><b>Pic douloureux </b>(0=pas de douleur | 10=douleur maximale)</label>\n" +
     "        <p class=\"range-field\">\n" +
-    "          <input type=\"range\" id=\"pic\" min=\"0\" max=\"10\" />\n" +
+    "          <input type=\"range\" id=\"pic\" min=\"0\" max=\"10\" ng-model=\"form.Range2PicDouleur\"/>\n" +
     "        </p>\n" +
     "\n" +
     "\n" +
     "        <div class=\"row\">\n" +
     "          <div class=\"input-field col s12\">\n" +
-    "            <label for=\"\">Date de début</label>\n" +
-    "            <input type=\"date\" class=\"datepicker\">\n" +
+    "            <label>Date de début</label>\n" +
+    "            <input type=\"date\" class=\"datepicker\" ng-model=\"form.Date2DateDebut\">\n" +
     "          </div>\n" +
     "          <div class=\"row\">\n" +
     "            <div class=\"input-field col s12\">\n" +
-    "              <label for=\"\">Qualité</label>\n" +
-    "              <input type=\"text\">\n" +
+    "              <label>Qualité</label>\n" +
+    "              <input type=\"text\" ng-model=\"form.Text2Qualite\">\n" +
     "            </div>\n" +
     "          </div>\n" +
     "\n" +
     "          <div class=\"row\">\n" +
     "            <div class=\"input-field col s12\">\n" +
-    "              <label for=\"\">Durée</label>\n" +
-    "              <input type=\"text\">\n" +
+    "              <label>Durée</label>\n" +
+    "              <input type=\"text\" ng-model=\"form.Text2Duree\">\n" +
     "            </div>\n" +
     "          </div>\n" +
     "\n" +
     "          <div class=\"row\">\n" +
     "            <div class=\"input-field col s12\">\n" +
-    "              <label for=\"\">Fréquence</label>\n" +
-    "              <input type=\"text\">\n" +
+    "              <label>Fréquence</label>\n" +
+    "              <input type=\"text\" ng-model=\"form.Text2Frequence\">\n" +
     "            </div>\n" +
     "          </div>\n" +
     "\n" +
     "          <div class=\"row\">\n" +
     "            <div class=\"input-field col s12\">\n" +
-    "              <label for=\"\">Circonstances du début</label>\n" +
-    "              <input type=\"text\">\n" +
+    "              <label>Circonstances du début</label>\n" +
+    "              <input type=\"text\" ng-model=\"form.Text2Circonstance\">\n" +
     "            </div>\n" +
     "          </div>\n" +
     "\n" +
     "          <div class=\"row\">\n" +
     "            <div class=\"input-field col s12\">\n" +
-    "              <label for=\"\">Modifié par</label>\n" +
-    "              <input type=\"text\">\n" +
+    "              <label>Modifié par</label>\n" +
+    "              <input type=\"text\" ng-model=\"form.Text2Modifier\">\n" +
     "            </div>\n" +
     "          </div>\n" +
     "\n" +
     "          <div class=\"row\">\n" +
     "            <div class=\"input-field col s12\">\n" +
-    "              <label for=\"\">Traitement</label>\n" +
-    "              <input type=\"text\">\n" +
+    "              <label>Traitement</label>\n" +
+    "              <input type=\"text\" ng-model=\"form.Text2Traitement\">\n" +
     "            </div>\n" +
     "          </div>\n" +
     "\n" +
     "          <a class=\"waves-effect waves-light btn\">Questionnaire DN4</a>\n" +
-    "          <input type=\"text\">\n" +
     "\n" +
     "          <a class=\"waves-effect waves-light btn\">Ajouter une douleur</a>\n" +
     "          <a class=\"waves-effect waves-light btn\">Supprimer une douleur</a>\n" +
     "\n" +
-    "          <div>\n" +
-    "          </div>\n" +
-    "        </li>\n" +
+    "      </li>\n" +
     "\n" +
     "\n" +
     "        <li>\n" +
     "          <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
     "            3. Environnement\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"negatif3\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"negatif3\" ng-model=\"form.Checkbox3Negatif\"/>\n" +
     "            <label for=\"negatif3\">Négatif</label>\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"non3\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"non3\" ng-model=\"form.Checkbox3NonRenseigne\"/>\n" +
     "            <label for=\"non3\">Non renseigné</label>\n" +
     "          </div>\n" +
     "          <div class=\"collapsible-body\">\n" +
     "            <div class=\"row\">\n" +
     "              <div class=\"input-field col s12\">\n" +
-    "                <label for=\"\">Familial</label>\n" +
-    "                <input type=\"text\">\n" +
+    "                <label>Familial</label>\n" +
+    "                <input type=\"text\" ng-model=\"form.Text3Familial\">\n" +
     "              </div>\n" +
     "            </div>\n" +
     "\n" +
     "            <div class=\"row\">\n" +
     "              <div class=\"input-field col s12\">\n" +
-    "                <label for=\"\">Social</label>\n" +
-    "                <input type=\"text\">\n" +
+    "                <label>Social</label>\n" +
+    "                <input type=\"text\"ng-model=\"form.Text3Social\">\n" +
     "              </div>\n" +
     "            </div>\n" +
     "\n" +
     "            <div class=\"row\">\n" +
     "              <div class=\"input-field col s12\">\n" +
-    "                <label for=\"\">Professionnel</label>\n" +
-    "                <input type=\"text\">\n" +
+    "                <label>Professionnel</label>\n" +
+    "                <input type=\"text\" ng-model=\"form.Text3Professionnel\">\n" +
     "              </div>\n" +
     "            </div>\n" +
     "\n" +
@@ -271,16 +283,16 @@ module.run(["$templateCache", function($templateCache) {
     "                <a class=\"waves-effect waves-light btn\">Questionnaire EDAS 21</a>\n" +
     "              </div>\n" +
     "              <div class=\"input-field col s2\">\n" +
-    "                <label for=\"\">Anxiété</label>\n" +
-    "                <input type=\"text\">\n" +
+    "                <label>Anxiété</label>\n" +
+    "                <input type=\"text\" ng-model=\"form.Text3Anxiete\">\n" +
     "              </div>\n" +
     "              <div class=\"input-field col s2\">\n" +
-    "                <label for=\"\">Dépression</label>\n" +
-    "                <input type=\"text\">\n" +
+    "                <label>Dépression</label>\n" +
+    "                <input type=\"text\" ng-model=\"form.Text3Depression\">\n" +
     "              </div>\n" +
     "              <div class=\"input-field col s2\">\n" +
-    "                <label for=\"\">Stress</label>\n" +
-    "                <input type=\"text\">\n" +
+    "                <label>Stress</label>\n" +
+    "                <input type=\"text\" ng-model=\"form.Text3Stress\">\n" +
     "              </div>\n" +
     "            </div>\n" +
     "          </div>\n" +
@@ -289,23 +301,23 @@ module.run(["$templateCache", function($templateCache) {
     "          <li>\n" +
     "            <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
     "              4. Troubles de la posture\n" +
-    "              <input type=\"checkbox\" class=\"filled-in\" id=\"negatif4\" />\n" +
+    "              <input type=\"checkbox\" class=\"filled-in\" id=\"negatif4\" ng-model=\"form.Checkbox4Negatif\"/>\n" +
     "              <label for=\"negatif4\">Négatif</label>\n" +
-    "              <input type=\"checkbox\" class=\"filled-in\" id=\"non4\" />\n" +
+    "              <input type=\"checkbox\" class=\"filled-in\" id=\"non4\" ng-model=\"form.Checkbox4NonRenseigne\"/>\n" +
     "              <label for=\"non4\">Non renseigné</label>\n" +
     "            </div>\n" +
     "            <div class=\"collapsible-body\">\n" +
     "\n" +
     "          <div class=\"row\">\n" +
     "            <div class=\"input-field col s12\">\n" +
-    "              <label for=\"\">Rachidienne</label>\n" +
-    "              <input type=\"text\">\n" +
+    "              <label>Rachidienne</label>\n" +
+    "              <input type=\"text\" ng-model=\"form.Text4Rachidienne\">\n" +
     "            </div>\n" +
     "          </div>\n" +
     "          <div class=\"row\">\n" +
     "            <div class=\"input-field col s12\">\n" +
-    "              <label for=\"\">Céphalique </label>\n" +
-    "              <input type=\"text\">\n" +
+    "              <label>Céphalique </label>\n" +
+    "              <input type=\"text\" ng-model=\"form.Text4Cephalique\">\n" +
     "            </div>\n" +
     "          </div>\n" +
     "        </div>\n" +
@@ -313,13 +325,13 @@ module.run(["$templateCache", function($templateCache) {
     "\n" +
     "        <div>\n" +
     "          <h4>5. Troubles du sommeil</h4>\n" +
-    "          <input type=\"checkbox\" class=\"filled-in\" id=\"negatif3\" />\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"negatif5\" ng-model=\"form.Checkbox5Negatif\"/>\n" +
     "          <label for=\"negatif3\">Négatif</label>\n" +
-    "          <input type=\"checkbox\" class=\"filled-in\" id=\"non3\" />\n" +
+    "          <input type=\"checkbox\" class=\"filled-in\" id=\"non5\" ng-model=\"form.Checkbox5NonRenseigne\"/>\n" +
     "          <label for=\"non3\">Non renseigné</label>\n" +
     "\n" +
     "          <p>Souffrez-vous du syndrome d'apnées/hypopnées obstructives du sommeil ?\n" +
-    "            <input class=\"with-gap\" name=\"group1\" type=\"radio\" id=\"oui4\"  />\n" +
+    "            <input class=\"with-gap\" name=\"group1\" type=\"radio\" id=\"oui4\"/>\n" +
     "            <label for=\"oui4\">Oui</label>\n" +
     "            <input class=\"with-gap\" name=\"group1\" type=\"radio\" id=\"non4\"  />\n" +
     "            <label for=\"non4\">Non</label>\n" +
@@ -327,118 +339,908 @@ module.run(["$templateCache", function($templateCache) {
     "\n" +
     "          <div class=\"row\">\n" +
     "            <div class=\"input-field col s12\">\n" +
-    "              <label for=\"\">Autres symptômes</label>\n" +
-    "              <input type=\"text\">\n" +
+    "              <label>Autres symptômes</label>\n" +
+    "              <input type=\"text\" ng-model=\"form.Text5Symptomes\">\n" +
     "            </div>\n" +
     "          </div>\n" +
     "\n" +
     "          <div class=\"row\">\n" +
     "            <div class=\"input-field col s12\">\n" +
-    "              <label for=\"\">Traitement</label>\n" +
-    "              <input type=\"text\">\n" +
+    "              <label>Traitement</label>\n" +
+    "              <input type=\"text\" ng-model=\"form.Text5Traitement\">\n" +
     "            </div>\n" +
     "          </div>\n" +
     "          <div class=\"row\">\n" +
     "            <a class=\"waves-effect waves-light btn col s4\">Questionnaire PSQI</a>\n" +
     "            <div class=\"input-field col s3\">\n" +
-    "              <label for=\"\">Score PSQI</label>\n" +
-    "              <input type=\"text\">\n" +
+    "              <label>Score PSQI</label>\n" +
+    "              <input type=\"text\" ng-model=\"form.Text5ScorePSQI\">\n" +
     "            </div>\n" +
     "          </div>\n" +
     "          <div class=\"row\">\n" +
     "            <a class=\"waves-effect waves-light btn col s4\">Questionnaire ISI</a>\n" +
     "            <div class=\"input-field col s3\">\n" +
-    "              <label for=\"\">Score ISI</label>\n" +
-    "              <input type=\"text\">\n" +
+    "              <label>Score ISI</label>\n" +
+    "              <input type=\"text\" ng-model=\"form.Text5ScoreISI\">\n" +
     "            </div>\n" +
     "          </div>\n" +
     "\n" +
     "          <div>\n" +
     "            <h4>6. Troubles oculaires</h4>\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"negatif5\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"negatif6\" ng-model=\"form.Checkbox6Negatif\"/>\n" +
     "            <label for=\"negatif5\">Négatif</label>\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"non5\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"non6\" ng-model=\"form.Checkbox6NonRenseigne\"/>\n" +
     "            <label for=\"non5\">Non renseigné</label>\n" +
     "\n" +
     "            <div class=\"row\">\n" +
     "              <div class=\"input-field col s12\">\n" +
-    "                <input type=\"text\">\n" +
+    "                <textarea ng-model=\"form.Text6TroublesOculaires\"></textarea>\n" +
     "              </div>\n" +
     "            </div>\n" +
     "          </div>\n" +
     "\n" +
     "          <div>\n" +
     "            <h4>7. Habitudes nocives</h4>\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"negatif6\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"negatif7\" ng-model=\"form.Checkbox7Negatif\"/>\n" +
     "            <label for=\"negatif6\">Négatif</label>\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"non6\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"non7\" ng-model=\"form.Checkbox7NonRenseigne\"/>\n" +
     "            <label for=\"non6\">Non renseigné</label>\n" +
     "\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"onycophagie\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"onycophagie\" ng-model=\"form.Checkbox7Onycophagie\"/>\n" +
     "            <label for=\"onycophagie\">Onycophagie</label>\n" +
     "\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"mordillement\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"mordillement\" ng-model=\"form.Checkbox7Mordillement\"/>\n" +
     "            <label for=\"mordillement\">Mordillement des lèvres/style/objets</label>\n" +
     "\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"bruxisme\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"bruxisme\" ng-model=\"form.Checkbox7Bruxisme\"/>\n" +
     "            <label for=\"bruxisme\">Bruxisme d'éveil</label>\n" +
     "\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"gum\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"gum\" ng-model=\"form.Checkbox7ChewingGum\"/>\n" +
     "            <label for=\"gum\">Chewing-gum</label>\n" +
     "\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"tabac\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"tabac\" ng-model=\"form.Checkbox7Tabac\"/>\n" +
     "            <label for=\"tabac\">Tabac</label>\n" +
     "\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"autres\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"autres\" ng-model=\"form.Checkbox7Autres\"/>\n" +
     "            <label for=\"autres\">Autres</label>\n" +
     "\n" +
-    "            <input type=\"text\">\n" +
+    "            <div class=\"row\">\n" +
+    "              <div class=\"input-field col s12\">\n" +
+    "                <textarea ng-model=\"form.Text7Complement\"></textarea>\n" +
+    "              </div>\n" +
+    "            </div>\n" +
     "          </div>\n" +
     "\n" +
     "          <div>\n" +
     "            <h4>8. Dysfonctionnements oro-ligaux</h4>\n" +
-    "\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"negatif7\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"negatif8\" ng-model=\"form.Checkbox8Negatif\"/>\n" +
     "            <label for=\"negatif7\">Négatif</label>\n" +
-    "\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"non7\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"non8\" ng-model=\"form.Checkbox8NonRenseigne\"/>\n" +
     "            <label for=\"non7\">Non renseigné</label>\n" +
     "\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"dysfonctionnements\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"dysfonctionnements\" ng-model=\"form.Checkbox8Dysfontion\"/>\n" +
     "            <label for=\"dysfonctionnements\">Dysfonctionnements orolinguaux</label>\n" +
     "\n" +
-    "            <input type=\"checkbox\" class=\"filled-in\" id=\"deglutition\" />\n" +
+    "            <input type=\"checkbox\" class=\"filled-in\" id=\"deglutition\" ng-model=\"form.Checkbox8Deglutition\"/>\n" +
     "            <label for=\"deglutition\">Déglutition atypique</label>\n" +
     "\n" +
-    "            <input type=\"text\">\n" +
+    "            <input type=\"text\" ng-model=\"form.Text8Complement\">\n" +
     "\n" +
     "            <button>Score de Friedman</button>\n" +
-    "            <label for=\"\">Score de Friedman</label>\n" +
-    "            <input type=\"text\">\n" +
+    "            <label>Score de Friedman</label>\n" +
+    "            <input type=\"text\" ng-model=\"form.Text8ScoreFriedman\">\n" +
     "\n" +
     "            <button>Score de Mallampati</button>\n" +
-    "            <label for=\"\">Score de Mallampati</label>\n" +
-    "            <input type=\"text\">\n" +
+    "            <label>Score de Mallampati</label>\n" +
+    "            <input type=\"text\" ng-model=\"form.Text8ScoreMallampati\">\n" +
     "          </div>\n" +
     "\n" +
     "          <div>\n" +
     "            <h4>9. Traumatisme</h4>\n" +
-    "            <input type=\"checkbox\">\n" +
-    "            <label for=\"\">Négatif</label>\n" +
+    "            <input type=\"checkbox\" ng-model=\"form.Checkbox9Negatif\">\n" +
+    "            <label>Négatif</label>\n" +
     "\n" +
-    "            <input type=\"checkbox\">\n" +
-    "            <label for=\"\">Non renseigné</label>\n" +
+    "            <input type=\"checkbox\" ng-model=\"form.Checkbox9NonRenseigne\">\n" +
+    "            <label>Non renseigné</label>\n" +
     "\n" +
-    "            <input type=\"text\">\n" +
+    "            <div class=\"row\">\n" +
+    "              <div class=\"input-field col s12\">\n" +
+    "                <textarea ng-model=\"form.Text9Complement\"></textarea>\n" +
+    "              </div>\n" +
+    "            </div>\n" +
     "          </div>\n" +
     "\n" +
     "          <div>\n" +
     "            <h4>10. Observations complémentaires</h4>\n" +
-    "            <input type=\"checkbox\">\n" +
-    "            <label for=\"\">Négatif</label>\n" +
+    "            <input type=\"checkbox\" ng-model=\"form.Checkbox10Negatif\">\n" +
+    "            <label>Négatif</label>\n" +
     "\n" +
-    "            <input type=\"checkbox\">\n" +
-    "            <label for=\"\">Non renseigné</label>\n" +
+    "            <input type=\"checkbox\" ng-model=\"form.Checkbox10NonRenseigne\">\n" +
+    "            <label>Non renseigné</label>\n" +
+    "\n" +
+    "            <div class=\"row\">\n" +
+    "              <div class=\"input-field col s12\">\n" +
+    "                <textarea ng-model=\"form.Text10Complement\"></textarea>\n" +
+    "              </div>\n" +
+    "            </div>\n" +
+    "          </div>\n" +
+    "\n" +
+    "          <div id=\"div11\">\n" +
+    "            <div id=\"titre11\">\n" +
+    "              <h2>11. Palpation(s) douloureuse(s) des muscles masticateurs, des atm et des muscles cervico-scapulaires :\n" +
+    "                <label>\n" +
+    "                  <input type=\"checkbox\" ng-model=\"Checkbox11Negatif\"/>\n" +
+    "                  Négatif\n" +
+    "                </label>\n" +
+    "                <label>\n" +
+    "                  <input type=\"checkbox\" ng-model=\"Checkbox11NonRenseigne\"/>\n" +
+    "                  Non Renseigné\n" +
+    "                </label>\n" +
+    "              </h2>\n" +
+    "            </div>\n" +
+    "            <div id=\"champs11\">\n" +
+    "              <table>\n" +
+    "                <thead>\n" +
+    "                <tr>\n" +
+    "                  <th> </th>\n" +
+    "                  <th colspan=\"3\">Côté droit</th>\n" +
+    "                  <th colspan=\"3\">Côté gauche</th>\n" +
+    "                </tr>\n" +
+    "                </thead>\n" +
+    "                <tbody>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      Muscles 1kg\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      Douleur provoquée\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      Est-elle identique à la douleur habituelle ?\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      Douleur(s) référée(s)\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      Douleur provoquée\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      Est-elle identique à la douleur habituelle ?\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      Douleur(s) référée(s)\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      Temporal postérieur\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11TempPost1\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11TempPost2\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11TempPost3\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11TempPost4\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      Temporal moyen\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11TempMoy1\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11TempMoy2\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11TempMoy3\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11TempMoy4\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      Temporal antérieur\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11TempAnt1\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11TempAnt2\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11TempAnt3\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11TempAnt4\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      <p>Est-ce que la palpation des muscles temporaux provoque des maux de tête identiques à ceux ressentis habituellement ?</p>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"radio\" name=\"group11\" value=\"Oui\" ng-model=\"Radio11PalpationOui\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"radio\" name=\"group11\" value=\"Non\" ng-model=\"Radio11PalpationNon\"/>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      Masséter (origine angle mdb)\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11MasseterOri1\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11MasseterOri2\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11MasseterOri3\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11MasseterOri4\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      Masséter (corps)\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11MasseterCorps1\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11MasseterCorps2\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11MasseterCorps3\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11MasseterCorps4\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      Masséter (insertion zygomatique)\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11MasseterInsert1\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11MasseterInsert2\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11MasseterInsert3\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11MasseterInsert4\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      <p>ATM</p>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      Pôle latéral 0,5 kg\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Pole1\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Pole2\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Pole3\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Pole4\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      Autour du pôle latéral 1 kg\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11AutourPole1\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11AutourPole2\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11AutourPole3\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11AutourPole4\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      <p>Autres muscles masticateurs</p>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      Digastrique (région md post)\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Digastrique1\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Digastrique2\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Digastrique3\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Digastrique4\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      Ptérygoïdien médial (région submd)\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11PteryMed1\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11PteryMed2\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11PteryMed3\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11PteryMed4\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      Aire du ptérygoïdien latéral\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11PteryLat1\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11PteryLat2\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11PteryLat3\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11PteryLat4\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      Tendon du temporal\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Tendon1\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Tendon2\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Tendon3\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Tendon4\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                <tr>\n" +
+    "                  <td>\n" +
+    "                    <p>Autres muscles cervico-scapulaires 0,5kg</p>\n" +
+    "                  </td>\n" +
+    "                </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      Sterno-cléido-mastoïdien\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Sterno1\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Sterno2\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Sterno3\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Sterno4\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      Trapèze\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Trapeze1\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Trapeze2\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Trapeze3\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11Trapeze4\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      <p>Autre(s) muscle(s)</p>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"text\" ng-model=\"Text11AutreMuscle1\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle11\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle12\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle13\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle14\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"text\" ng-model=\"Text11AutreMuscle2\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle21\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle22\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle23\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle24\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                  <tr>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"text\" ng-model=\"Text11AutreMuscle3\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle31\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle32\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle33\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle34\"/>\n" +
+    "                    </td>\n" +
+    "                    <td>\n" +
+    "                      <select>\n" +
+    "                        <option></option>\n" +
+    "                        <option>M. temporal droit</option>\n" +
+    "                        <option>M. temporal gauche</option>\n" +
+    "                        <option>M. masséter droit</option>\n" +
+    "                        <option>M. masséter gauche</option>\n" +
+    "                        <option>Atm droit</option>\n" +
+    "                        <option>Atm gauche</option>\n" +
+    "                        <option>Autres <input type=\"text\"></option>\n" +
+    "                      </select>\n" +
+    "                    </td>\n" +
+    "                  </tr>\n" +
+    "                </tbody>\n" +
+    "              </table>\n" +
     "          </div>\n" +
     "\n" +
     "          <div id=\"div12\">\n" +
@@ -458,29 +1260,29 @@ module.run(["$templateCache", function($templateCache) {
     "              <p>Dent de référence : </p>\n" +
     "              <div>\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"radio\" name=\"group3\"/>\n" +
     "                  11\n" +
     "                </label>\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"radio\" name=\"group3\"/>\n" +
     "                  21\n" +
     "                </label>\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"radio\" name=\"group3\"/>\n" +
     "                  Autre <input type=\"text\"/>\n" +
     "                </label>\n" +
     "              </div>\n" +
     "              <div>\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"radio\" name=\"group4\"/>\n" +
     "                  31\n" +
     "                </label>\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"radio\" name=\"group4\"/>\n" +
     "                  41\n" +
     "                </label>\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"radio\" name=\"group4\"/>\n" +
     "                  Autre <input type=\"text\"/>\n" +
     "                </label>\n" +
     "              </div>\n" +
@@ -541,7 +1343,6 @@ module.run(["$templateCache", function($templateCache) {
     "              <table>\n" +
     "                <thead>\n" +
     "                  <tr>\n" +
-    "                    <th> </th>\n" +
     "                    <th colspan=\"3\">Côté droit</th>\n" +
     "                    <th colspan=\"3\">Côté gauche</th>\n" +
     "                  </tr>\n" +
