@@ -20,12 +20,25 @@
   </nav>
 
 <div id="loginPopin" class="" ng-show="showLoginPopin">
-  <div class="modal-content">
+  <div class="modal-content" ng-hide="showRegisterPopin">
     <h4>Login</h4>
     <label>Username : </label><input ng-model="loginUsername" type="text"/>
     <label>Password : </label><input ng-model="loginPassword" type="password"/>
   </div>
-  <div class="modal-footer">
+  <div class="modal-footer" ng-hide="showRegisterPopin">
     <button id="loginAction" class="waves-effect waves-light btn light-blue darken-3" ng-click="loginAction()">Connexion</button>
+    <button id="registerAction" class="waves-effect waves-light btn light-blue darken-3" ng-click="registerAction()">Register</button>
+  </div>
+
+  <div class="modal-content" ng-show="showRegisterPopin">
+    <h4>Login</h4>
+    <label>Username : </label><input ng-model="registerUsername" type="text"/>
+    <label>Email : </label><input ng-model="registerEmail" type="text"/>
+    <label>Password : </label><input ng-model="registerPassword" type="password"/>
+    <label>Repeat password : </label><input ng-model="registerPasswordRepeat" type="password"/>
+  </div>
+  <div class="modal-footer" ng-show="showRegisterPopin">
+    <button id="loginAction" class="waves-effect waves-light btn light-blue darken-3" ng-click="loginAction()">Connexion</button>
+    <button id="registerAction" class="waves-effect waves-light btn light-blue darken-3" ng-click="registerAction()">Register</button>
   </div>
 </div>
