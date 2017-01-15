@@ -1,37 +1,73 @@
 <nav>
     <div class="nav-wrapper light-blue lighten-1">
-      <a href="#!" class="brand-logo">Dentist-Data</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href ui-sref="root.home">{{ 'home' | uppercase }}</a></li>
-        <li><a href ui-sref="root.propos">{{ 'à propos' | uppercase }}</a></li>
-        <li><a href ui-sref="root.nous">{{ 'qui somme nous ?' | uppercase }}</a></li>
-        <li><a href ui-sref="root.pourquoi">{{ 'pourquoi ce site ?' | uppercase }}</a></li>
-        <li><a id="loginButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="createLoginPopin()">Connexion</a></li>
-      </ul>
-      <ul class="side-nav" id="mobile-demo">
-        <li><a href ui-sref="root.home">{{ 'home' | uppercase }}</a></li>
-        <li><a href ui-sref="root.propos">{{ 'à propos' | uppercase }}</a></li>
-        <li><a href ui-sref="root.nous">{{ 'qui sommes nous ?' | uppercase }}</a></li>
-        <li><a href ui-sref="root.pourquoi">{{ 'pourquoi ce site ?' | uppercase }}</a></li>
-        <li><a id="loginButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="createLoginPopin()">Connexion</a></li>
-      </ul>
+        <a href="#!" class="brand-logo">Dentist-Data</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href ui-sref="root.home">{{ 'home' | uppercase }}</a></li>
+            <li><a href ui-sref="root.propos">{{ 'à propos' | uppercase }}</a></li>
+            <li><a href ui-sref="root.nous">{{ 'qui somme nous ?' | uppercase }}</a></li>
+            <li><a href ui-sref="root.pourquoi">{{ 'pourquoi ce site ?' | uppercase }}</a></li>
+            <li><a id="loginButton" class="waves-effect waves-light btn light-blue darken-3"
+                   ng-click="createLoginPopin()">Connexion</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li><a href ui-sref="root.home">{{ 'home' | uppercase }}</a></li>
+            <li><a href ui-sref="root.propos">{{ 'à propos' | uppercase }}</a></li>
+            <li><a href ui-sref="root.nous">{{ 'qui sommes nous ?' | uppercase }}</a></li>
+            <li><a href ui-sref="root.pourquoi">{{ 'pourquoi ce site ?' | uppercase }}</a></li>
+            <li><a id="loginButton" class="waves-effect waves-light btn light-blue darken-3"
+                   ng-click="createLoginPopin()">Connexion</a></li>
+        </ul>
     </div>
-  </nav>
+</nav>
 
 <div id="loginPopin" class="modal-content" ng-show="showLoginPopin">
     <div class="row">
-      <a class="close" href="#!" title="Close" ng-click="createLoginPopin()">X</a>
-      <div class="input-field col s4 marge2">
-        <input name="loginUsername" id="loginUsername" type="text" class="validate text-blue text-darken-2">
-        <label for="loginUsername">Username</label>
-      </div>
-      <div class="input-field col s4 marge2">
-        <input name="loginPassword" id="loginPassword" type="password" class="validate text-blue text-darken-2">
-        <label for="loginPassword">Password</label>
-      </div>
-      <div class="input-field col s4 marge2">
-    <a href="#!" id="loginButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="createLoginPopin()">Connexion</a>
-</div>
-  </div>
+        <a class="close" href="#!" title="Close" ng-click="createLoginPopin()">X</a>
+        <div ng-hide="showRegisterPopin">
+            <div class="input-field col s6 marge2">
+                <input name="loginUsername" id="loginUsername" type="text" class="validate text-blue text-darken-2">
+                <label for="loginUsername">Username</label>
+            </div>
+            <div class="input-field col s6 marge2">
+                <input name="loginPassword" id="loginPassword" type="password" class="validate text-blue text-darken-2">
+                <label for="loginPassword">Password</label>
+            </div>
+            <div class="input-field col s12 marge2">
+                <a href="#!" id="loginButton" class="waves-effect waves-light btn light-blue darken-3"
+                   ng-click="loginAction()">Connexion</a>
+                <a href="#!" id="registerButton" class="waves-effect waves-light btn light-blue darken-3"
+                   ng-click="registerAction()">Register</a>
+            </div>
+        </div>
+
+        <div ng-show="showRegisterPopin">
+            <div class="input-field col s6 marge2">
+                <input name="registerUsername" id="registerUsername" type="text"
+                       class="validate text-blue text-darken-2">
+                <label for="registerUsername">Username</label>
+            </div>
+            <div class="input-field col s6 marge2">
+                <input name="registerEmail" id="registerEmail" type="text"
+                       class="validate text-blue text-darken-2">
+                <label for="registerEmail">Email</label>
+            </div>
+            <div class="input-field col s6 marge2">
+                <input name="registerPassword" id="registerPassword" type="password"
+                       class="validate text-blue text-darken-2">
+                <label for="registerPassword">Password</label>
+            </div>
+            <div class="input-field col s6 marge2">
+                <input name="registerPasswordRepeat" id="registerPasswordRepeat" type="password"
+                       class="validate text-blue text-darken-2">
+                <label for="registerPasswordRepeat">Password</label>
+            </div>
+            <div class="input-field col s12 marge2">
+                <a href="#!" id="loginButton" class="waves-effect waves-light btn light-blue darken-3"
+                   ng-click="loginAction()">Connexion</a>
+                <a href="#!" id="registerButton" class="waves-effect waves-light btn light-blue darken-3"
+                   ng-click="registerAction()">Register</a>
+            </div>
+        </div>
+    </div>
 </div>
