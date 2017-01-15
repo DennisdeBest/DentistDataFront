@@ -21,19 +21,16 @@
   angular.module('app', [
       'app.routes',
       'ui.router',
+      'ngStorage',
       'home',
       'propos',
       'nous',
       'pourquoi',
+      'admin',
       'common.header',
       'common.footer',
       'common.services.data',
-      'common.services.returningvisitor',
-      'common.directives.version',
-      'common.directives.monkeyClick',
-      'common.directives.transclude',
-      'common.filters.uppercase',
-      'common.filters.trunc',
+      'common.directives.version'
     ])
     .run(run)
     .controller('MainCtrl', MainCtrl)

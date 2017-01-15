@@ -57,7 +57,17 @@
                         controller: "PourquoiCtrl as pourquoi"
                     }
                 }
-            });
+            })
+            .state("root.admin", {
+                url: "/admin",
+                views: {
+                    "@": {
+                        templateUrl: "src/app/admin/admin.tpl.html",
+                        controller: "AdminCtrl as admin"
+                    }
+
+                }
+            })
     }
 
 // main-routes.js

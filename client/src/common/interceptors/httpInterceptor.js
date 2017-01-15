@@ -1,9 +1,13 @@
 (function() {
   'use strict';
 
-  function httpInterceptor($q, $log) {
+  function httpInterceptor($q, $location, $localStorage, $log) {
     return {
-      request: function(config) {
+      request: function (config) {
+        config.headers = config.headers || {};
+        if ($localStorage.token) {
+          config.headers.Authorization = 'Bearer ' + $localStorage.token;
+        }
         return config;
       },
       requestError: function(rejection) {
@@ -20,6 +24,8 @@
       }
     };
   }
+
+  httpInterceptor().$inject = ['$localStorage'];
 
   angular.module('common.interceptors.http', [])
     .factory('httpInterceptor', httpInterceptor);

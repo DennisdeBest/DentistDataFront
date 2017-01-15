@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    function headerCtrl($scope, $log, $http) {
+    function headerCtrl($scope, $log, $http, $localStorage) {
         $scope.showLoginPopin = false;
         $scope.createLoginPopin = function () {
             $scope.showLoginPopin = !$scope.showLoginPopin;
@@ -16,15 +16,15 @@
                     'php-auth-pw': $scope.loginPassword,
                     'php-auth-user': $scope.loginUsername
                 };
-                $log.debug(header);
                 $http({
                     method: 'POST',
                     url: 'http://devapi.dentist-data.fr/api/login',
                     headers: header,
                 }).then(function successCallback(response) {
-                    $log.debug(response)
+                    $log.debug(response.data.token);
+                    $localStorage.token = response.data.token;
                 }, function errorCallback(response) {
-                    $log.debug(response)
+                    $log.debug("Error")
                 })
             }
         };
@@ -51,7 +51,7 @@
         }
     }
 
-    headerCtrl.$inject = ['$scope', '$log', '$http'];
+    headerCtrl.$inject = ['$scope', '$log', '$http', '$localStorage'];
     angular.module('common.header', [])
         .controller('HeaderCtrl', headerCtrl);
 })();
