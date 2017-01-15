@@ -26,11 +26,13 @@
         <a class="close" href="#!" title="Close" ng-click="createLoginPopin()">X</a>
         <div ng-hide="showRegisterPopin">
             <div class="input-field col s6 marge2">
-                <input name="loginUsername" id="loginUsername" type="text" class="validate text-blue text-darken-2">
+                <input name="loginUsername" id="loginUsername" type="text" class="validate text-blue text-darken-2"
+                       ng-model="loginUsername">
                 <label for="loginUsername">Username</label>
             </div>
             <div class="input-field col s6 marge2">
-                <input name="loginPassword" id="loginPassword" type="password" class="validate text-blue text-darken-2">
+                <input name="loginPassword" id="loginPassword" type="password" class="validate text-blue text-darken-2"
+                       ng-model="loginPassword">
                 <label for="loginPassword">Password</label>
             </div>
             <div class="input-field col s12 marge2">
@@ -44,22 +46,22 @@
         <div ng-show="showRegisterPopin">
             <div class="input-field col s6 marge2">
                 <input name="registerUsername" id="registerUsername" type="text"
-                       class="validate text-blue text-darken-2">
+                       class="validate text-blue text-darken-2" ng-model="registerUsername">
                 <label for="registerUsername">Username</label>
             </div>
             <div class="input-field col s6 marge2">
                 <input name="registerEmail" id="registerEmail" type="text"
-                       class="validate text-blue text-darken-2">
+                       class="validate text-blue text-darken-2" ng-model="registerEmail">
                 <label for="registerEmail">Email</label>
             </div>
             <div class="input-field col s6 marge2">
                 <input name="registerPassword" id="registerPassword" type="password"
-                       class="validate text-blue text-darken-2">
+                       class="validate text-blue text-darken-2" ng-model="registerPassword">
                 <label for="registerPassword">Password</label>
             </div>
             <div class="input-field col s6 marge2">
                 <input name="registerPasswordRepeat" id="registerPasswordRepeat" type="password"
-                       class="validate text-blue text-darken-2">
+                       class="validate text-blue text-darken-2" ng-model="registerPasswordRepeat">
                 <label for="registerPasswordRepeat">Password</label>
             </div>
             <div class="input-field col s12 marge2">

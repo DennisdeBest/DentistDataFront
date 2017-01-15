@@ -12,14 +12,15 @@
             if($scope.showRegisterPopin){
                 $scope.showRegisterPopin = false;
             } else {
+                var header = {
+                    'php-auth-pw': $scope.loginPassword,
+                    'php-auth-user': $scope.loginUsername
+                };
+                $log.debug(header);
                 $http({
                     method: 'POST',
                     url: 'http://devapi.dentist-data.fr/api/login',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'PHP_AUTH_PW': $scope.loginUsername,
-                        'PHP_AUTH_USER': $scope.loginPassword
-                    }
+                    headers: header,
                 }).then(function successCallback(response) {
                     $log.debug(response)
                 }, function errorCallback(response) {
@@ -31,26 +32,21 @@
             if(!$scope.showRegisterPopin){
                 $scope.showRegisterPopin = true;
             } else {
-                $http({
-                    method: 'POST',
-                    url: 'http://devapi.dentist-data.fr/api/register',
-                    dataType: 'JSON',
-                    data: {
-                        username: $scope.registerUsername,
-                        email: $scope.registerEmail,
-                        plainPassword: {
-                            first: $scope.registerPassword,
-                            second: $scope.registerPasswordRepeat
-                        }
-                    },
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }).then(function successCallback(response) {
-                    $log.debug(response)
-                }, function errorCallback(response) {
-                    $log.debug(response)
-                })
+                var registerUserObject = {};
+                registerUserObject.username = $scope.registerUsername;
+                registerUserObject.email = $scope.registerEmail;
+                registerUserObject.plainPassword = {
+                    first: $scope.registerPassword,
+                    second: $scope.registerPasswordRepeat
+                };
+
+                $log.debug(registerUserObject);
+                $log.debug(JSON.stringify(registerUserObject));
+
+                $http.post('http://devapi.dentist-data.fr/api/register', JSON.stringify(registerUserObject)).success(function (data) {
+                    $log.debug(data);
+                });
+
             }
         }
     }
