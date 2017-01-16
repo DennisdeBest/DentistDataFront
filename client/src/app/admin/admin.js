@@ -5,7 +5,7 @@
      * @name  AdminCtrl
      * @description Controller
      */
-    function AdminCtrl($scope, $http, $log) {
+    function AdminCtrl($scope, $http, $log, $localStorage, $location) {
         $http.post('http://devapi.dentist-data.fr/api/auth', "").success(function (data, status, error) {
             if (status == 200) {
                 var user;
@@ -31,6 +31,11 @@
             $log.debug(status);
             $scope.errorMessage = error;
         });
+
+        $scope.logoutButton = function () {
+          $localStorage.$reset();
+          $location.path( "/" );
+        }
 
 
 
