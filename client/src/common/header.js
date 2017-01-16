@@ -2,6 +2,10 @@
     'use strict';
 
     function headerCtrl($scope, $log, $http, $localStorage) {
+        if($localStorage.token){
+            $scope.logged = true;
+        }
+
         $scope.showLoginPopin = false;
         $scope.createLoginPopin = function () {
             $scope.showLoginPopin = !$scope.showLoginPopin;
@@ -23,6 +27,7 @@
                 }).then(function successCallback(response) {
                     $log.debug(response.data.token);
                     $localStorage.token = response.data.token;
+                    $scope.logged = true;
                 }, function errorCallback(response) {
                     $log.debug("Error")
                 })
