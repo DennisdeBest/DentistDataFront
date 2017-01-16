@@ -13,7 +13,6 @@
         <div class="row">
           <div class="input-field col s5">
             <label>Identifiant du patient</label>
-
             <input type="text" ng-model="form.Text0ID">
           </div>
           <div class="input-field col s2">
@@ -243,12 +242,15 @@
         </div>
       </li>
 
-        <div>
-          <h4>5. Troubles du sommeil</h4>
-          <input type="checkbox" class="filled-in" id="negatif5" ng-model="form.Checkbox5Negatif"/>
-          <label for="negatif3">Négatif</label>
-          <input type="checkbox" class="filled-in" id="non5" ng-model="form.Checkbox5NonRenseigne"/>
-          <label for="non3">Non renseigné</label>
+          <li>
+            <div class="collapsible-header"><i class="material-icons">filter_drama</i>
+              5. Troubles du sommeil
+              <input type="checkbox" class="filled-in" id="negatif5" ng-model="form.Checkbox5Negatif"/>
+              <label for="negatif5">Négatif</label>
+              <input type="checkbox" class="filled-in" id="non5" ng-model="form.Checkbox5NonRenseigne"/>
+              <label for="non5">Non renseigné</label>
+            </div>
+            <div class="collapsible-body">
 
           <p>Souffrez-vous du syndrome d'apnées/hypopnées obstructives du sommeil ?
             <input class="with-gap" name="group1" type="radio" id="oui4" ng-model="form.Radio5ApneOui"/>
@@ -271,40 +273,51 @@
             </div>
           </div>
           <div class="row">
-            <a class="waves-effect waves-light btn col s4">Questionnaire PSQI</a>
-            <div class="input-field col s3">
+            <a class="waves-effect waves-light btn col">Questionnaire PSQI</a>
+            <div class="input-field col s1">
               <label>Score PSQI</label>
               <input type="text" ng-model="form.Text5ScorePSQI">
             </div>
           </div>
           <div class="row">
-            <a class="waves-effect waves-light btn col s4">Questionnaire ISI</a>
-            <div class="input-field col s3">
+            <a class="waves-effect waves-light btn col">Questionnaire ISI</a>
+            <div class="input-field col s1">
               <label>Score ISI</label>
               <input type="text" ng-model="form.Text5ScoreISI">
             </div>
           </div>
+        </div>
+        </li>
 
-          <div>
-            <h4>6. Troubles oculaires</h4>
-            <input type="checkbox" class="filled-in" id="negatif6" ng-model="form.Checkbox6Negatif"/>
-            <label for="negatif5">Négatif</label>
-            <input type="checkbox" class="filled-in" id="non6" ng-model="form.Checkbox6NonRenseigne"/>
-            <label for="non5">Non renseigné</label>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">filter_drama</i>
+                6. Troubles oculaires
+                <input type="checkbox" class="filled-in" id="negatif6" ng-model="form.Checkbox6Negatif"/>
+                <label for="negatif6">Négatif</label>
+                <input type="checkbox" class="filled-in" id="non6" ng-model="form.Checkbox6NonRenseigne"/>
+                <label for="non6">Non renseigné</label>
+              </div>
+              <div class="collapsible-body">
+
 
             <div class="row">
               <div class="input-field col s12">
-                <textarea ng-model="form.Text6TroublesOculaires"></textarea>
+                <textarea id="textarea6" class="materialize-textarea" ng-model="form.Text6Complement"></textarea>
+                <label for="textarea6">Textarea</label>
               </div>
             </div>
           </div>
+        </li>
 
-          <div>
-            <h4>7. Habitudes nocives</h4>
-            <input type="checkbox" class="filled-in" id="negatif7" ng-model="form.Checkbox7Negatif"/>
-            <label for="negatif6">Négatif</label>
-            <input type="checkbox" class="filled-in" id="non7" ng-model="form.Checkbox7NonRenseigne"/>
-            <label for="non6">Non renseigné</label>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">filter_drama</i>
+                7. Habitudes nocives
+                <input type="checkbox" class="filled-in" id="negatif7" ng-model="form.Checkbox7Negatif"/>
+                <label for="negatif7">Négatif</label>
+                <input type="checkbox" class="filled-in" id="non7" ng-model="form.Checkbox7NonRenseigne"/>
+                <label for="non7">Non renseigné</label>
+              </div>
+              <div class="collapsible-body">
 
             <input type="checkbox" class="filled-in" id="onycophagie" ng-model="form.Checkbox7Onycophagie"/>
             <label for="onycophagie">Onycophagie</label>
@@ -326,17 +339,21 @@
 
             <div class="row">
               <div class="input-field col s12">
-                <textarea ng-model="form.Text7Complement"></textarea>
+                <textarea id="textarea7" class="materialize-textarea" ng-model="form.Text7Complement"></textarea>
+                <label for="textarea7">Textarea</label>
               </div>
             </div>
-          </div>
+          </li>
 
-          <div>
-            <h4>8. Dysfonctionnements oro-ligaux</h4>
-            <input type="checkbox" class="filled-in" id="negatif8" ng-model="form.Checkbox8Negatif"/>
-            <label for="negatif7">Négatif</label>
-            <input type="checkbox" class="filled-in" id="non8" ng-model="form.Checkbox8NonRenseigne"/>
-            <label for="non7">Non renseigné</label>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">filter_drama</i>
+                8. Dysfonctionnements oro-ligaux
+                <input type="checkbox" class="filled-in" id="negatif8" ng-model="form.Checkbox8Negatif"/>
+                <label for="negatif8">Négatif</label>
+                <input type="checkbox" class="filled-in" id="non8" ng-model="form.Checkbox8NonRenseigne"/>
+                <label for="non8">Non renseigné</label>
+              </div>
+              <div class="collapsible-body">
 
             <input type="checkbox" class="filled-in" id="dysfonctionnements" ng-model="form.Checkbox8Dysfontion"/>
             <label for="dysfonctionnements">Dysfonctionnements orolinguaux</label>
@@ -354,6 +371,7 @@
             <label>Score de Mallampati</label>
             <input type="text" ng-model="form.Text8ScoreMallampati">
           </div>
+        </li>
 
           <div>
             <h4>9. Traumatisme</h4>
@@ -369,6 +387,7 @@
               </div>
             </div>
           </div>
+
 
           <div>
             <h4>10. Observations complémentaires</h4>
