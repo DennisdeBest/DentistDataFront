@@ -251,9 +251,9 @@
           <label for="non3">Non renseigné</label>
 
           <p>Souffrez-vous du syndrome d'apnées/hypopnées obstructives du sommeil ?
-            <input class="with-gap" name="group1" type="radio" id="oui4"/>
+            <input class="with-gap" name="group1" type="radio" id="oui4" ng-model="form.Radio5ApneOui"/>
             <label for="oui4">Oui</label>
-            <input class="with-gap" name="group1" type="radio" id="non4"  />
+            <input class="with-gap" name="group1" type="radio" id="non4" ng-model="form.Radio5ApneNon"/>
             <label for="non4">Non</label>
           </p>
 
@@ -2139,16 +2139,16 @@
                       ATM droite
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox15DroitPraClaq1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox15DroitPraCrep1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox15DroitPatClaq1"/>
                     </td>
                     <td>
-                      <input type="checkbox"/>
+                      <input type="checkbox" ng-model="Checkbox15DroitPatCrep1"/>
                     </td>
                     <td>
                       <input type="checkbox"/>
