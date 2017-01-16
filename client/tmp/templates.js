@@ -40,32 +40,26 @@ module.run(["$templateCache", function($templateCache) {
     "        <li><a href ui-sref=\"root.propos\">{{ 'à propos' | uppercase }}</a></li>\n" +
     "        <li><a href ui-sref=\"root.nous\">{{ 'qui somme nous ?' | uppercase }}</a></li>\n" +
     "        <li><a href ui-sref=\"root.pourquoi\">{{ 'pourquoi ce site ?' | uppercase }}</a></li>\n" +
-    "        <li><a id=\"loginButton\" class=\"waves-effect waves-light btn light-blue darken-3\" ng-click=\"createLoginPopin()\">Connexion</a></li>\n" +
+    "        <li><button id=\"loginButton\" class=\"waves-effect waves-light btn light-blue darken-3\" ng-click=\"createLoginPopin()\">Connexion</button></li>\n" +
     "      </ul>\n" +
     "      <ul class=\"side-nav\" id=\"mobile-demo\">\n" +
     "        <li><a href ui-sref=\"root.home\">{{ 'home' | uppercase }}</a></li>\n" +
     "        <li><a href ui-sref=\"root.propos\">{{ 'à propos' | uppercase }}</a></li>\n" +
     "        <li><a href ui-sref=\"root.nous\">{{ 'qui sommes nous ?' | uppercase }}</a></li>\n" +
     "        <li><a href ui-sref=\"root.pourquoi\">{{ 'pourquoi ce site ?' | uppercase }}</a></li>\n" +
-    "        <li><a id=\"loginButton\" class=\"waves-effect waves-light btn light-blue darken-3\" ng-click=\"createLoginPopin()\">Connexion</a></li>\n" +
+    "        <li><button id=\"loginButton\" class=\"waves-effect waves-light btn light-blue darken-3\" ng-click=\"createLoginPopin()\">Connexion</button></li>\n" +
     "      </ul>\n" +
     "    </div>\n" +
     "  </nav>\n" +
     "\n" +
-    "<div id=\"loginPopin\" class=\"modal-content\" ng-show=\"showLoginPopin\">\n" +
-    "    <div class=\"row\">\n" +
-    "      <a class=\"close\" href=\"#!\" title=\"Close\" ng-click=\"createLoginPopin()\">X</a>\n" +
-    "      <div class=\"input-field col s4 marge2\">\n" +
-    "        <input name=\"loginUsername\" id=\"loginUsername\" type=\"text\" class=\"validate text-blue text-darken-2\">\n" +
-    "        <label for=\"loginUsername\">Username</label>\n" +
-    "      </div>\n" +
-    "      <div class=\"input-field col s4 marge2\">\n" +
-    "        <input name=\"loginPassword\" id=\"loginPassword\" type=\"password\" class=\"validate text-blue text-darken-2\">\n" +
-    "        <label for=\"loginPassword\">Password</label>\n" +
-    "      </div>\n" +
-    "      <div class=\"input-field col s4 marge2\">\n" +
-    "    <a href=\"#!\" id=\"loginButton\" class=\"waves-effect waves-light btn light-blue darken-3\" ng-click=\"createLoginPopin()\">Connexion</a>\n" +
-    "</div>\n" +
+    "<div id=\"loginPopin\" class=\"\" ng-show=\"showLoginPopin\">\n" +
+    "  <div class=\"modal-content\">\n" +
+    "    <h4>Login</h4>\n" +
+    "    <label>Username : </label><input id=\"loginUsername\" type=\"text\"/>\n" +
+    "    <label>Password : </label><input id=\"loginPassword\" type=\"password\"/>\n" +
+    "  </div>\n" +
+    "  <div class=\"modal-footer\">\n" +
+    "    <a href=\"#!\" class=\" modal-action modal-close waves-effect waves-green btn-flat\">Agree</a>\n" +
     "  </div>\n" +
     "</div>\n" +
     "");
@@ -1247,11 +1241,11 @@ module.run(["$templateCache", function($templateCache) {
     "            <div id=\"titre12\">\n" +
     "              <h2>12. Rapports Incisifs :\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"checkbox\" ng-model=\"Checkbox12Negatif\"/>\n" +
     "                  Négatif\n" +
     "                </label>\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"checkbox\" ng-model=\"Checkbox12NonRenseigne\"/>\n" +
     "                  Non Renseigné\n" +
     "                </label>\n" +
     "              </h2>\n" +
@@ -1260,66 +1254,66 @@ module.run(["$templateCache", function($templateCache) {
     "              <p>Dent de référence : </p>\n" +
     "              <div>\n" +
     "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group3\"/>\n" +
+    "                  <input type=\"radio\" name=\"group3\" ng-model=\"Radio12Dent11\"/>\n" +
     "                  11\n" +
     "                </label>\n" +
     "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group3\"/>\n" +
+    "                  <input type=\"radio\" name=\"group3\" ng-model=\"Radio12Dent21\"/>\n" +
     "                  21\n" +
     "                </label>\n" +
     "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group3\"/>\n" +
-    "                  Autre <input type=\"text\"/>\n" +
+    "                  <input type=\"radio\" name=\"group3\" ng-model=\"Radio12DentAutre1\"/>\n" +
+    "                  Autre <input type=\"text\" ng-model=\"Radio12DentAutre1Choix\"/>\n" +
     "                </label>\n" +
     "              </div>\n" +
     "              <div>\n" +
     "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group4\"/>\n" +
+    "                  <input type=\"radio\" name=\"group4\" ng-model=\"Radio12Dent31\"/>\n" +
     "                  31\n" +
     "                </label>\n" +
     "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group4\"/>\n" +
+    "                  <input type=\"radio\" name=\"group4\" ng-model=\"Radio12Dent41\"/>\n" +
     "                  41\n" +
     "                </label>\n" +
     "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group4\"/>\n" +
-    "                  Autre <input type=\"text\"/>\n" +
+    "                  <input type=\"radio\" name=\"group4\" ng-model=\"Radio12DentAutre2\"/>\n" +
+    "                  Autre <input type=\"text\" ng-model=\"Radio12DentAutre2Choix\"/>\n" +
     "                </label>\n" +
     "              </div>\n" +
     "              <div>\n" +
     "                <p>Surplomb horizontal : </p>\n" +
     "                <label>\n" +
-    "                  <input type=\"number\"/>\n" +
+    "                  <input type=\"number\" ng-model=\"Number12Surplomb\"/>\n" +
     "                  mm\n" +
     "                </label>\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"checkbox\" ng-model=\"Checkbox12Surplomb\"/>\n" +
     "                  Si négatif\n" +
     "                </label>\n" +
     "              </div>\n" +
     "              <div>\n" +
     "                <p>Recouvrement vertical : </p>\n" +
     "                <label>\n" +
-    "                  <input type=\"number\"/>\n" +
+    "                  <input type=\"number\" ng-model=\"Number12Recouvrement\"/>\n" +
     "                  mm\n" +
     "                </label>\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"checkbox\" ng-model=\"Checkbox12Recouvrement\"/>\n" +
     "                  Si négatif\n" +
     "                </label>\n" +
     "              </div>\n" +
     "              <div>\n" +
     "                <p>Existe-t-il un décalage des milieux inter-incisifs ?</p>\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"radio\" name=\"group12\" ng-model=\"Radio12DecalageOui\"/>\n" +
     "                  Oui\n" +
     "                  <label>\n" +
-    "                    <input type=\"number\"/>\n" +
+    "                    <input type=\"number\" ng-model=\"Number12DecalageOui\"/>\n" +
     "                    mm\n" +
     "                  </label>\n" +
     "                </label>\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"radio\" name=\"group12\" ng-model=\"Radio12DecalageNon\"/>\n" +
     "                  Non\n" +
     "                </label>\n" +
     "              </div>\n" +
@@ -1330,11 +1324,11 @@ module.run(["$templateCache", function($templateCache) {
     "            <div id=\"titre13\">\n" +
     "              <h2>13. Mouvements d'ouverture, latéralités et propulsion :\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"checkbox\" ng-model=\"Checkbox13Negatif\"/>\n" +
     "                  Négatif\n" +
     "                </label>\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"checkbox\" ng-model=\"Checkbox13NonRenseigne\"/>\n" +
     "                  Non Renseigné\n" +
     "                </label>\n" +
     "              </h2>\n" +
@@ -1351,7 +1345,7 @@ module.run(["$templateCache", function($templateCache) {
     "                  <tr>\n" +
     "                    <td>Ouverture non douloureuse :\n" +
     "                      <label>\n" +
-    "                        <input type=\"number\"/>\n" +
+    "                        <input type=\"number\" ng-model=\"Number13OuvDouleur\"/>\n" +
     "                        mm\n" +
     "                      </label>\n" +
     "                    </td>\n" +
@@ -1378,12 +1372,12 @@ module.run(["$templateCache", function($templateCache) {
     "                  <tr>\n" +
     "                    <td>Ouv. max. non assistée :\n" +
     "                      <label>\n" +
-    "                        <input type=\"number\"/>\n" +
+    "                        <input type=\"number\" ng-model=\"Number13OuvNonAssist\"/>\n" +
     "                        mm\n" +
     "                      </label>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13DroitDouleurProv1\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1410,7 +1404,7 @@ module.run(["$templateCache", function($templateCache) {
     "                      </select>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13GaucheDouleurProv1\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1441,12 +1435,12 @@ module.run(["$templateCache", function($templateCache) {
     "                  <tr>\n" +
     "                    <td>Ouv. max. assistée :\n" +
     "                      <label>\n" +
-    "                        <input type=\"number\"/>\n" +
+    "                        <input type=\"number\" ng-model=\"Number13OuvAssist\"/>\n" +
     "                        mm\n" +
     "                      </label>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13DroitDouleurProv2\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1473,7 +1467,7 @@ module.run(["$templateCache", function($templateCache) {
     "                      </select>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13GaucheDouleurProv2\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1506,7 +1500,7 @@ module.run(["$templateCache", function($templateCache) {
     "                      Ouv. contre résistance :\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13DroitDouleurProv3\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1533,7 +1527,7 @@ module.run(["$templateCache", function($templateCache) {
     "                      </select>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13GaucheDouleurProv3\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1566,7 +1560,7 @@ module.run(["$templateCache", function($templateCache) {
     "                      Fermeture contre résistance :\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13DroitDouleurProv4\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1593,7 +1587,7 @@ module.run(["$templateCache", function($templateCache) {
     "                      </select>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13GaucheDouleurProv4\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1624,12 +1618,12 @@ module.run(["$templateCache", function($templateCache) {
     "                  <tr>\n" +
     "                    <td>Latéralité droite :\n" +
     "                      <label>\n" +
-    "                        <input type=\"number\"/>\n" +
+    "                        <input type=\"number\" ng-model=\"Number13LatDroit\"/>\n" +
     "                        mm\n" +
     "                      </label>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13DroitDouleurProv5\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1656,7 +1650,7 @@ module.run(["$templateCache", function($templateCache) {
     "                      </select>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13GaucheDouleurProv5\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1687,12 +1681,12 @@ module.run(["$templateCache", function($templateCache) {
     "                  <tr>\n" +
     "                    <td>Latéralité droite assistée :\n" +
     "                      <label>\n" +
-    "                        <input type=\"number\"/>\n" +
+    "                        <input type=\"number\" ng-model=\"Number13LatDroitAssist\"/>\n" +
     "                        mm\n" +
     "                      </label>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13DroitDouleurProv6\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1719,7 +1713,7 @@ module.run(["$templateCache", function($templateCache) {
     "                      </select>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13GaucheDouleurProv6\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1752,7 +1746,7 @@ module.run(["$templateCache", function($templateCache) {
     "                      Latéralité droite contre résistance :\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13DroitDouleurProv7\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1779,7 +1773,7 @@ module.run(["$templateCache", function($templateCache) {
     "                      </select>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13GaucheDouleurProv7\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1810,12 +1804,12 @@ module.run(["$templateCache", function($templateCache) {
     "                  <tr>\n" +
     "                    <td>Latéralité gauche :\n" +
     "                      <label>\n" +
-    "                        <input type=\"number\"/>\n" +
+    "                        <input type=\"number\" ng-model=\"Number13LatGauche\"/>\n" +
     "                        mm\n" +
     "                      </label>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13DroitDouleurProv8\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1842,7 +1836,7 @@ module.run(["$templateCache", function($templateCache) {
     "                      </select>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13GaucheDouleurProv8\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1873,12 +1867,12 @@ module.run(["$templateCache", function($templateCache) {
     "                  <tr>\n" +
     "                    <td>Latéralité gauche assistée :\n" +
     "                      <label>\n" +
-    "                        <input type=\"number\"/>\n" +
+    "                        <input type=\"number\" ng-model=\"Number13LatGaucheAssist\"/>\n" +
     "                        mm\n" +
     "                      </label>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13DroitDouleurProv9\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1905,7 +1899,7 @@ module.run(["$templateCache", function($templateCache) {
     "                      </select>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13GaucheDouleurProv9\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1938,7 +1932,7 @@ module.run(["$templateCache", function($templateCache) {
     "                      Latéralité gauche contre résistance :\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13DroitDouleurProv10\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1965,7 +1959,7 @@ module.run(["$templateCache", function($templateCache) {
     "                      </select>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13GaucheDouleurProv10\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -1996,12 +1990,12 @@ module.run(["$templateCache", function($templateCache) {
     "                  <tr>\n" +
     "                    <td>Propulsion :\n" +
     "                      <label>\n" +
-    "                        <input type=\"number\"/>\n" +
+    "                        <input type=\"number\" ng-model=\"Number13Propulsion\"/>\n" +
     "                        mm\n" +
     "                      </label>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13DroitDouleurProv11\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -2028,7 +2022,7 @@ module.run(["$templateCache", function($templateCache) {
     "                      </select>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13GaucheDouleurProv11\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -2061,7 +2055,7 @@ module.run(["$templateCache", function($templateCache) {
     "                      Propulsion contre résistance :\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13DroitDouleurProv12\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -2088,7 +2082,7 @@ module.run(["$templateCache", function($templateCache) {
     "                      </select>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
-    "                      <input type=\"checkbox\"/>\n" +
+    "                      <input type=\"checkbox\" ng-model=\"Checkbox13GaucheDouleurProv12\"/>\n" +
     "                    </td>\n" +
     "                    <td>\n" +
     "                      <select>\n" +
@@ -2120,18 +2114,18 @@ module.run(["$templateCache", function($templateCache) {
     "              <div>\n" +
     "                <p>Est-ce que l'un des mouvements effectués vous a déclenché des maux de tête ? </p>\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\">\n" +
+    "                  <input type=\"radio\" name=\"group12\" ng-model=\"Radio13MauxOui\">\n" +
     "                  Oui\n" +
     "                </label>\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\">\n" +
+    "                  <input type=\"radio\" name=\"group12\" ng-model=\"Radio13MauxNon\">\n" +
     "                  Non\n" +
     "                </label>\n" +
     "              </div>\n" +
     "              <div>\n" +
     "                <label>\n" +
     "                  Si Oui lesquels ?\n" +
-    "                  <input type=\"text\">\n" +
+    "                  <input type=\"text\" ng-model=\"Text13MauxOui\">\n" +
     "                </label>\n" +
     "              </div>\n" +
     "            </div>\n" +
@@ -2141,11 +2135,11 @@ module.run(["$templateCache", function($templateCache) {
     "            <div id=\"titre14\">\n" +
     "              <h2>14. Trajet d'ouverture / fermeture :\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"checkbox\" ng-model=\"Checkbox14Negatif\"/>\n" +
     "                  Négatif\n" +
     "                </label>\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"checkbox\" ng-model=\"Checkbox14NonRenseigne\"/>\n" +
     "                  Non Renseigné\n" +
     "                </label>\n" +
     "              </h2>\n" +
@@ -2153,23 +2147,23 @@ module.run(["$templateCache", function($templateCache) {
     "            <div id=\"champs14\">\n" +
     "              <p>Forme du trajet d'ouverture : </p>\n" +
     "              <label>\n" +
-    "                <input type=\"checkbox\"/>\n" +
+    "                <input type=\"checkbox\" ng-model=\"Checkbox14Rectiligne\"/>\n" +
     "                Rectiligne\n" +
     "              </label>\n" +
     "              <label>\n" +
-    "                <input type=\"checkbox\"/>\n" +
+    "                <input type=\"checkbox\" ng-model=\"Checkbox14ReflexionDroit\"/>\n" +
     "                Réflexion corrigée à droite\n" +
     "              </label>\n" +
     "              <label>\n" +
-    "                <input type=\"checkbox\"/>\n" +
+    "                <input type=\"checkbox\" ng-model=\"Checkbox14ReflexionGauche\"/>\n" +
     "                Réflexion corrigée à gauche\n" +
     "              </label>\n" +
     "              <label>\n" +
-    "                <input type=\"checkbox\"/>\n" +
+    "                <input type=\"checkbox\" ng-model=\"Checkbox14DevDroit\"/>\n" +
     "                Déviation non corrigée à droite\n" +
     "              </label>\n" +
     "              <label>\n" +
-    "                <input type=\"checkbox\"/>\n" +
+    "                <input type=\"checkbox\" ng-model=\"Checkbox14DevGauche\"/>\n" +
     "                Déviation non corrigée à gauche\n" +
     "              </label>\n" +
     "            </div>\n" +
@@ -2182,11 +2176,11 @@ module.run(["$templateCache", function($templateCache) {
     "            <div id=\"titre15\">\n" +
     "              <h2>15. Bruits articulaires lors des mouvements fonctionnels :\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"checkbox\" ng-model=\"Checkbox15Negatif\"/>\n" +
     "                  Négatif\n" +
     "                </label>\n" +
     "                <label>\n" +
-    "                  <input type=\"checkbox\"/>\n" +
+    "                  <input type=\"checkbox\" ng-model=\"Checkbox15NonRenseigne\"/>\n" +
     "                  Non Renseigné\n" +
     "                </label>\n" +
     "              </h2>\n" +
