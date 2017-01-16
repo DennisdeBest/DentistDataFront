@@ -2,5 +2,20 @@
   <div class="island3 pure-u-1 pure-u-lg-2-3">
     <h3>Welcome {{username}}</h3>
     <div ng-show="errorMessage">{{errorMessage}}</div>
+    <div ng-show="isAdmin"><h2>Users</h2>
+      <table>
+        <thead>
+        <tr>
+          <th>Username</th><th>Email</th><th>Roles</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in users"><td>{{user.username}}</td><td>{{user.email}}</td><td><ul><li ng-repeat="role in user.roles">{{role}}</li> </ul></td></tr>
+        </tbody>
+      </table>
+    <ul>
+      <li ng-repeat="user in users"></li>
+    </ul>
+    </div>
   </div>
 </div>

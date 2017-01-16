@@ -10,12 +10,20 @@
             if (status == 200) {
                 var user;
                 if (data[0].username) {
-                    user = data[0]
+                    user = data[0];
 
                     if (user) {
                         $scope.username = user.username;
                         $scope.email = user.email;
                     }
+                }
+
+                if( user.roles.indexOf("ROLE_ADMIN") !== -1){
+                  $scope.isAdmin = true;
+                    $http.get('http://devapi.dentist-data.fr/api/getUsers').success(function (data) {
+                        $log.debug(data);
+                        $scope.users = data;
+                    })
                 }
             }
         }).error(function (error, status) {
@@ -26,9 +34,7 @@
 
 
 
-        // if( data.roles.indexOf("ROLE_ADMIN") !== -1){
-        //  $scope.isAdmin = true;
-        //}
+
     }
 
     angular.module('admin', [])
