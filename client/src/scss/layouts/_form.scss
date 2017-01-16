@@ -43,6 +43,12 @@
   padding-right: 35px;
 }
 
+.collapsible-header {
+  background-color: #ececec;
+  border-bottom: solid 3px #cccccc;
+  padding-top: 15px;
+}
+
 @media screen and (max-width: 1000px) {
   .modal-content > div {
     margin: 0 auto;
