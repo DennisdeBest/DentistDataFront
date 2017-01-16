@@ -7,16 +7,20 @@
             <li><a href ui-sref="root.propos">{{ 'à propos' | uppercase }}</a></li>
             <li><a href ui-sref="root.nous">{{ 'qui somme nous ?' | uppercase }}</a></li>
             <li><a href ui-sref="root.pourquoi">{{ 'pourquoi ce site ?' | uppercase }}</a></li>
-            <li><a id="loginButton" class="waves-effect waves-light btn light-blue darken-3"
+            <li ng-hide="logged"><a  id="loginButton" class="waves-effect waves-light btn light-blue darken-3"
                    ng-click="createLoginPopin()">Connexion</a></li>
+            <li ng-show="logged"><a id="accountButton" class="waves-effect waves-light btn light-blue darken-3"
+                                    href ui-sref="root.admin">Account</a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
             <li><a href ui-sref="root.home">{{ 'home' | uppercase }}</a></li>
             <li><a href ui-sref="root.propos">{{ 'à propos' | uppercase }}</a></li>
             <li><a href ui-sref="root.nous">{{ 'qui sommes nous ?' | uppercase }}</a></li>
             <li><a href ui-sref="root.pourquoi">{{ 'pourquoi ce site ?' | uppercase }}</a></li>
-            <li><a id="loginButton" class="waves-effect waves-light btn light-blue darken-3"
+            <li ng-hide="logged"><a id="loginButton" class="waves-effect waves-light btn light-blue darken-3"
                    ng-click="createLoginPopin()">Connexion</a></li>
+            <li ng-show="logged"><a id="accountButton" class="waves-effect waves-light btn light-blue darken-3"
+                                    href ui-sref="root.admin">Account</a></li>
         </ul>
     </div>
 </nav>
