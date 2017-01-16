@@ -9,8 +9,6 @@
         $scope.showLoginPopin = false;
         $scope.createLoginPopin = function () {
             $scope.showLoginPopin = !$scope.showLoginPopin;
-            console.log("create login popin");
-            $log.debug($scope.showLoginPopin);
         };
         $scope.loginAction = function () {
             if($scope.showRegisterPopin){
@@ -27,7 +25,7 @@
                 }).then(function successCallback(response) {
                     $log.debug(response.data.token);
                     $localStorage.token = response.data.token;
-                    $scope.logged = true;
+                    $scope.logged = $localStorage.token;
                 }, function errorCallback(response) {
                     $log.debug("Error")
                 })
@@ -44,9 +42,6 @@
                     first: $scope.registerPassword,
                     second: $scope.registerPasswordRepeat
                 };
-
-                $log.debug(registerUserObject);
-                $log.debug(JSON.stringify(registerUserObject));
 
                 $http.post('http://devapi.dentist-data.fr/api/register', JSON.stringify(registerUserObject)).success(function (data) {
                     $log.debug(data);
