@@ -54,6 +54,10 @@
   display: inline-block;
 }
 
+td, th{
+  padding: 0 0 0 0 !important;
+}
+
 @media screen and (max-width: 1000px) {
   .modal-content > div {
     margin: 0 auto;

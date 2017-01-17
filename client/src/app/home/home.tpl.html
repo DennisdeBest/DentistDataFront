@@ -421,12 +421,11 @@
             </div>
             <div class="collapsible-body">
               <div id="champs11">
-                <table>
+                <table class="striped">
                   <thead>
                     <tr>
                       <th> </th>
                       <th colspan="3">Côté droit</th>
-                      <th colspan="3">Côté gauche</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -443,43 +442,18 @@
                       <td>
                         Douleur(s) référée(s)
                       </td>
-                      <td>
-                        Douleur provoquée
-                      </td>
-                      <td>
-                        Est-elle identique à la douleur habituelle ?
-                      </td>
-                      <td>
-                        Douleur(s) référée(s)
-                      </td>
                     </tr>
                     <tr>
                       <td>
                         Temporal postérieur
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11TempPost1"/>
+                        <input type="checkbox" class="filled-in" id="1" ng-model="form.Checkbox11TempPost1"/>
+                        <label for="1"></label>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11TempPost2"/>
-                      </td>
-                      <td>
-                        <select>
-                          <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11TempPost3"/>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11TempPost4"/>
+                        <input type="checkbox" class="filled-in" id="2" ng-model="form.Checkbox11TempPost2"/>
+                        <label for="2"></label>
                       </td>
                       <td>
                         <select>
@@ -490,7 +464,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -499,28 +473,12 @@
                         Temporal moyen
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11TempMoy1"/>
+                        <input type="checkbox" class="filled-in" id="3" ng-model="form.Checkbox11TempMoy1"/>
+                        <label for="3"></label>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11TempMoy2"/>
-                      </td>
-                      <td>
-                        <select>
-                          <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11TempMoy3"/>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11TempMoy4"/>
+                        <input type="checkbox" class="filled-in" id="4" ng-model="form.Checkbox11TempMoy2"/>
+                        <label for="4"></label>
                       </td>
                       <td>
                         <select>
@@ -531,7 +489,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -540,28 +498,12 @@
                         Temporal antérieur
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11TempAnt1"/>
+                        <input type="checkbox" class="filled-in" id="5" ng-model="form.Checkbox11TempAnt1"/>
+                        <label for="5"></label>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11TempAnt2"/>
-                      </td>
-                      <td>
-                        <select>
-                          <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11TempAnt3"/>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11TempAnt4"/>
+                        <input type="checkbox" class="filled-in" id="6" ng-model="form.Checkbox11TempAnt2"/>
+                        <label for="6"></label>
                       </td>
                       <td>
                         <select>
@@ -572,7 +514,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -592,28 +534,12 @@
                         Masséter (origine angle mdb)
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11MasseterOri1"/>
+                        <input type="checkbox" class="filled-in" id="9" ng-model="form.Checkbox11MasseterOri1"/>
+                        <label for="9"></label>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11MasseterOri2"/>
-                      </td>
-                      <td>
-                        <select>
-                          <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11MasseterOri3"/>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11MasseterOri4"/>
+                        <input type="checkbox" class="filled-in" id="10" ng-model="form.Checkbox11MasseterOri2"/>
+                        <label for="10"></label>
                       </td>
                       <td>
                         <select>
@@ -624,7 +550,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -633,28 +559,12 @@
                         Masséter (corps)
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11MasseterCorps1"/>
+                        <input type="checkbox" class="filled-in" id="11" ng-model="form.Checkbox11MasseterCorps1"/>
+                        <label for="11"></label>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11MasseterCorps2"/>
-                      </td>
-                      <td>
-                        <select>
-                          <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11MasseterCorps3"/>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11MasseterCorps4"/>
+                        <input type="checkbox" class="filled-in" id="12" ng-model="form.Checkbox11MasseterCorps2"/>
+                        <label for="12"></label>
                       </td>
                       <td>
                         <select>
@@ -665,7 +575,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -674,28 +584,12 @@
                         Masséter (insertion zygomatique)
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11MasseterInsert1"/>
+                        <input type="checkbox" class="filled-in" id="13" ng-model="form.Checkbox11MasseterInsert3"/>
+                        <label for="13"></label>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11MasseterInsert2"/>
-                      </td>
-                      <td>
-                        <select>
-                          <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11MasseterInsert3"/>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11MasseterInsert4"/>
+                        <input type="checkbox" class="filled-in" id="14" ng-model="form.Checkbox11MasseterInsert4"/>
+                        <label for="14"></label>
                       </td>
                       <td>
                         <select>
@@ -706,7 +600,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -720,28 +614,12 @@
                         Pôle latéral 0,5 kg
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11Pole1"/>
+                        <input type="checkbox" class="filled-in" id="15" ng-model="form.Checkbox11Pole1"/>
+                        <label for="15"></label>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11Pole2"/>
-                      </td>
-                      <td>
-                        <select>
-                          <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11Pole3"/>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11Pole4"/>
+                        <input type="checkbox" class="filled-in" id="16" ng-model="form.Checkbox11Pole2"/>
+                        <label for="16"></label>
                       </td>
                       <td>
                         <select>
@@ -752,7 +630,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -761,28 +639,12 @@
                         Autour du pôle latéral 1 kg
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11AutourPole1"/>
+                        <input type="checkbox" class="filled-in" id="17" ng-model="form.Checkbox11AutourPole1"/>
+                        <label for="17"></label>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11AutourPole2"/>
-                      </td>
-                      <td>
-                        <select>
-                          <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11AutourPole3"/>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11AutourPole4"/>
+                        <input type="checkbox" class="filled-in" id="18" ng-model="form.Checkbox11AutourPole2"/>
+                        <label for="18"></label>
                       </td>
                       <td>
                         <select>
@@ -793,7 +655,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -807,28 +669,12 @@
                         Digastrique (région md post)
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11Digastrique1"/>
+                        <input type="checkbox" class="filled-in" id="19" ng-model="form.Checkbox11Digastrique1"/>
+                        <label for="19"></label>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11Digastrique2"/>
-                      </td>
-                      <td>
-                        <select>
-                          <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11Digastrique3"/>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11Digastrique4"/>
+                        <input type="checkbox" class="filled-in" id="20" ng-model="form.Checkbox11Digastrique2"/>
+                        <label for="20"></label>
                       </td>
                       <td>
                         <select>
@@ -839,7 +685,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -848,28 +694,12 @@
                         Ptérygoïdien médial (région submd)
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11PteryMed1"/>
+                        <input type="checkbox" class="filled-in" id="21" ng-model="form.Checkbox11PteryMed1"/>
+                        <label for="21"></label>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11PteryMed2"/>
-                      </td>
-                      <td>
-                        <select>
-                          <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11PteryMed3"/>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11PteryMed4"/>
+                        <input type="checkbox" class="filled-in" id="22" ng-model="form.Checkbox11PteryMed2"/>
+                        <label for="22"></label>
                       </td>
                       <td>
                         <select>
@@ -880,7 +710,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -889,28 +719,12 @@
                         Aire du ptérygoïdien latéral
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11PteryLat1"/>
+                        <input type="checkbox" class="filled-in" id="23" ng-model="form.Checkbox11PteryLat1"/>
+                        <label for="23"></label>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11PteryLat2"/>
-                      </td>
-                      <td>
-                        <select>
-                          <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11PteryLat3"/>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11PteryLat4"/>
+                        <input type="checkbox" class="filled-in" id="24" ng-model="form.Checkbox11PteryLat2"/>
+                        <label for="24"></label>
                       </td>
                       <td>
                         <select>
@@ -921,7 +735,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -930,28 +744,12 @@
                         Tendon du temporal
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11Tendon1"/>
+                        <input type="checkbox" class="filled-in" id="25" ng-model="form.Checkbox11Tendon1"/>
+                        <label for="25"></label>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11Tendon2"/>
-                      </td>
-                      <td>
-                        <select>
-                          <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11Tendon3"/>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11Tendon4"/>
+                        <input type="checkbox" class="filled-in" id="26" ng-model="form.Checkbox11Tendon2"/>
+                        <label for="26"></label>
                       </td>
                       <td>
                         <select>
@@ -962,7 +760,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -976,28 +774,12 @@
                         Sterno-cléido-mastoïdien
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11Sterno1"/>
+                        <input type="checkbox" class="filled-in" id="27" ng-model="form.Checkbox11Sterno1"/>
+                        <label for="27"></label>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11Sterno2"/>
-                      </td>
-                      <td>
-                        <select>
-                          <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11Sterno3"/>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11Sterno4"/>
+                        <input type="checkbox" class="filled-in" id="28" ng-model="form.Checkbox11Sterno2"/>
+                        <label for="28"></label>
                       </td>
                       <td>
                         <select>
@@ -1008,7 +790,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -1017,28 +799,12 @@
                         Trapèze
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11Trapeze1"/>
+                        <input type="checkbox" class="filled-in" id="29" ng-model="form.Checkbox11Trapeze1"/>
+                        <label for="29"></label>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11Trapeze2"/>
-                      </td>
-                      <td>
-                        <select>
-                          <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11Trapeze3"/>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11Trapeze4"/>
+                        <input type="checkbox" class="filled-in" id="30" ng-model="form.Checkbox11Trapeze2"/>
+                        <label for="30"></label>
                       </td>
                       <td>
                         <select>
@@ -1049,7 +815,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -1063,28 +829,12 @@
                         <input type="text" ng-model="Text11AutreMuscle1"/>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11AutreMuscle11"/>
+                        <input type="checkbox" class="filled-in" id="31" ng-model="form.Checkbox11AutreMuscle11"/>
+                        <label for="31"></label>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11AutreMuscle12"/>
-                      </td>
-                      <td>
-                        <select>
-                          <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11AutreMuscle13"/>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11AutreMuscle14"/>
+                        <input type="checkbox" class="filled-in" id="32" ng-model="form.Checkbox11AutreMuscle12"/>
+                        <label for="32"></label>
                       </td>
                       <td>
                         <select>
@@ -1095,7 +845,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -1104,28 +854,12 @@
                         <input type="text" ng-model="Text11AutreMuscle2"/>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11AutreMuscle21"/>
+                        <input type="checkbox" class="filled-in" id="33" ng-model="form.Checkbox11AutreMuscle21"/>
+                        <label for="33"></label>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11AutreMuscle22"/>
-                      </td>
-                      <td>
-                        <select>
-                          <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11AutreMuscle23"/>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11AutreMuscle24"/>
+                        <input type="checkbox" class="filled-in" id="34" ng-model="form.Checkbox11AutreMuscle22"/>
+                        <label for="34"></label>
                       </td>
                       <td>
                         <select>
@@ -1136,7 +870,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -1145,28 +879,12 @@
                         <input type="text" ng-model="Text11AutreMuscle3"/>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11AutreMuscle31"/>
+                        <input type="checkbox" class="filled-in" id="35" ng-model="form.Checkbox11AutreMuscle31"/>
+                        <label for="35"></label>
                       </td>
                       <td>
-                        <input type="checkbox" ng-model="Checkbox11AutreMuscle32"/>
-                      </td>
-                      <td>
-                        <select>
-                          <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11AutreMuscle33"/>
-                      </td>
-                      <td>
-                        <input type="checkbox" ng-model="Checkbox11AutreMuscle34"/>
+                        <input type="checkbox" class="filled-in" id="36" ng-model="form.Checkbox11AutreMuscle32"/>
+                        <label for="36"></label>
                       </td>
                       <td>
                         <select>
@@ -1177,9 +895,8 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
-                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -1328,7 +1045,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1340,7 +1057,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1355,7 +1072,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1367,7 +1084,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                       </tr>
@@ -1391,7 +1108,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1403,7 +1120,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1418,7 +1135,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1430,7 +1147,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                       </tr>
@@ -1451,7 +1168,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1463,7 +1180,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1478,7 +1195,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1490,7 +1207,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                       </tr>
@@ -1511,7 +1228,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1523,7 +1240,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1538,7 +1255,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1550,7 +1267,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                       </tr>
@@ -1574,7 +1291,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1586,7 +1303,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1601,7 +1318,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1613,7 +1330,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                       </tr>
@@ -1637,7 +1354,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1649,7 +1366,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1664,7 +1381,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1676,7 +1393,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                       </tr>
@@ -1697,7 +1414,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1709,7 +1426,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1724,7 +1441,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1736,7 +1453,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                       </tr>
@@ -1760,7 +1477,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1772,7 +1489,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1787,7 +1504,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1799,7 +1516,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                       </tr>
@@ -1823,7 +1540,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1835,7 +1552,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1850,7 +1567,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1862,7 +1579,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                       </tr>
@@ -1883,7 +1600,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1895,7 +1612,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1910,7 +1627,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1922,7 +1639,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                       </tr>
@@ -1946,7 +1663,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1958,7 +1675,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1973,7 +1690,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -1985,7 +1702,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                       </tr>
@@ -2006,7 +1723,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -2018,7 +1735,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -2033,7 +1750,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                         <td>
@@ -2045,7 +1762,7 @@
                             <option>M. masséter gauche</option>
                             <option>Atm droit</option>
                             <option>Atm gauche</option>
-                            <option>Autres <input type="text"></option>
+                            <!-- <option>Autres <input type="text"></option> -->
                           </select>
                         </td>
                       </tr>
@@ -2169,7 +1886,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -2202,7 +1919,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -2236,7 +1953,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -2269,7 +1986,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -2303,7 +2020,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -2336,7 +2053,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -2370,7 +2087,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -2403,7 +2120,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -2437,7 +2154,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -2470,7 +2187,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -2558,7 +2275,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                       <td>
@@ -2570,7 +2287,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -2588,7 +2305,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                       <td>
@@ -2600,7 +2317,7 @@
                           <option>M. masséter gauche</option>
                           <option>Atm droit</option>
                           <option>Atm gauche</option>
-                          <option>Autres <input type="text"></option>
+                          <!-- <option>Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
