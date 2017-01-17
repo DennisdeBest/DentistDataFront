@@ -7,6 +7,7 @@
         config.headers = config.headers || {};
         if ($localStorage.token) {
           config.headers.Authorization = 'Bearer ' + $localStorage.token;
+          $log.debug(config)
         }
         return config;
       },

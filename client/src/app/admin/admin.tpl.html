@@ -8,11 +8,20 @@
       <table>
         <thead>
         <tr>
-          <th>Username</th><th>Email</th><th>Roles</th>
+          <th>Username</th><th>Email</th><th>Roles</th><th>Action</th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="user in users"><td>{{user.username}}</td><td>{{user.email}}</td><td><ul><li ng-repeat="role in user.roles">{{role}}</li> </ul></td></tr>
+        <tr ng-repeat="user in users">
+          <td>{{user.username}}</td>
+          <td>{{user.email}}</td>
+          <td><ul><li ng-repeat="role in user.roles">{{role}}</li> </ul></td>
+          <td><a ng-if="user.promotable" class="waves-effect waves-light btn light-green darken-3"
+                 ng-click="promoteUser(user.id)">Promote</a>
+            <a ng-if="user.demotable" class="waves-effect waves-light btn light-red darken-3"
+               ng-click="demoteUser(user.id)">Demote</a>
+          </td>
+        </tr>
         </tbody>
       </table>
     <ul>
