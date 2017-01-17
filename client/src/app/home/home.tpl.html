@@ -1,4 +1,3 @@
-
 <div class="pure-g">
   <div class="island3 pure-u-1 pure-u-lg-2-3">
     <h3>Fiche clinique DTM</h3>
@@ -32,11 +31,11 @@
         <div class="row">
           <div class="input-field col s6">
             <label>Date de naissance</label>
-            <input type="date" class="datepicker" ng-model="form.Date0DateNaissance">
+            <input type="text" class="datepicker" ng-model="form.Date0DateNaissance">
           </div>
           <div class="input-field col s6">
             <label>Date de la consultation</label>
-            <input type="date" class="datepicker" ng-model="form.Date0DateConsult">
+            <input type="text" class="datepicker" ng-model="form.Date0DateConsult">
             <!--Mettre la date d'aujourd'hui comme base-->
           </div>
         </div>
@@ -48,8 +47,8 @@
         </div>
       </li>
       <li>
-        <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-          1. Motif de la consultation
+        <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+          1. Motif de la consultation</div>
           <input type="checkbox" class="filled-in" id="negatif1" ng-model="form.Checkbox1Negatif"/>
           <label for="negatif1">Négatif</label>
           <input type="checkbox" class="filled-in" id="non1" ng-model="form.Checkbox1NonRenseigne"/>
@@ -84,8 +83,8 @@
     </li>
 
     <li>
-      <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-        2. Evaluation de la douleur
+      <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+        2. Evaluation de la douleur</div>
         <input type="checkbox" class="filled-in" id="negatif2" ng-model="form.Checkbox2Negatif"/>
         <label for="negatif2">Négatif</label>
         <input type="checkbox" class="filled-in" id="non2" ng-model="form.Checkbox2NonRenseigne"/>
@@ -114,7 +113,7 @@
         <div class="row">
           <div class="input-field col s12">
             <label>Date de début</label>
-            <input type="date" class="datepicker" ng-model="form.Date2DateDebut">
+            <input type="text" class="datepicker" ng-model="form.Date2DateDebut">
           </div>
           <div class="row">
             <div class="input-field col s12">
@@ -167,8 +166,8 @@
 
 
         <li>
-          <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-            3. Environnement
+          <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+            3. Environnement</div>
             <input type="checkbox" class="filled-in" id="negatif3" ng-model="form.Checkbox3Negatif"/>
             <label for="negatif3">Négatif</label>
             <input type="checkbox" class="filled-in" id="non3" ng-model="form.Checkbox3NonRenseigne"/>
@@ -219,8 +218,8 @@
         </li>
 
         <li>
-          <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-            4. Troubles de la posture
+          <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+            4. Troubles de la posture</div>
             <input type="checkbox" class="filled-in" id="negatif4" ng-model="form.Checkbox4Negatif"/>
             <label for="negatif4">Négatif</label>
             <input type="checkbox" class="filled-in" id="non4" ng-model="form.Checkbox4NonRenseigne"/>
@@ -244,8 +243,8 @@
         </li>
 
         <li>
-          <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-            5. Troubles du sommeil
+          <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+            5. Troubles du sommeil</div>
             <input type="checkbox" class="filled-in" id="negatif5" ng-model="form.Checkbox5Negatif"/>
             <label for="negatif5">Négatif</label>
             <input type="checkbox" class="filled-in" id="non5" ng-model="form.Checkbox5NonRenseigne"/>
@@ -291,8 +290,8 @@
         </li>
 
         <li>
-          <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-            6. Troubles oculaires
+          <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+            6. Troubles oculaires</div>
             <input type="checkbox" class="filled-in" id="negatif6" ng-model="form.Checkbox6Negatif"/>
             <label for="negatif6">Négatif</label>
             <input type="checkbox" class="filled-in" id="non6" ng-model="form.Checkbox6NonRenseigne"/>
@@ -311,8 +310,8 @@
         </li>
 
         <li>
-          <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-            7. Habitudes nocives
+          <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+            7. Habitudes nocives</div>
             <input type="checkbox" class="filled-in" id="negatif7" ng-model="form.Checkbox7Negatif"/>
             <label for="negatif7">Négatif</label>
             <input type="checkbox" class="filled-in" id="non7" ng-model="form.Checkbox7NonRenseigne"/>
@@ -347,8 +346,8 @@
           </li>
 
           <li>
-            <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-              8. Dysfonctionnements oro-ligaux
+            <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+              8. Dysfonctionnements oro-ligaux</div>
               <input type="checkbox" class="filled-in" id="negatif8" ng-model="form.Checkbox8Negatif"/>
               <label for="negatif8">Négatif</label>
               <input type="checkbox" class="filled-in" id="non8" ng-model="form.Checkbox8NonRenseigne"/>
@@ -374,8 +373,8 @@
             </div>
           </li>
           <li>
-            <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-              9. Traumatisme
+            <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+              9. Traumatisme</div>
               <input type="checkbox" class="filled-in" id="negatif9" ng-model="form.Checkbox9Negatif"/>
               <label for="negatif9">Négatif</label>
               <input type="checkbox" class="filled-in" id="non9" ng-model="form.Checkbox9NonRenseigne"/>
@@ -394,8 +393,8 @@
 
 
           <li>
-            <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-              10. Observations complémentaires
+            <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+              10. Observations complémentaires</div>
               <input type="checkbox" class="filled-in" id="negatif10" ng-model="form.Checkbox10Negatif"/>
               <label for="negatif10">Négatif</label>
               <input type="checkbox" class="filled-in" id="non10" ng-model="form.Checkbox10NonRenseigne"/>
@@ -413,8 +412,8 @@
           </li>
 
           <li>
-            <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-              11. Palpation(s) douloureuse(s) des muscles masticateurs, des atm et des muscles cervico-scapulaires :
+            <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+              11. Palpation(s) douloureuse(s) des muscles masticateurs, des atm et des muscles cervico-scapulaires :</div>
               <input type="checkbox" class="filled-in" id="negatif11" ng-model="form.Checkbox11Negatif"/>
               <label for="negatif11">Négatif</label>
               <input type="checkbox" class="filled-in" id="non11" ng-model="form.Checkbox11NonRenseigne"/>
@@ -1187,8 +1186,8 @@
               </div>
             </li>
             <li>
-              <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-                12. Rapports Incisifs :
+              <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+                12. Rapports Incisifs :</div>
                 <input type="checkbox" class="filled-in" id="negatif12" ng-model="form.Checkbox12Negatif"/>
                 <label for="negatif12">Négatif</label>
                 <input type="checkbox" class="filled-in" id="non12" ng-model="form.Checkbox12NonRenseigne"/>
@@ -1266,8 +1265,8 @@
               </div>
             </li>
             <li>
-              <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-                13. Mouvements d'ouverture, latéralités et propulsion 3
+              <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+                13. Mouvements d'ouverture, latéralités et propulsion</div>
                 <input type="checkbox" class="filled-in" id="negatif13" ng-model="form.Checkbox13Negatif"/>
                 <label for="negatif13">Négatif</label>
                 <input type="checkbox" class="filled-in" id="non13" ng-model="form.Checkbox13NonRenseigne"/>
@@ -2074,8 +2073,8 @@
             </li>
 
               <li>
-                <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-                  14. Trajet d'ouverture / fermeture :
+                <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+                  14. Trajet d'ouverture / fermeture :</div>
                   <input type="checkbox" class="filled-in" id="negatif14" ng-model="form.Checkbox14Negatif"/>
                   <label for="negatif14">Négatif</label>
                   <input type="checkbox" class="filled-in" id="non14" ng-model="form.Checkbox14NonRenseigne"/>
@@ -2111,8 +2110,8 @@
             </div>
           </li>
               <li>
-                <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-                  15. Bruits articulaires lors des mouvements fonctionnels :
+                <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+                  15. Bruits articulaires lors des mouvements fonctionnels :</div>
                   <input type="checkbox" class="filled-in" id="negatif15" ng-model="form.Checkbox15Negatif"/>
                   <label for="negatif15">Négatif</label>
                   <input type="checkbox" class="filled-in" id="non15" ng-model="form.Checkbox15NonRenseigne"/>
@@ -2481,8 +2480,8 @@
                 </div>
           </li>
               <li>
-                <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-                  16. Blocage articulaire :
+                <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+                  16. Blocage articulaire :</div>
                   <input type="checkbox" class="filled-in" id="negatif16" ng-model="form.Checkbox16Negatif"/>
                   <label for="negatif16">Négatif</label>
                   <input type="checkbox" class="filled-in" id="non16" ng-model="form.Checkbox16NonRenseigne"/>
@@ -2526,8 +2525,8 @@
           </li>
 
               <li>
-                <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-                  17. Test du Bâtonnet :
+                <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+                  17. Test du Bâtonnet :</div>
                   <input type="checkbox" class="filled-in" id="negatif17" ng-model="form.Checkbox17Negatif"/>
                   <label for="negatif17">Négatif</label>
                   <input type="checkbox" class="filled-in" id="non17" ng-model="form.Checkbox17NonRenseigne"/>
@@ -2612,8 +2611,8 @@
           </li>
 
               <li>
-                <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-                  18. Elasticité Articulaire :
+                <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+                  18. Elasticité Articulaire :</div>
                   <input type="checkbox" class="filled-in" id="negatif18" ng-model="form.Checkbox18Negatif"/>
                   <label for="negatif18">Négatif</label>
                   <input type="checkbox" class="filled-in" id="non18" ng-model="form.Checkbox18NonRenseigne"/>
@@ -2649,8 +2648,8 @@
 
 
               <li>
-                <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-                  19. Examen Endo-Buccal :
+                <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+                  19. Examen Endo-Buccal :</div>
                   <input type="checkbox" class="filled-in" id="negatif19" ng-model="form.Checkbox19Negatif"/>
                   <label for="negatif19">Négatif</label>
                   <input type="checkbox" class="filled-in" id="non19" ng-model="form.Checkbox19NonRenseigne"/>
@@ -2739,8 +2738,8 @@
             </li>
 
                 <li>
-                  <div class="collapsible-header"><i class="material-icons">filter_drama</i>
-                    20. Usures dentaires/bruxismes :
+                  <div class="collapsible-header"><div class="demi"><i class="material-icons">filter_drama</i>
+                    20. Usures dentaires/bruxismes :</div>
                     <input type="checkbox" class="filled-in" id="negatif20" ng-model="form.Checkbox20Negatif"/>
                     <label for="negatif20">Négatif</label>
                     <input type="checkbox" class="filled-in" id="non20" ng-model="form.Checkbox20NonRenseigne"/>

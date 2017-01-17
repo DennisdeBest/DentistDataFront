@@ -6,9 +6,9 @@
    * @description Controller
    */
 
-     $(document).ready(function() {
+     window.onload = function() {
        Materialize.updateTextFields();
-     });
+     };
   function NousCtrl($scope, ReturningVisitorService) {
       $scope.test = "Testsdgfsdfgsgdsgfdsgfsqg";
       if(ReturningVisitorService.get("nous")) {

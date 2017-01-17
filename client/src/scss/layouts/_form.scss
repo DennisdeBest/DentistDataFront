@@ -49,6 +49,11 @@
   padding-top: 15px;
 }
 
+.demi{
+  width: 50%;
+  display: inline-block;
+}
+
 @media screen and (max-width: 1000px) {
   .modal-content > div {
     margin: 0 auto;
