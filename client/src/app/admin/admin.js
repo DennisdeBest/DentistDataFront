@@ -18,15 +18,15 @@
                     }
                 }
 
-                if( user.roles.indexOf("ROLE_ADMIN") !== -1){
-                  $scope.isAdmin = true;
+                if (user.roles.indexOf("ROLE_ADMIN") !== -1) {
+                    $scope.isAdmin = true;
                     $http.get('http://devapi.dentist-data.fr/api/getUsers').success(function (data) {
                         $log.debug(data);
-                        for(var i = 0; i < data.length; i++){
-                            if(data[i].roles.indexOf("ROLE_USER") === -1 && data[i].roles.indexOf("ROLE_ADMIN") === -1){
+                        for (var i = 0; i < data.length; i++) {
+                            if (data[i].roles.indexOf("ROLE_CUSTOMER") === -1 && data[i].roles.indexOf("ROLE_ADMIN") === -1) {
                                 data[i].promotable = true;
-                            } else if ( data[i].roles.indexOf("ROLE_USER") === 1){
-                              data[i].demotable = true;
+                            } else if (data[i].roles.indexOf("ROLE_CUSTOMER") !== -1) {
+                                data[i].demotable = true;
                             }
                         }
                         $scope.users = data;
@@ -40,19 +40,17 @@
         });
 
         $scope.logoutButton = function () {
-          $localStorage.$reset();
-          $location.path( "/" );
+            $localStorage.$reset();
+            $location.path("/");
         };
 
         $scope.promoteUser = function (userId) {
-          var userToPromote = {};
-          userToPromote.userId = userId;
-          $http.post('http://devapi.dentist-data.fr/api/user/promote', userToPromote).success(function (data, status) {
-              $log.debug(data);
-          });
+            var userToPromote = {};
+            userToPromote.userId = userId;
+            $http.post('http://devapi.dentist-data.fr/api/user/promote', userToPromote).success(function (data, status) {
+                $log.debug(data);
+            });
         }
-
-
 
 
     }

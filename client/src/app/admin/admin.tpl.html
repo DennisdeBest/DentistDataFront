@@ -18,7 +18,7 @@
           <td><ul><li ng-repeat="role in user.roles">{{role}}</li> </ul></td>
           <td><a ng-if="user.promotable" class="waves-effect waves-light btn light-green darken-3"
                  ng-click="promoteUser(user.id)">Promote</a>
-            <a ng-if="user.demotable" class="waves-effect waves-light btn light-red darken-3"
+            <a ng-if="user.demotable" class="waves-effect waves-light btn red darken-2"
                ng-click="demoteUser(user.id)">Demote</a>
           </td>
         </tr>
