@@ -121,6 +121,8 @@ module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("src/app/admin/admin.tpl.html",
     "<div class=\"pure-g\">\n" +
+    "<a  id=\"logoutButton\" class=\"waves-effect waves-light btn light-blue darken-3\"\n" +
+    "                          ng-click=\"logoutButton()\">Déconnexion</a>\n" +
     "  <div class=\"island3 pure-u-1 pure-u-lg-2-3\">\n" +
     "    <h3>Welcome {{username}}</h3>\n" +
     "    <div ng-show=\"errorMessage\">{{errorMessage}}</div>\n" +
@@ -128,11 +130,20 @@ module.run(["$templateCache", function($templateCache) {
     "      <table>\n" +
     "        <thead>\n" +
     "        <tr>\n" +
-    "          <th>Username</th><th>Email</th><th>Roles</th>\n" +
+    "          <th>Username</th><th>Email</th><th>Roles</th><th>Action</th>\n" +
     "        </tr>\n" +
     "        </thead>\n" +
     "        <tbody>\n" +
-    "        <tr ng-repeat=\"user in users\"><td>{{user.username}}</td><td>{{user.email}}</td><td><ul><li ng-repeat=\"role in user.roles\">{{role}}</li> </ul></td></tr>\n" +
+    "        <tr ng-repeat=\"user in users\">\n" +
+    "          <td>{{user.username}}</td>\n" +
+    "          <td>{{user.email}}</td>\n" +
+    "          <td><ul><li ng-repeat=\"role in user.roles\">{{role}}</li> </ul></td>\n" +
+    "          <td><a ng-if=\"user.promotable\" class=\"waves-effect waves-light btn light-green darken-3\"\n" +
+    "                 ng-click=\"promoteUser(user.id)\">Promote</a>\n" +
+    "            <a ng-if=\"user.demotable\" class=\"waves-effect waves-light btn red darken-2\"\n" +
+    "               ng-click=\"demoteUser(user.id)\">Demote</a>\n" +
+    "          </td>\n" +
+    "        </tr>\n" +
     "        </tbody>\n" +
     "      </table>\n" +
     "    <ul>\n" +
@@ -150,14 +161,13 @@ catch(err) { module = angular.module("templates", []); }
 module.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("src/app/home/home.tpl.html",
-    "\n" +
     "<div class=\"pure-g\">\n" +
     "  <div class=\"island3 pure-u-1 pure-u-lg-2-3\">\n" +
     "    <h3>Fiche clinique DTM</h3>\n" +
     "  </div>\n" +
     "</div>\n" +
     "\n" +
-    "<ul class=\"collapsible\" data-collapsible=\"expandable\">\n" +
+    "<ul class=\"collapsible\" data-collapsible=\"accordion\">\n" +
     "  <li>\n" +
     "    <div class=\"collapsible-header\"><i class=\"material-icons\">assignment_ind</i>Information patient</div>\n" +
     "    <div class=\"collapsible-body\">\n" +
@@ -166,6 +176,7 @@ module.run(["$templateCache", function($templateCache) {
     "          <div class=\"input-field col s5\">\n" +
     "            <label>Identifiant du patient</label>\n" +
     "            <input type=\"text\" ng-model=\"form.Text0ID\">\n" +
+    "            <button ng-click=\"submitForm()\"></button>\n" +
     "          </div>\n" +
     "          <div class=\"input-field col s2\">\n" +
     "            <select>\n" +
@@ -183,11 +194,11 @@ module.run(["$templateCache", function($templateCache) {
     "        <div class=\"row\">\n" +
     "          <div class=\"input-field col s6\">\n" +
     "            <label>Date de naissance</label>\n" +
-    "            <input type=\"date\" class=\"datepicker\" ng-model=\"form.Date0DateNaissance\">\n" +
+    "            <input type=\"text\" class=\"datepicker\" ng-model=\"form.Date0DateNaissance\">\n" +
     "          </div>\n" +
     "          <div class=\"input-field col s6\">\n" +
     "            <label>Date de la consultation</label>\n" +
-    "            <input type=\"date\" class=\"datepicker\" ng-model=\"form.Date0DateConsult\">\n" +
+    "            <input type=\"text\" class=\"datepicker\" ng-model=\"form.Date0DateConsult\">\n" +
     "            <!--Mettre la date d'aujourd'hui comme base-->\n" +
     "          </div>\n" +
     "        </div>\n" +
@@ -199,8 +210,8 @@ module.run(["$templateCache", function($templateCache) {
     "        </div>\n" +
     "      </li>\n" +
     "      <li>\n" +
-    "        <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
-    "          1. Motif de la consultation\n" +
+    "        <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "          1. Motif de la consultation</div>\n" +
     "          <input type=\"checkbox\" class=\"filled-in\" id=\"negatif1\" ng-model=\"form.Checkbox1Negatif\"/>\n" +
     "          <label for=\"negatif1\">Négatif</label>\n" +
     "          <input type=\"checkbox\" class=\"filled-in\" id=\"non1\" ng-model=\"form.Checkbox1NonRenseigne\"/>\n" +
@@ -235,8 +246,8 @@ module.run(["$templateCache", function($templateCache) {
     "    </li>\n" +
     "\n" +
     "    <li>\n" +
-    "      <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
-    "        2. Evaluation de la douleur\n" +
+    "      <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "        2. Evaluation de la douleur</div>\n" +
     "        <input type=\"checkbox\" class=\"filled-in\" id=\"negatif2\" ng-model=\"form.Checkbox2Negatif\"/>\n" +
     "        <label for=\"negatif2\">Négatif</label>\n" +
     "        <input type=\"checkbox\" class=\"filled-in\" id=\"non2\" ng-model=\"form.Checkbox2NonRenseigne\"/>\n" +
@@ -265,7 +276,7 @@ module.run(["$templateCache", function($templateCache) {
     "        <div class=\"row\">\n" +
     "          <div class=\"input-field col s12\">\n" +
     "            <label>Date de début</label>\n" +
-    "            <input type=\"date\" class=\"datepicker\" ng-model=\"form.Date2DateDebut\">\n" +
+    "            <input type=\"text\" class=\"datepicker\" ng-model=\"form.Date2DateDebut\">\n" +
     "          </div>\n" +
     "          <div class=\"row\">\n" +
     "            <div class=\"input-field col s12\">\n" +
@@ -318,8 +329,8 @@ module.run(["$templateCache", function($templateCache) {
     "\n" +
     "\n" +
     "        <li>\n" +
-    "          <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
-    "            3. Environnement\n" +
+    "          <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "            3. Environnement</div>\n" +
     "            <input type=\"checkbox\" class=\"filled-in\" id=\"negatif3\" ng-model=\"form.Checkbox3Negatif\"/>\n" +
     "            <label for=\"negatif3\">Négatif</label>\n" +
     "            <input type=\"checkbox\" class=\"filled-in\" id=\"non3\" ng-model=\"form.Checkbox3NonRenseigne\"/>\n" +
@@ -370,8 +381,8 @@ module.run(["$templateCache", function($templateCache) {
     "        </li>\n" +
     "\n" +
     "        <li>\n" +
-    "          <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
-    "            4. Troubles de la posture\n" +
+    "          <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "            4. Troubles de la posture</div>\n" +
     "            <input type=\"checkbox\" class=\"filled-in\" id=\"negatif4\" ng-model=\"form.Checkbox4Negatif\"/>\n" +
     "            <label for=\"negatif4\">Négatif</label>\n" +
     "            <input type=\"checkbox\" class=\"filled-in\" id=\"non4\" ng-model=\"form.Checkbox4NonRenseigne\"/>\n" +
@@ -395,8 +406,8 @@ module.run(["$templateCache", function($templateCache) {
     "        </li>\n" +
     "\n" +
     "        <li>\n" +
-    "          <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
-    "            5. Troubles du sommeil\n" +
+    "          <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "            5. Troubles du sommeil</div>\n" +
     "            <input type=\"checkbox\" class=\"filled-in\" id=\"negatif5\" ng-model=\"form.Checkbox5Negatif\"/>\n" +
     "            <label for=\"negatif5\">Négatif</label>\n" +
     "            <input type=\"checkbox\" class=\"filled-in\" id=\"non5\" ng-model=\"form.Checkbox5NonRenseigne\"/>\n" +
@@ -442,8 +453,8 @@ module.run(["$templateCache", function($templateCache) {
     "        </li>\n" +
     "\n" +
     "        <li>\n" +
-    "          <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
-    "            6. Troubles oculaires\n" +
+    "          <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "            6. Troubles oculaires</div>\n" +
     "            <input type=\"checkbox\" class=\"filled-in\" id=\"negatif6\" ng-model=\"form.Checkbox6Negatif\"/>\n" +
     "            <label for=\"negatif6\">Négatif</label>\n" +
     "            <input type=\"checkbox\" class=\"filled-in\" id=\"non6\" ng-model=\"form.Checkbox6NonRenseigne\"/>\n" +
@@ -462,8 +473,8 @@ module.run(["$templateCache", function($templateCache) {
     "        </li>\n" +
     "\n" +
     "        <li>\n" +
-    "          <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
-    "            7. Habitudes nocives\n" +
+    "          <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "            7. Habitudes nocives</div>\n" +
     "            <input type=\"checkbox\" class=\"filled-in\" id=\"negatif7\" ng-model=\"form.Checkbox7Negatif\"/>\n" +
     "            <label for=\"negatif7\">Négatif</label>\n" +
     "            <input type=\"checkbox\" class=\"filled-in\" id=\"non7\" ng-model=\"form.Checkbox7NonRenseigne\"/>\n" +
@@ -498,8 +509,8 @@ module.run(["$templateCache", function($templateCache) {
     "          </li>\n" +
     "\n" +
     "          <li>\n" +
-    "            <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
-    "              8. Dysfonctionnements oro-ligaux\n" +
+    "            <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "              8. Dysfonctionnements oro-ligaux</div>\n" +
     "              <input type=\"checkbox\" class=\"filled-in\" id=\"negatif8\" ng-model=\"form.Checkbox8Negatif\"/>\n" +
     "              <label for=\"negatif8\">Négatif</label>\n" +
     "              <input type=\"checkbox\" class=\"filled-in\" id=\"non8\" ng-model=\"form.Checkbox8NonRenseigne\"/>\n" +
@@ -525,8 +536,8 @@ module.run(["$templateCache", function($templateCache) {
     "            </div>\n" +
     "          </li>\n" +
     "          <li>\n" +
-    "            <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
-    "              9. Traumatisme\n" +
+    "            <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "              9. Traumatisme</div>\n" +
     "              <input type=\"checkbox\" class=\"filled-in\" id=\"negatif9\" ng-model=\"form.Checkbox9Negatif\"/>\n" +
     "              <label for=\"negatif9\">Négatif</label>\n" +
     "              <input type=\"checkbox\" class=\"filled-in\" id=\"non9\" ng-model=\"form.Checkbox9NonRenseigne\"/>\n" +
@@ -545,8 +556,8 @@ module.run(["$templateCache", function($templateCache) {
     "\n" +
     "\n" +
     "          <li>\n" +
-    "            <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
-    "              10. Observations complémentaires\n" +
+    "            <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "              10. Observations complémentaires</div>\n" +
     "              <input type=\"checkbox\" class=\"filled-in\" id=\"negatif10\" ng-model=\"form.Checkbox10Negatif\"/>\n" +
     "              <label for=\"negatif10\">Négatif</label>\n" +
     "              <input type=\"checkbox\" class=\"filled-in\" id=\"non10\" ng-model=\"form.Checkbox10NonRenseigne\"/>\n" +
@@ -564,8 +575,8 @@ module.run(["$templateCache", function($templateCache) {
     "          </li>\n" +
     "\n" +
     "          <li>\n" +
-    "            <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
-    "              11. Palpation(s) douloureuse(s) des muscles masticateurs, des atm et des muscles cervico-scapulaires :\n" +
+    "            <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "              11. Palpation(s) douloureuse(s) des muscles masticateurs, des atm et des muscles cervico-scapulaires :</div>\n" +
     "              <input type=\"checkbox\" class=\"filled-in\" id=\"negatif11\" ng-model=\"form.Checkbox11Negatif\"/>\n" +
     "              <label for=\"negatif11\">Négatif</label>\n" +
     "              <input type=\"checkbox\" class=\"filled-in\" id=\"non11\" ng-model=\"form.Checkbox11NonRenseigne\"/>\n" +
@@ -573,12 +584,11 @@ module.run(["$templateCache", function($templateCache) {
     "            </div>\n" +
     "            <div class=\"collapsible-body\">\n" +
     "              <div id=\"champs11\">\n" +
-    "                <table>\n" +
+    "                <table class=\"striped\">\n" +
     "                  <thead>\n" +
     "                    <tr>\n" +
     "                      <th> </th>\n" +
     "                      <th colspan=\"3\">Côté droit</th>\n" +
-    "                      <th colspan=\"3\">Côté gauche</th>\n" +
     "                    </tr>\n" +
     "                  </thead>\n" +
     "                  <tbody>\n" +
@@ -595,43 +605,18 @@ module.run(["$templateCache", function($templateCache) {
     "                      <td>\n" +
     "                        Douleur(s) référée(s)\n" +
     "                      </td>\n" +
-    "                      <td>\n" +
-    "                        Douleur provoquée\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        Est-elle identique à la douleur habituelle ?\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        Douleur(s) référée(s)\n" +
-    "                      </td>\n" +
     "                    </tr>\n" +
     "                    <tr>\n" +
     "                      <td>\n" +
     "                        Temporal postérieur\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11TempPost1\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"1\" ng-model=\"form.Checkbox11TempPost1\"/>\n" +
+    "                        <label for=\"1\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11TempPost2\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <select>\n" +
-    "                          <option></option>\n" +
-    "                          <option>M. temporal droit</option>\n" +
-    "                          <option>M. temporal gauche</option>\n" +
-    "                          <option>M. masséter droit</option>\n" +
-    "                          <option>M. masséter gauche</option>\n" +
-    "                          <option>Atm droit</option>\n" +
-    "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
-    "                        </select>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11TempPost3\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11TempPost4\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"2\" ng-model=\"form.Checkbox11TempPost2\"/>\n" +
+    "                        <label for=\"2\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
     "                        <select>\n" +
@@ -642,7 +627,7 @@ module.run(["$templateCache", function($templateCache) {
     "                          <option>M. masséter gauche</option>\n" +
     "                          <option>Atm droit</option>\n" +
     "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                        </select>\n" +
     "                      </td>\n" +
     "                    </tr>\n" +
@@ -651,28 +636,12 @@ module.run(["$templateCache", function($templateCache) {
     "                        Temporal moyen\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11TempMoy1\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"3\" ng-model=\"form.Checkbox11TempMoy1\"/>\n" +
+    "                        <label for=\"3\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11TempMoy2\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <select>\n" +
-    "                          <option></option>\n" +
-    "                          <option>M. temporal droit</option>\n" +
-    "                          <option>M. temporal gauche</option>\n" +
-    "                          <option>M. masséter droit</option>\n" +
-    "                          <option>M. masséter gauche</option>\n" +
-    "                          <option>Atm droit</option>\n" +
-    "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
-    "                        </select>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11TempMoy3\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11TempMoy4\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"4\" ng-model=\"form.Checkbox11TempMoy2\"/>\n" +
+    "                        <label for=\"4\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
     "                        <select>\n" +
@@ -683,7 +652,7 @@ module.run(["$templateCache", function($templateCache) {
     "                          <option>M. masséter gauche</option>\n" +
     "                          <option>Atm droit</option>\n" +
     "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                        </select>\n" +
     "                      </td>\n" +
     "                    </tr>\n" +
@@ -692,28 +661,12 @@ module.run(["$templateCache", function($templateCache) {
     "                        Temporal antérieur\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11TempAnt1\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"5\" ng-model=\"form.Checkbox11TempAnt1\"/>\n" +
+    "                        <label for=\"5\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11TempAnt2\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <select>\n" +
-    "                          <option></option>\n" +
-    "                          <option>M. temporal droit</option>\n" +
-    "                          <option>M. temporal gauche</option>\n" +
-    "                          <option>M. masséter droit</option>\n" +
-    "                          <option>M. masséter gauche</option>\n" +
-    "                          <option>Atm droit</option>\n" +
-    "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
-    "                        </select>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11TempAnt3\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11TempAnt4\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"6\" ng-model=\"form.Checkbox11TempAnt2\"/>\n" +
+    "                        <label for=\"6\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
     "                        <select>\n" +
@@ -724,7 +677,7 @@ module.run(["$templateCache", function($templateCache) {
     "                          <option>M. masséter gauche</option>\n" +
     "                          <option>Atm droit</option>\n" +
     "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                        </select>\n" +
     "                      </td>\n" +
     "                    </tr>\n" +
@@ -744,28 +697,12 @@ module.run(["$templateCache", function($templateCache) {
     "                        Masséter (origine angle mdb)\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11MasseterOri1\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"9\" ng-model=\"form.Checkbox11MasseterOri1\"/>\n" +
+    "                        <label for=\"9\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11MasseterOri2\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <select>\n" +
-    "                          <option></option>\n" +
-    "                          <option>M. temporal droit</option>\n" +
-    "                          <option>M. temporal gauche</option>\n" +
-    "                          <option>M. masséter droit</option>\n" +
-    "                          <option>M. masséter gauche</option>\n" +
-    "                          <option>Atm droit</option>\n" +
-    "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
-    "                        </select>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11MasseterOri3\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11MasseterOri4\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"10\" ng-model=\"form.Checkbox11MasseterOri2\"/>\n" +
+    "                        <label for=\"10\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
     "                        <select>\n" +
@@ -776,7 +713,7 @@ module.run(["$templateCache", function($templateCache) {
     "                          <option>M. masséter gauche</option>\n" +
     "                          <option>Atm droit</option>\n" +
     "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                        </select>\n" +
     "                      </td>\n" +
     "                    </tr>\n" +
@@ -785,28 +722,12 @@ module.run(["$templateCache", function($templateCache) {
     "                        Masséter (corps)\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11MasseterCorps1\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"11\" ng-model=\"form.Checkbox11MasseterCorps1\"/>\n" +
+    "                        <label for=\"11\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11MasseterCorps2\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <select>\n" +
-    "                          <option></option>\n" +
-    "                          <option>M. temporal droit</option>\n" +
-    "                          <option>M. temporal gauche</option>\n" +
-    "                          <option>M. masséter droit</option>\n" +
-    "                          <option>M. masséter gauche</option>\n" +
-    "                          <option>Atm droit</option>\n" +
-    "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
-    "                        </select>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11MasseterCorps3\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11MasseterCorps4\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"12\" ng-model=\"form.Checkbox11MasseterCorps2\"/>\n" +
+    "                        <label for=\"12\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
     "                        <select>\n" +
@@ -817,7 +738,7 @@ module.run(["$templateCache", function($templateCache) {
     "                          <option>M. masséter gauche</option>\n" +
     "                          <option>Atm droit</option>\n" +
     "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                        </select>\n" +
     "                      </td>\n" +
     "                    </tr>\n" +
@@ -826,28 +747,12 @@ module.run(["$templateCache", function($templateCache) {
     "                        Masséter (insertion zygomatique)\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11MasseterInsert1\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"13\" ng-model=\"form.Checkbox11MasseterInsert3\"/>\n" +
+    "                        <label for=\"13\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11MasseterInsert2\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <select>\n" +
-    "                          <option></option>\n" +
-    "                          <option>M. temporal droit</option>\n" +
-    "                          <option>M. temporal gauche</option>\n" +
-    "                          <option>M. masséter droit</option>\n" +
-    "                          <option>M. masséter gauche</option>\n" +
-    "                          <option>Atm droit</option>\n" +
-    "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
-    "                        </select>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11MasseterInsert3\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11MasseterInsert4\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"14\" ng-model=\"form.Checkbox11MasseterInsert4\"/>\n" +
+    "                        <label for=\"14\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
     "                        <select>\n" +
@@ -858,7 +763,7 @@ module.run(["$templateCache", function($templateCache) {
     "                          <option>M. masséter gauche</option>\n" +
     "                          <option>Atm droit</option>\n" +
     "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                        </select>\n" +
     "                      </td>\n" +
     "                    </tr>\n" +
@@ -872,28 +777,12 @@ module.run(["$templateCache", function($templateCache) {
     "                        Pôle latéral 0,5 kg\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Pole1\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"15\" ng-model=\"form.Checkbox11Pole1\"/>\n" +
+    "                        <label for=\"15\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Pole2\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <select>\n" +
-    "                          <option></option>\n" +
-    "                          <option>M. temporal droit</option>\n" +
-    "                          <option>M. temporal gauche</option>\n" +
-    "                          <option>M. masséter droit</option>\n" +
-    "                          <option>M. masséter gauche</option>\n" +
-    "                          <option>Atm droit</option>\n" +
-    "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
-    "                        </select>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Pole3\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Pole4\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"16\" ng-model=\"form.Checkbox11Pole2\"/>\n" +
+    "                        <label for=\"16\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
     "                        <select>\n" +
@@ -904,7 +793,7 @@ module.run(["$templateCache", function($templateCache) {
     "                          <option>M. masséter gauche</option>\n" +
     "                          <option>Atm droit</option>\n" +
     "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                        </select>\n" +
     "                      </td>\n" +
     "                    </tr>\n" +
@@ -913,28 +802,12 @@ module.run(["$templateCache", function($templateCache) {
     "                        Autour du pôle latéral 1 kg\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11AutourPole1\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"17\" ng-model=\"form.Checkbox11AutourPole1\"/>\n" +
+    "                        <label for=\"17\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11AutourPole2\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <select>\n" +
-    "                          <option></option>\n" +
-    "                          <option>M. temporal droit</option>\n" +
-    "                          <option>M. temporal gauche</option>\n" +
-    "                          <option>M. masséter droit</option>\n" +
-    "                          <option>M. masséter gauche</option>\n" +
-    "                          <option>Atm droit</option>\n" +
-    "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
-    "                        </select>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11AutourPole3\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11AutourPole4\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"18\" ng-model=\"form.Checkbox11AutourPole2\"/>\n" +
+    "                        <label for=\"18\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
     "                        <select>\n" +
@@ -945,7 +818,7 @@ module.run(["$templateCache", function($templateCache) {
     "                          <option>M. masséter gauche</option>\n" +
     "                          <option>Atm droit</option>\n" +
     "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                        </select>\n" +
     "                      </td>\n" +
     "                    </tr>\n" +
@@ -959,28 +832,12 @@ module.run(["$templateCache", function($templateCache) {
     "                        Digastrique (région md post)\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Digastrique1\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"19\" ng-model=\"form.Checkbox11Digastrique1\"/>\n" +
+    "                        <label for=\"19\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Digastrique2\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <select>\n" +
-    "                          <option></option>\n" +
-    "                          <option>M. temporal droit</option>\n" +
-    "                          <option>M. temporal gauche</option>\n" +
-    "                          <option>M. masséter droit</option>\n" +
-    "                          <option>M. masséter gauche</option>\n" +
-    "                          <option>Atm droit</option>\n" +
-    "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
-    "                        </select>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Digastrique3\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Digastrique4\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"20\" ng-model=\"form.Checkbox11Digastrique2\"/>\n" +
+    "                        <label for=\"20\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
     "                        <select>\n" +
@@ -991,7 +848,7 @@ module.run(["$templateCache", function($templateCache) {
     "                          <option>M. masséter gauche</option>\n" +
     "                          <option>Atm droit</option>\n" +
     "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                        </select>\n" +
     "                      </td>\n" +
     "                    </tr>\n" +
@@ -1000,28 +857,12 @@ module.run(["$templateCache", function($templateCache) {
     "                        Ptérygoïdien médial (région submd)\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11PteryMed1\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"21\" ng-model=\"form.Checkbox11PteryMed1\"/>\n" +
+    "                        <label for=\"21\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11PteryMed2\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <select>\n" +
-    "                          <option></option>\n" +
-    "                          <option>M. temporal droit</option>\n" +
-    "                          <option>M. temporal gauche</option>\n" +
-    "                          <option>M. masséter droit</option>\n" +
-    "                          <option>M. masséter gauche</option>\n" +
-    "                          <option>Atm droit</option>\n" +
-    "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
-    "                        </select>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11PteryMed3\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11PteryMed4\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"22\" ng-model=\"form.Checkbox11PteryMed2\"/>\n" +
+    "                        <label for=\"22\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
     "                        <select>\n" +
@@ -1032,7 +873,7 @@ module.run(["$templateCache", function($templateCache) {
     "                          <option>M. masséter gauche</option>\n" +
     "                          <option>Atm droit</option>\n" +
     "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                        </select>\n" +
     "                      </td>\n" +
     "                    </tr>\n" +
@@ -1041,28 +882,12 @@ module.run(["$templateCache", function($templateCache) {
     "                        Aire du ptérygoïdien latéral\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11PteryLat1\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"23\" ng-model=\"form.Checkbox11PteryLat1\"/>\n" +
+    "                        <label for=\"23\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11PteryLat2\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <select>\n" +
-    "                          <option></option>\n" +
-    "                          <option>M. temporal droit</option>\n" +
-    "                          <option>M. temporal gauche</option>\n" +
-    "                          <option>M. masséter droit</option>\n" +
-    "                          <option>M. masséter gauche</option>\n" +
-    "                          <option>Atm droit</option>\n" +
-    "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
-    "                        </select>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11PteryLat3\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11PteryLat4\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"24\" ng-model=\"form.Checkbox11PteryLat2\"/>\n" +
+    "                        <label for=\"24\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
     "                        <select>\n" +
@@ -1073,7 +898,7 @@ module.run(["$templateCache", function($templateCache) {
     "                          <option>M. masséter gauche</option>\n" +
     "                          <option>Atm droit</option>\n" +
     "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                        </select>\n" +
     "                      </td>\n" +
     "                    </tr>\n" +
@@ -1082,28 +907,12 @@ module.run(["$templateCache", function($templateCache) {
     "                        Tendon du temporal\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Tendon1\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"25\" ng-model=\"form.Checkbox11Tendon1\"/>\n" +
+    "                        <label for=\"25\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Tendon2\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <select>\n" +
-    "                          <option></option>\n" +
-    "                          <option>M. temporal droit</option>\n" +
-    "                          <option>M. temporal gauche</option>\n" +
-    "                          <option>M. masséter droit</option>\n" +
-    "                          <option>M. masséter gauche</option>\n" +
-    "                          <option>Atm droit</option>\n" +
-    "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
-    "                        </select>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Tendon3\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Tendon4\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"26\" ng-model=\"form.Checkbox11Tendon2\"/>\n" +
+    "                        <label for=\"26\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
     "                        <select>\n" +
@@ -1114,7 +923,7 @@ module.run(["$templateCache", function($templateCache) {
     "                          <option>M. masséter gauche</option>\n" +
     "                          <option>Atm droit</option>\n" +
     "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                        </select>\n" +
     "                      </td>\n" +
     "                    </tr>\n" +
@@ -1128,28 +937,12 @@ module.run(["$templateCache", function($templateCache) {
     "                        Sterno-cléido-mastoïdien\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Sterno1\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"27\" ng-model=\"form.Checkbox11Sterno1\"/>\n" +
+    "                        <label for=\"27\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Sterno2\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <select>\n" +
-    "                          <option></option>\n" +
-    "                          <option>M. temporal droit</option>\n" +
-    "                          <option>M. temporal gauche</option>\n" +
-    "                          <option>M. masséter droit</option>\n" +
-    "                          <option>M. masséter gauche</option>\n" +
-    "                          <option>Atm droit</option>\n" +
-    "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
-    "                        </select>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Sterno3\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Sterno4\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"28\" ng-model=\"form.Checkbox11Sterno2\"/>\n" +
+    "                        <label for=\"28\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
     "                        <select>\n" +
@@ -1160,7 +953,7 @@ module.run(["$templateCache", function($templateCache) {
     "                          <option>M. masséter gauche</option>\n" +
     "                          <option>Atm droit</option>\n" +
     "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                        </select>\n" +
     "                      </td>\n" +
     "                    </tr>\n" +
@@ -1169,28 +962,12 @@ module.run(["$templateCache", function($templateCache) {
     "                        Trapèze\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Trapeze1\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"29\" ng-model=\"form.Checkbox11Trapeze1\"/>\n" +
+    "                        <label for=\"29\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Trapeze2\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <select>\n" +
-    "                          <option></option>\n" +
-    "                          <option>M. temporal droit</option>\n" +
-    "                          <option>M. temporal gauche</option>\n" +
-    "                          <option>M. masséter droit</option>\n" +
-    "                          <option>M. masséter gauche</option>\n" +
-    "                          <option>Atm droit</option>\n" +
-    "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
-    "                        </select>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Trapeze3\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11Trapeze4\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"30\" ng-model=\"form.Checkbox11Trapeze2\"/>\n" +
+    "                        <label for=\"30\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
     "                        <select>\n" +
@@ -1201,7 +978,7 @@ module.run(["$templateCache", function($templateCache) {
     "                          <option>M. masséter gauche</option>\n" +
     "                          <option>Atm droit</option>\n" +
     "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                        </select>\n" +
     "                      </td>\n" +
     "                    </tr>\n" +
@@ -1215,28 +992,12 @@ module.run(["$templateCache", function($templateCache) {
     "                        <input type=\"text\" ng-model=\"Text11AutreMuscle1\"/>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle11\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"31\" ng-model=\"form.Checkbox11AutreMuscle11\"/>\n" +
+    "                        <label for=\"31\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle12\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <select>\n" +
-    "                          <option></option>\n" +
-    "                          <option>M. temporal droit</option>\n" +
-    "                          <option>M. temporal gauche</option>\n" +
-    "                          <option>M. masséter droit</option>\n" +
-    "                          <option>M. masséter gauche</option>\n" +
-    "                          <option>Atm droit</option>\n" +
-    "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
-    "                        </select>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle13\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle14\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"32\" ng-model=\"form.Checkbox11AutreMuscle12\"/>\n" +
+    "                        <label for=\"32\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
     "                        <select>\n" +
@@ -1247,7 +1008,7 @@ module.run(["$templateCache", function($templateCache) {
     "                          <option>M. masséter gauche</option>\n" +
     "                          <option>Atm droit</option>\n" +
     "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                        </select>\n" +
     "                      </td>\n" +
     "                    </tr>\n" +
@@ -1256,28 +1017,12 @@ module.run(["$templateCache", function($templateCache) {
     "                        <input type=\"text\" ng-model=\"Text11AutreMuscle2\"/>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle21\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"33\" ng-model=\"form.Checkbox11AutreMuscle21\"/>\n" +
+    "                        <label for=\"33\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle22\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <select>\n" +
-    "                          <option></option>\n" +
-    "                          <option>M. temporal droit</option>\n" +
-    "                          <option>M. temporal gauche</option>\n" +
-    "                          <option>M. masséter droit</option>\n" +
-    "                          <option>M. masséter gauche</option>\n" +
-    "                          <option>Atm droit</option>\n" +
-    "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
-    "                        </select>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle23\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle24\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"34\" ng-model=\"form.Checkbox11AutreMuscle22\"/>\n" +
+    "                        <label for=\"34\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
     "                        <select>\n" +
@@ -1288,7 +1033,7 @@ module.run(["$templateCache", function($templateCache) {
     "                          <option>M. masséter gauche</option>\n" +
     "                          <option>Atm droit</option>\n" +
     "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                        </select>\n" +
     "                      </td>\n" +
     "                    </tr>\n" +
@@ -1297,28 +1042,12 @@ module.run(["$templateCache", function($templateCache) {
     "                        <input type=\"text\" ng-model=\"Text11AutreMuscle3\"/>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle31\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"35\" ng-model=\"form.Checkbox11AutreMuscle31\"/>\n" +
+    "                        <label for=\"35\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle32\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <select>\n" +
-    "                          <option></option>\n" +
-    "                          <option>M. temporal droit</option>\n" +
-    "                          <option>M. temporal gauche</option>\n" +
-    "                          <option>M. masséter droit</option>\n" +
-    "                          <option>M. masséter gauche</option>\n" +
-    "                          <option>Atm droit</option>\n" +
-    "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
-    "                        </select>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle33\"/>\n" +
-    "                      </td>\n" +
-    "                      <td>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"Checkbox11AutreMuscle34\"/>\n" +
+    "                        <input type=\"checkbox\" class=\"filled-in\" id=\"36\" ng-model=\"form.Checkbox11AutreMuscle32\"/>\n" +
+    "                        <label for=\"36\"></label>\n" +
     "                      </td>\n" +
     "                      <td>\n" +
     "                        <select>\n" +
@@ -1329,17 +1058,16 @@ module.run(["$templateCache", function($templateCache) {
     "                          <option>M. masséter gauche</option>\n" +
     "                          <option>Atm droit</option>\n" +
     "                          <option>Atm gauche</option>\n" +
-    "                          <option>Autres <input type=\"text\"></option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                        </select>\n" +
-    "                      </td>\n" +
     "                    </tr>\n" +
     "                  </tbody>\n" +
     "                </table>\n" +
     "              </div>\n" +
     "            </li>\n" +
     "            <li>\n" +
-    "              <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
-    "                12. Rapports Incisifs :\n" +
+    "              <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "                12. Rapports Incisifs :</div>\n" +
     "                <input type=\"checkbox\" class=\"filled-in\" id=\"negatif12\" ng-model=\"form.Checkbox12Negatif\"/>\n" +
     "                <label for=\"negatif12\">Négatif</label>\n" +
     "                <input type=\"checkbox\" class=\"filled-in\" id=\"non12\" ng-model=\"form.Checkbox12NonRenseigne\"/>\n" +
@@ -1417,8 +1145,8 @@ module.run(["$templateCache", function($templateCache) {
     "              </div>\n" +
     "            </li>\n" +
     "            <li>\n" +
-    "              <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
-    "                13. Mouvements d'ouverture, latéralités et propulsion 3\n" +
+    "              <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "                13. Mouvements d'ouverture, latéralités et propulsion</div>\n" +
     "                <input type=\"checkbox\" class=\"filled-in\" id=\"negatif13\" ng-model=\"form.Checkbox13Negatif\"/>\n" +
     "                <label for=\"negatif13\">Négatif</label>\n" +
     "                <input type=\"checkbox\" class=\"filled-in\" id=\"non13\" ng-model=\"form.Checkbox13NonRenseigne\"/>\n" +
@@ -1480,7 +1208,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1492,7 +1220,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1507,7 +1235,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1519,7 +1247,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                      </tr>\n" +
@@ -1543,7 +1271,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1555,7 +1283,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1570,7 +1298,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1582,7 +1310,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                      </tr>\n" +
@@ -1603,7 +1331,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1615,7 +1343,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1630,7 +1358,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1642,7 +1370,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                      </tr>\n" +
@@ -1663,7 +1391,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1675,7 +1403,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1690,7 +1418,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1702,7 +1430,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                      </tr>\n" +
@@ -1726,7 +1454,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1738,7 +1466,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1753,7 +1481,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1765,7 +1493,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                      </tr>\n" +
@@ -1789,7 +1517,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1801,7 +1529,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1816,7 +1544,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1828,7 +1556,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                      </tr>\n" +
@@ -1849,7 +1577,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1861,7 +1589,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1876,7 +1604,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1888,7 +1616,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                      </tr>\n" +
@@ -1912,7 +1640,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1924,7 +1652,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1939,7 +1667,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1951,7 +1679,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                      </tr>\n" +
@@ -1975,7 +1703,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -1987,7 +1715,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -2002,7 +1730,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -2014,7 +1742,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                      </tr>\n" +
@@ -2035,7 +1763,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -2047,7 +1775,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -2062,7 +1790,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -2074,7 +1802,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                      </tr>\n" +
@@ -2098,7 +1826,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -2110,7 +1838,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -2125,7 +1853,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -2137,7 +1865,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                      </tr>\n" +
@@ -2158,7 +1886,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -2170,7 +1898,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -2185,7 +1913,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
@@ -2197,7 +1925,7 @@ module.run(["$templateCache", function($templateCache) {
     "                            <option>M. masséter gauche</option>\n" +
     "                            <option>Atm droit</option>\n" +
     "                            <option>Atm gauche</option>\n" +
-    "                            <option>Autres <input type=\"text\"></option>\n" +
+    "                            <!-- <option>Autres <input type=\"text\"></option> -->\n" +
     "                          </select>\n" +
     "                        </td>\n" +
     "                      </tr>\n" +
@@ -2225,8 +1953,8 @@ module.run(["$templateCache", function($templateCache) {
     "            </li>\n" +
     "\n" +
     "              <li>\n" +
-    "                <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
-    "                  14. Trajet d'ouverture / fermeture :\n" +
+    "                <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "                  14. Trajet d'ouverture / fermeture :</div>\n" +
     "                  <input type=\"checkbox\" class=\"filled-in\" id=\"negatif14\" ng-model=\"form.Checkbox14Negatif\"/>\n" +
     "                  <label for=\"negatif14\">Négatif</label>\n" +
     "                  <input type=\"checkbox\" class=\"filled-in\" id=\"non14\" ng-model=\"form.Checkbox14NonRenseigne\"/>\n" +
@@ -2262,8 +1990,8 @@ module.run(["$templateCache", function($templateCache) {
     "            </div>\n" +
     "          </li>\n" +
     "              <li>\n" +
-    "                <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
-    "                  15. Bruits articulaires lors des mouvements fonctionnels :\n" +
+    "                <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "                  15. Bruits articulaires lors des mouvements fonctionnels :</div>\n" +
     "                  <input type=\"checkbox\" class=\"filled-in\" id=\"negatif15\" ng-model=\"form.Checkbox15Negatif\"/>\n" +
     "                  <label for=\"negatif15\">Négatif</label>\n" +
     "                  <input type=\"checkbox\" class=\"filled-in\" id=\"non15\" ng-model=\"form.Checkbox15NonRenseigne\"/>\n" +
@@ -2292,589 +2020,505 @@ module.run(["$templateCache", function($templateCache) {
     "                      <td>Douleur habituelle ?</td>\n" +
     "                    </tr>\n" +
     "\n" +
-    "                  <tr>\n" +
-    "                    <td rowspan=\"2\">Ouverture </td>\n" +
-    "                    <td>\n" +
-    "                      ATM droite\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraClaq1\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraCrep1\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatClaq1\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatCrep1\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitDouleur1\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <select>\n" +
-    "                        <option></option>\n" +
-    "                        <option>M. temporal droit</option>\n" +
-    "                        <option>M. temporal gauche</option>\n" +
-    "                        <option>M. masséter droit</option>\n" +
-    "                        <option>M. masséter gauche</option>\n" +
-    "                        <option>Atm droit</option>\n" +
-    "                        <option>Atm gauche</option>\n" +
-    "                        <option>Autres <input type=\"text\"></option>\n" +
-    "                      </select>\n" +
-    "                    </td>\n" +
-    "                  </tr>\n" +
+    "                    <tr>\n" +
+    "                      <td rowspan=\"2\">Ouverture </td>\n" +
+    "                      <td>\n" +
+    "                        ATM droite\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraClaq1\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraCrep1\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatClaq1\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatCrep1\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitDouleur1\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <select>\n" +
+    "                          <option></option>\n" +
+    "                          <option>M. temporal droit</option>\n" +
+    "                          <option>M. temporal gauche</option>\n" +
+    "                          <option>M. masséter droit</option>\n" +
+    "                          <option>M. masséter gauche</option>\n" +
+    "                          <option>Atm droit</option>\n" +
+    "                          <option>Atm gauche</option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
+    "                        </select>\n" +
+    "                      </td>\n" +
+    "                    </tr>\n" +
     "\n" +
-    "                  <tr>\n" +
-    "                    <td>\n" +
-    "                      ATM gauche\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraClaq1\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraCrep1\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatClaq1\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatCrep1\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GaucheDouleur1\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <select>\n" +
-    "                        <option></option>\n" +
-    "                        <option>M. temporal droit</option>\n" +
-    "                        <option>M. temporal gauche</option>\n" +
-    "                        <option>M. masséter droit</option>\n" +
-    "                        <option>M. masséter gauche</option>\n" +
-    "                        <option>Atm droit</option>\n" +
-    "                        <option>Atm gauche</option>\n" +
-    "                        <option>Autres <input type=\"text\"></option>\n" +
-    "                      </select>\n" +
-    "                    </td>\n" +
-    "                  </tr>\n" +
+    "                    <tr>\n" +
+    "                      <td>\n" +
+    "                        ATM gauche\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraClaq1\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraCrep1\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatClaq1\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatCrep1\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GaucheDouleur1\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <select>\n" +
+    "                          <option></option>\n" +
+    "                          <option>M. temporal droit</option>\n" +
+    "                          <option>M. temporal gauche</option>\n" +
+    "                          <option>M. masséter droit</option>\n" +
+    "                          <option>M. masséter gauche</option>\n" +
+    "                          <option>Atm droit</option>\n" +
+    "                          <option>Atm gauche</option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
+    "                        </select>\n" +
+    "                      </td>\n" +
+    "                    </tr>\n" +
     "\n" +
-    "                  <tr>\n" +
-    "                    <td rowspan=\"2\">Fermeture </td>\n" +
-    "                    <td>\n" +
-    "                      ATM droite\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraClaq2\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraCrep2\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatClaq2\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatCrep2\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitDouleur2\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <select>\n" +
-    "                        <option></option>\n" +
-    "                        <option>M. temporal droit</option>\n" +
-    "                        <option>M. temporal gauche</option>\n" +
-    "                        <option>M. masséter droit</option>\n" +
-    "                        <option>M. masséter gauche</option>\n" +
-    "                        <option>Atm droit</option>\n" +
-    "                        <option>Atm gauche</option>\n" +
-    "                        <option>Autres <input type=\"text\"></option>\n" +
-    "                      </select>\n" +
-    "                    </td>\n" +
-    "                  </tr>\n" +
+    "                    <tr>\n" +
+    "                      <td rowspan=\"2\">Fermeture </td>\n" +
+    "                      <td>\n" +
+    "                        ATM droite\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraClaq2\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraCrep2\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatClaq2\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatCrep2\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitDouleur2\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <select>\n" +
+    "                          <option></option>\n" +
+    "                          <option>M. temporal droit</option>\n" +
+    "                          <option>M. temporal gauche</option>\n" +
+    "                          <option>M. masséter droit</option>\n" +
+    "                          <option>M. masséter gauche</option>\n" +
+    "                          <option>Atm droit</option>\n" +
+    "                          <option>Atm gauche</option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
+    "                        </select>\n" +
+    "                      </td>\n" +
+    "                    </tr>\n" +
     "\n" +
-    "                  <tr>\n" +
-    "                    <td>\n" +
-    "                      ATM gauche\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraClaq2\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraCrep2\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatClaq2\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatCrep2\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GaucheDouleur2\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <select>\n" +
-    "                        <option></option>\n" +
-    "                        <option>M. temporal droit</option>\n" +
-    "                        <option>M. temporal gauche</option>\n" +
-    "                        <option>M. masséter droit</option>\n" +
-    "                        <option>M. masséter gauche</option>\n" +
-    "                        <option>Atm droit</option>\n" +
-    "                        <option>Atm gauche</option>\n" +
-    "                        <option>Autres <input type=\"text\"></option>\n" +
-    "                      </select>\n" +
-    "                    </td>\n" +
-    "                  </tr>\n" +
+    "                    <tr>\n" +
+    "                      <td>\n" +
+    "                        ATM gauche\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraClaq2\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraCrep2\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatClaq2\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatCrep2\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GaucheDouleur2\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <select>\n" +
+    "                          <option></option>\n" +
+    "                          <option>M. temporal droit</option>\n" +
+    "                          <option>M. temporal gauche</option>\n" +
+    "                          <option>M. masséter droit</option>\n" +
+    "                          <option>M. masséter gauche</option>\n" +
+    "                          <option>Atm droit</option>\n" +
+    "                          <option>Atm gauche</option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
+    "                        </select>\n" +
+    "                      </td>\n" +
+    "                    </tr>\n" +
     "\n" +
-    "                  <tr>\n" +
-    "                    <td rowspan=\"2\">Latéralité gauche </td>\n" +
-    "                    <td>\n" +
-    "                      ATM droite\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraClaq3\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraCrep3\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatClaq3\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatCrep3\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitDouleur3\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <select>\n" +
-    "                        <option></option>\n" +
-    "                        <option>M. temporal droit</option>\n" +
-    "                        <option>M. temporal gauche</option>\n" +
-    "                        <option>M. masséter droit</option>\n" +
-    "                        <option>M. masséter gauche</option>\n" +
-    "                        <option>Atm droit</option>\n" +
-    "                        <option>Atm gauche</option>\n" +
-    "                        <option>Autres <input type=\"text\"></option>\n" +
-    "                      </select>\n" +
-    "                    </td>\n" +
-    "                  </tr>\n" +
+    "                    <tr>\n" +
+    "                      <td rowspan=\"2\">Latéralité gauche </td>\n" +
+    "                      <td>\n" +
+    "                        ATM droite\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraClaq3\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraCrep3\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatClaq3\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatCrep3\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitDouleur3\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <select>\n" +
+    "                          <option></option>\n" +
+    "                          <option>M. temporal droit</option>\n" +
+    "                          <option>M. temporal gauche</option>\n" +
+    "                          <option>M. masséter droit</option>\n" +
+    "                          <option>M. masséter gauche</option>\n" +
+    "                          <option>Atm droit</option>\n" +
+    "                          <option>Atm gauche</option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
+    "                        </select>\n" +
+    "                      </td>\n" +
+    "                    </tr>\n" +
     "\n" +
-    "                  <tr>\n" +
-    "                    <td>\n" +
-    "                      ATM gauche\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraClaq3\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraCrep3\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatClaq3\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatCrep3\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GaucheDouleur3\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <select>\n" +
-    "                        <option></option>\n" +
-    "                        <option>M. temporal droit</option>\n" +
-    "                        <option>M. temporal gauche</option>\n" +
-    "                        <option>M. masséter droit</option>\n" +
-    "                        <option>M. masséter gauche</option>\n" +
-    "                        <option>Atm droit</option>\n" +
-    "                        <option>Atm gauche</option>\n" +
-    "                        <option>Autres <input type=\"text\"></option>\n" +
-    "                      </select>\n" +
-    "                    </td>\n" +
-    "                  </tr>\n" +
+    "                    <tr>\n" +
+    "                      <td>\n" +
+    "                        ATM gauche\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraClaq3\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraCrep3\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatClaq3\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatCrep3\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GaucheDouleur3\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <select>\n" +
+    "                          <option></option>\n" +
+    "                          <option>M. temporal droit</option>\n" +
+    "                          <option>M. temporal gauche</option>\n" +
+    "                          <option>M. masséter droit</option>\n" +
+    "                          <option>M. masséter gauche</option>\n" +
+    "                          <option>Atm droit</option>\n" +
+    "                          <option>Atm gauche</option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
+    "                        </select>\n" +
+    "                      </td>\n" +
+    "                    </tr>\n" +
     "\n" +
-    "                  <tr>\n" +
-    "                    <td rowspan=\"2\">Latéralité droite </td>\n" +
-    "                    <td>\n" +
-    "                      ATM droite\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraClaq4\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraCrep4\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatClaq4\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatCrep4\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitDouleur4\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <select>\n" +
-    "                        <option></option>\n" +
-    "                        <option>M. temporal droit</option>\n" +
-    "                        <option>M. temporal gauche</option>\n" +
-    "                        <option>M. masséter droit</option>\n" +
-    "                        <option>M. masséter gauche</option>\n" +
-    "                        <option>Atm droit</option>\n" +
-    "                        <option>Atm gauche</option>\n" +
-    "                        <option>Autres <input type=\"text\"></option>\n" +
-    "                      </select>\n" +
-    "                    </td>\n" +
-    "                  </tr>\n" +
+    "                    <tr>\n" +
+    "                      <td rowspan=\"2\">Latéralité droite </td>\n" +
+    "                      <td>\n" +
+    "                        ATM droite\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraClaq4\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraCrep4\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatClaq4\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatCrep4\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitDouleur4\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <select>\n" +
+    "                          <option></option>\n" +
+    "                          <option>M. temporal droit</option>\n" +
+    "                          <option>M. temporal gauche</option>\n" +
+    "                          <option>M. masséter droit</option>\n" +
+    "                          <option>M. masséter gauche</option>\n" +
+    "                          <option>Atm droit</option>\n" +
+    "                          <option>Atm gauche</option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
+    "                        </select>\n" +
+    "                      </td>\n" +
+    "                    </tr>\n" +
     "\n" +
-    "                  <tr>\n" +
-    "                    <td>\n" +
-    "                      ATM gauche\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraClaq4\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraCrep4\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatClaq4\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatCrep4\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GaucheDouleur4\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <select>\n" +
-    "                        <option></option>\n" +
-    "                        <option>M. temporal droit</option>\n" +
-    "                        <option>M. temporal gauche</option>\n" +
-    "                        <option>M. masséter droit</option>\n" +
-    "                        <option>M. masséter gauche</option>\n" +
-    "                        <option>Atm droit</option>\n" +
-    "                        <option>Atm gauche</option>\n" +
-    "                        <option>Autres <input type=\"text\"></option>\n" +
-    "                      </select>\n" +
-    "                    </td>\n" +
-    "                  </tr>\n" +
+    "                    <tr>\n" +
+    "                      <td>\n" +
+    "                        ATM gauche\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraClaq4\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraCrep4\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatClaq4\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatCrep4\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GaucheDouleur4\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <select>\n" +
+    "                          <option></option>\n" +
+    "                          <option>M. temporal droit</option>\n" +
+    "                          <option>M. temporal gauche</option>\n" +
+    "                          <option>M. masséter droit</option>\n" +
+    "                          <option>M. masséter gauche</option>\n" +
+    "                          <option>Atm droit</option>\n" +
+    "                          <option>Atm gauche</option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
+    "                        </select>\n" +
+    "                      </td>\n" +
+    "                    </tr>\n" +
     "\n" +
-    "                  <tr>\n" +
-    "                    <td rowspan=\"2\">Propulsion </td>\n" +
-    "                    <td>\n" +
-    "                      ATM droite\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraClaq5\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraCrep5\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatClaq5\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatCrep5\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15DroitDouleur5\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <select>\n" +
-    "                        <option></option>\n" +
-    "                        <option>M. temporal droit</option>\n" +
-    "                        <option>M. temporal gauche</option>\n" +
-    "                        <option>M. masséter droit</option>\n" +
-    "                        <option>M. masséter gauche</option>\n" +
-    "                        <option>Atm droit</option>\n" +
-    "                        <option>Atm gauche</option>\n" +
-    "                        <option>Autres <input type=\"text\"></option>\n" +
-    "                      </select>\n" +
-    "                    </td>\n" +
-    "                  </tr>\n" +
+    "                    <tr>\n" +
+    "                      <td rowspan=\"2\">Propulsion </td>\n" +
+    "                      <td>\n" +
+    "                        ATM droite\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraClaq5\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPraCrep5\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatClaq5\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitPatCrep5\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15DroitDouleur5\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <select>\n" +
+    "                          <option></option>\n" +
+    "                          <option>M. temporal droit</option>\n" +
+    "                          <option>M. temporal gauche</option>\n" +
+    "                          <option>M. masséter droit</option>\n" +
+    "                          <option>M. masséter gauche</option>\n" +
+    "                          <option>Atm droit</option>\n" +
+    "                          <option>Atm gauche</option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
+    "                        </select>\n" +
+    "                      </td>\n" +
+    "                    </tr>\n" +
     "\n" +
-    "                  <tr>\n" +
-    "                    <td>\n" +
-    "                      ATM gauche\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraClaq5\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraCrep5\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatClaq5\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatCrep5\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <input type=\"checkbox\" ng-model=\"Checkbox15GaucheDouleur5\"/>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <select>\n" +
-    "                        <option></option>\n" +
-    "                        <option>M. temporal droit</option>\n" +
-    "                        <option>M. temporal gauche</option>\n" +
-    "                        <option>M. masséter droit</option>\n" +
-    "                        <option>M. masséter gauche</option>\n" +
-    "                        <option>Atm droit</option>\n" +
-    "                        <option>Atm gauche</option>\n" +
-    "                        <option>Autres <input type=\"text\"></option>\n" +
-    "                      </select>\n" +
-    "                    </td>\n" +
-    "                  </tr>\n" +
-    "                </tbody>\n" +
-    "              </table>\n" +
-    "            </div>\n" +
-    "          </div>\n" +
-    "\n" +
-    "          <div id=\"div16\">\n" +
-    "            <div id=\"titre16\">\n" +
-    "              <h2>16. Blocage articulaire :\n" +
-    "                <label>\n" +
-    "                  <input type=\"checkbox\" ng-model=\"Checkbox16Negatif\"/>\n" +
-    "                  Négatif\n" +
-    "                </label>\n" +
-    "                <label>\n" +
-    "                  <input type=\"checkbox\" ng-model=\"Checkbox16NonRenseigne\"/>\n" +
-    "                  Non Renseigné\n" +
-    "                </label>\n" +
-    "              </h2>\n" +
-    "            </div>\n" +
-    "            <div id=\"champs16\">\n" +
-    "              <div>\n" +
-    "                <p>\n" +
-    "                  Vous est-il arrivé d'être bloqué(e) ?\n" +
-    "                </p>\n" +
-    "                <label>\n" +
-    "                  <input type=\"checkbox\" ng-model=\"Checkbox16Ouv\"/>\n" +
-    "                  Bouche Ouverte\n" +
-    "                </label>\n" +
-    "                <label>\n" +
-    "                  <input type=\"checkbox\" ng-model=\"Checkbox16Ferm\"/>\n" +
-    "                  Bouche Fermée\n" +
-    "                </label>\n" +
-    "                <label>\n" +
-    "                  <input type=\"checkbox\" ng-model=\"Checkbox16Droit\"/>\n" +
-    "                  ATM droite\n" +
-    "                </label>\n" +
-    "                <label>\n" +
-    "                  <input type=\"checkbox\" ng-model=\"Checkbox16Gauche\"/>\n" +
-    "                  ATM gauche\n" +
-    "                </label>\n" +
+    "                    <tr>\n" +
+    "                      <td>\n" +
+    "                        ATM gauche\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraClaq5\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePraCrep5\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatClaq5\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GauchePatCrep5\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <input type=\"checkbox\" ng-model=\"Checkbox15GaucheDouleur5\"/>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <select>\n" +
+    "                          <option></option>\n" +
+    "                          <option>M. temporal droit</option>\n" +
+    "                          <option>M. temporal gauche</option>\n" +
+    "                          <option>M. masséter droit</option>\n" +
+    "                          <option>M. masséter gauche</option>\n" +
+    "                          <option>Atm droit</option>\n" +
+    "                          <option>Atm gauche</option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
+    "                        </select>\n" +
+    "                      </td>\n" +
+    "                    </tr>\n" +
+    "                  </tbody>\n" +
+    "                </table>\n" +
     "              </div>\n" +
-    "              <div>\n" +
-    "                <label>\n" +
-    "                  Fréquence :\n" +
-    "                  <input type=\"text\" ng-model=\"Text16Frequence\"/>\n" +
-    "                </label>\n" +
-    "                <label>\n" +
-    "                  Dernier épisode :\n" +
-    "                  <input type=\"text\" ng-model=\"Text16DerEpi\"/>\n" +
-    "                </label>\n" +
-    "              </div>\n" +
-    "            </div>\n" +
+    "                </div>\n" +
     "          </li>\n" +
-    "\n" +
-    "          <div id=\"div17\">\n" +
-    "            <div id=\"titre17\">\n" +
-    "              <h2>17. Test du Bâtonnet :\n" +
-    "                <label>\n" +
-    "                  <input type=\"checkbox\" ng-model=\"Checkbox17Negatif\"/>\n" +
-    "                  Négatif\n" +
-    "                </label>\n" +
-    "                <label>\n" +
-    "                  <input type=\"checkbox\" ng-model=\"Checkbox17NonRenseigne\"/>\n" +
-    "                  Non Renseigné\n" +
-    "                </label>\n" +
-    "              </h2>\n" +
-    "            </div>\n" +
-    "            <div id=\"champs17\">\n" +
-    "              <table>\n" +
-    "                <thead>\n" +
-    "                  <tr>\n" +
-    "                    <th colspan=\"2\"> </th>\n" +
-    "                    <th colspan=\"2\">Douleur</th>\n" +
-    "                  </tr>\n" +
-    "                </thead>\n" +
-    "                <tbody>\n" +
-    "                  <tr>\n" +
-    "                    <td rowspan=\"2\">\n" +
-    "                      Bâtonnet\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      Droite\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <select>\n" +
-    "                        <option></option>\n" +
-    "                        <option>M. temporal droit</option>\n" +
-    "                        <option>M. temporal gauche</option>\n" +
-    "                        <option>M. masséter droit</option>\n" +
-    "                        <option>M. masséter gauche</option>\n" +
-    "                        <option>Atm droit</option>\n" +
-    "                        <option>Atm gauche</option>\n" +
-    "                        <option>Autres <input type=\"text\"></option>\n" +
-    "                      </select>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <select>\n" +
-    "                        <option></option>\n" +
-    "                        <option>M. temporal droit</option>\n" +
-    "                        <option>M. temporal gauche</option>\n" +
-    "                        <option>M. masséter droit</option>\n" +
-    "                        <option>M. masséter gauche</option>\n" +
-    "                        <option>Atm droit</option>\n" +
-    "                        <option>Atm gauche</option>\n" +
-    "                        <option>Autres <input type=\"text\"></option>\n" +
-    "                      </select>\n" +
-    "                    </td>\n" +
-    "                  </tr>\n" +
-    "\n" +
-    "                  <tr>\n" +
-    "                    <td>\n" +
-    "                      Gauche\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <select>\n" +
-    "                        <option></option>\n" +
-    "                        <option>M. temporal droit</option>\n" +
-    "                        <option>M. temporal gauche</option>\n" +
-    "                        <option>M. masséter droit</option>\n" +
-    "                        <option>M. masséter gauche</option>\n" +
-    "                        <option>Atm droit</option>\n" +
-    "                        <option>Atm gauche</option>\n" +
-    "                        <option>Autres <input type=\"text\"></option>\n" +
-    "                      </select>\n" +
-    "                    </td>\n" +
-    "                    <td>\n" +
-    "                      <select>\n" +
-    "                        <option></option>\n" +
-    "                        <option>M. temporal droit</option>\n" +
-    "                        <option>M. temporal gauche</option>\n" +
-    "                        <option>M. masséter droit</option>\n" +
-    "                        <option>M. masséter gauche</option>\n" +
-    "                        <option>Atm droit</option>\n" +
-    "                        <option>Atm gauche</option>\n" +
-    "                        <option>Autres <input type=\"text\"></option>\n" +
-    "                      </select>\n" +
-    "                    </td>\n" +
-    "                  </tr>\n" +
-    "                </tbody>\n" +
-    "              </table>\n" +
-    "            </div>\n" +
-    "          </div>\n" +
-    "\n" +
-    "          <div id=\"div18\">\n" +
-    "            <div id=\"titre18\">\n" +
-    "              <h2>18. Elasticité Articulaire :\n" +
-    "                <label>\n" +
-    "                  <input type=\"checkbox\" ng-model=\"Checkbox18Negatif\"/>\n" +
-    "                  Négatif\n" +
-    "                </label>\n" +
-    "                <label>\n" +
-    "                  <input type=\"checkbox\" ng-model=\"Checkbox18NonRenseigne\"/>\n" +
-    "                  Non Renseigné\n" +
-    "                </label>\n" +
-    "              </h2>\n" +
-    "            </div>\n" +
-    "            <div id=\"champs18\">\n" +
-    "              <div>\n" +
-    "                <p>ATM droite : </p>\n" +
-    "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group5\" ng-model=\"Radio18DroitSouple\"/>\n" +
-    "                  Souple\n" +
-    "                </label>\n" +
-    "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group5\" ng-model=\"Radio18DroitRaide\"/>\n" +
-    "                  Raide\n" +
-    "                </label>\n" +
-    "              </div>\n" +
-    "              <div>\n" +
-    "                <p>ATM gauche : </p>\n" +
-    "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group6\" ng-model=\"Radio18GaucheSouple\">\n" +
-    "                  Souple\n" +
-    "                </label>\n" +
-    "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group6\" ng-model=\"Radio18GaucheRaide\">\n" +
-    "                  Raide\n" +
-    "                </label>\n" +
-    "              </div>\n" +
-    "            </div>\n" +
-    "          </li>\n" +
-    "\n" +
-    "          <div id=\"div19\">\n" +
-    "            <div id=\"titre19\">\n" +
-    "              <h2>19. Examen Endo-Buccal :\n" +
-    "                <label>\n" +
-    "                  <input type=\"checkbox\" ng-model=\"Checkbox19Negatif\"/>\n" +
-    "                  Négatif\n" +
-    "                </label>\n" +
-    "                <label>\n" +
-    "                  <input type=\"checkbox\" ng-model=\"Checkbox19NonRenseigne\"/>\n" +
-    "                  Non Renseigné\n" +
-    "                </label>\n" +
-    "              </h2>\n" +
-    "            </div>\n" +
-    "            <div id=\"champs19\">\n" +
-    "              <div>Canvas à mettre ici</div>\n" +
-    "              <div>\n" +
-    "                <p>Contacts en OIM : </p>\n" +
-    "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group7\" ng-model=\"Radio19OIM1\"/>\n" +
-    "                  Répartis de manière équilibrée\n" +
-    "                </label>\n" +
+    "              <li>\n" +
+    "                <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "                  16. Blocage articulaire :</div>\n" +
+    "                  <input type=\"checkbox\" class=\"filled-in\" id=\"negatif16\" ng-model=\"form.Checkbox16Negatif\"/>\n" +
+    "                  <label for=\"negatif16\">Négatif</label>\n" +
+    "                  <input type=\"checkbox\" class=\"filled-in\" id=\"non16\" ng-model=\"form.Checkbox16NonRenseigne\"/>\n" +
+    "                  <label for=\"non16\">Non renseigné</label>\n" +
+    "                </div>\n" +
+    "                <div class=\"collapsible-body\">\n" +
+    "              <div id=\"champs16\">\n" +
     "                <div>\n" +
-    "                  <input type=\"radio\" name=\"group7\" ng-model=\"Radio19OIM2\"/>\n" +
-    "                  <input type=\"text\" ng-model=\"Text19OIM\"/>\n" +
+    "                  <p>\n" +
+    "                    Vous est-il arrivé d'être bloqué(e) ?\n" +
+    "                  </p>\n" +
+    "                  <label>\n" +
+    "                    <input type=\"checkbox\" ng-model=\"Checkbox16Ouv\"/>\n" +
+    "                    Bouche Ouverte\n" +
+    "                  </label>\n" +
+    "                  <label>\n" +
+    "                    <input type=\"checkbox\" ng-model=\"Checkbox16Ferm\"/>\n" +
+    "                    Bouche Fermée\n" +
+    "                  </label>\n" +
+    "                  <label>\n" +
+    "                    <input type=\"checkbox\" ng-model=\"Checkbox16Droit\"/>\n" +
+    "                    ATM droite\n" +
+    "                  </label>\n" +
+    "                  <label>\n" +
+    "                    <input type=\"checkbox\" ng-model=\"Checkbox16Gauche\"/>\n" +
+    "                    ATM gauche\n" +
+    "                  </label>\n" +
+    "                </div>\n" +
+    "                <div>\n" +
+    "                  <label>\n" +
+    "                    Fréquence :\n" +
+    "                    <input type=\"text\" ng-model=\"Text16Frequence\"/>\n" +
+    "                  </label>\n" +
+    "                  <label>\n" +
+    "                    Dernier épisode :\n" +
+    "                    <input type=\"text\" ng-model=\"Text16DerEpi\"/>\n" +
+    "                  </label>\n" +
     "                </div>\n" +
     "              </div>\n" +
-    "              <div>\n" +
-    "                <p>La position dans laquelle vous fermez vos dents vous paraît-elle confortable ? </p>\n" +
-    "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group8\" ng-model=\"Radio19PosOui\"/>\n" +
-    "                  Oui\n" +
-    "                </label>\n" +
-    "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group8\" ng-model=\"Radio19PosNon\"/>\n" +
-    "                  Non\n" +
-    "                </label>\n" +
+    "            </div>\n" +
+    "          </li>\n" +
+    "\n" +
+    "              <li>\n" +
+    "                <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "                  17. Test du Bâtonnet :</div>\n" +
+    "                  <input type=\"checkbox\" class=\"filled-in\" id=\"negatif17\" ng-model=\"form.Checkbox17Negatif\"/>\n" +
+    "                  <label for=\"negatif17\">Négatif</label>\n" +
+    "                  <input type=\"checkbox\" class=\"filled-in\" id=\"non17\" ng-model=\"form.Checkbox17NonRenseigne\"/>\n" +
+    "                  <label for=\"non17\">Non renseigné</label>\n" +
+    "                </div>\n" +
+    "                <div class=\"collapsible-body\">\n" +
+    "              <div id=\"champs17\">\n" +
+    "                <table>\n" +
+    "                  <thead>\n" +
+    "                    <tr>\n" +
+    "                      <th colspan=\"2\"> </th>\n" +
+    "                      <th colspan=\"2\">Douleur</th>\n" +
+    "                    </tr>\n" +
+    "                  </thead>\n" +
+    "                  <tbody>\n" +
+    "                    <tr>\n" +
+    "                      <td rowspan=\"2\">\n" +
+    "                        Bâtonnet\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        Droite\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <select>\n" +
+    "                          <option></option>\n" +
+    "                          <option>M. temporal droit</option>\n" +
+    "                          <option>M. temporal gauche</option>\n" +
+    "                          <option>M. masséter droit</option>\n" +
+    "                          <option>M. masséter gauche</option>\n" +
+    "                          <option>Atm droit</option>\n" +
+    "                          <option>Atm gauche</option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
+    "                        </select>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <select>\n" +
+    "                          <option></option>\n" +
+    "                          <option>M. temporal droit</option>\n" +
+    "                          <option>M. temporal gauche</option>\n" +
+    "                          <option>M. masséter droit</option>\n" +
+    "                          <option>M. masséter gauche</option>\n" +
+    "                          <option>Atm droit</option>\n" +
+    "                          <option>Atm gauche</option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
+    "                        </select>\n" +
+    "                      </td>\n" +
+    "                    </tr>\n" +
+    "\n" +
+    "                    <tr>\n" +
+    "                      <td>\n" +
+    "                        Gauche\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <select>\n" +
+    "                          <option></option>\n" +
+    "                          <option>M. temporal droit</option>\n" +
+    "                          <option>M. temporal gauche</option>\n" +
+    "                          <option>M. masséter droit</option>\n" +
+    "                          <option>M. masséter gauche</option>\n" +
+    "                          <option>Atm droit</option>\n" +
+    "                          <option>Atm gauche</option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
+    "                        </select>\n" +
+    "                      </td>\n" +
+    "                      <td>\n" +
+    "                        <select>\n" +
+    "                          <option></option>\n" +
+    "                          <option>M. temporal droit</option>\n" +
+    "                          <option>M. temporal gauche</option>\n" +
+    "                          <option>M. masséter droit</option>\n" +
+    "                          <option>M. masséter gauche</option>\n" +
+    "                          <option>Atm droit</option>\n" +
+    "                          <option>Atm gauche</option>\n" +
+    "                          <!-- <option>Autres <input type=\"text\"></option> -->\n" +
+    "                        </select>\n" +
+    "                      </td>\n" +
+    "                    </tr>\n" +
+    "                  </tbody>\n" +
+    "                </table>\n" +
     "              </div>\n" +
-    "              <div>\n" +
-    "                <p>Mastication Unilatérale ? </p>\n" +
-    "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group9\" ng-model=\"Radio19MasticOui\"/>\n" +
-    "                  Oui\n" +
-    "                </label>\n" +
-    "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group9\" ng-model=\"Radio19MasticNon\"/>\n" +
-    "                  Non\n" +
-    "                </label>\n" +
-    "              </div>\n" +
-    "              <div>\n" +
+    "            </div>\n" +
+    "          </li>\n" +
+    "\n" +
+    "              <li>\n" +
+    "                <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "                  18. Elasticité Articulaire :</div>\n" +
+    "                  <input type=\"checkbox\" class=\"filled-in\" id=\"negatif18\" ng-model=\"form.Checkbox18Negatif\"/>\n" +
+    "                  <label for=\"negatif18\">Négatif</label>\n" +
+    "                  <input type=\"checkbox\" class=\"filled-in\" id=\"non18\" ng-model=\"form.Checkbox18NonRenseigne\"/>\n" +
+    "                  <label for=\"non18\">Non renseigné</label>\n" +
+    "                </div>\n" +
+    "                <div class=\"collapsible-body\">\n" +
+    "              <div id=\"champs18\">\n" +
     "                <div>\n" +
     "                  <p>ATM droite : </p>\n" +
     "                  <label>\n" +
-    "                    Interférence(s) en litéralité droite :\n" +
-    "                    <input type=\"text\" ng-model=\"Text19InterDroit\"/>\n" +
+    "                    <input type=\"radio\" name=\"group5\" ng-model=\"Radio18DroitSouple\"/>\n" +
+    "                    Souple\n" +
     "                  </label>\n" +
     "                  <label>\n" +
-    "                    Interférence(s) en litéralité gauche :\n" +
-    "                    <input type=\"text\" ng-model=\"Text19InterGauche\"/>\n" +
+    "                    <input type=\"radio\" name=\"group5\" ng-model=\"Radio18DroitRaide\"/>\n" +
+    "                    Raide\n" +
     "                  </label>\n" +
     "                </div>\n" +
     "                <div>\n" +
     "                  <p>ATM gauche : </p>\n" +
     "                  <label>\n" +
-    "                    Interférence(s) en propulsion :\n" +
-    "                    <input type=\"text\" ng-model=\"Text19Propul\"/>\n" +
+    "                    <input type=\"radio\" name=\"group6\" ng-model=\"Radio18GaucheSouple\">\n" +
+    "                    Souple\n" +
     "                  </label>\n" +
     "                  <label>\n" +
-    "                    <input type=\"radio\" name=\"group6\">\n" +
+    "                    <input type=\"radio\" name=\"group6\" ng-model=\"Radio18GaucheRaide\">\n" +
     "                    Raide\n" +
     "                  </label>\n" +
     "                </div>\n" +
@@ -2884,8 +2528,8 @@ module.run(["$templateCache", function($templateCache) {
     "\n" +
     "\n" +
     "              <li>\n" +
-    "                <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
-    "                  19. Examen Endo-Buccal :\n" +
+    "                <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "                  19. Examen Endo-Buccal :</div>\n" +
     "                  <input type=\"checkbox\" class=\"filled-in\" id=\"negatif19\" ng-model=\"form.Checkbox19Negatif\"/>\n" +
     "                  <label for=\"negatif19\">Négatif</label>\n" +
     "                  <input type=\"checkbox\" class=\"filled-in\" id=\"non19\" ng-model=\"form.Checkbox19NonRenseigne\"/>\n" +
@@ -2897,33 +2541,33 @@ module.run(["$templateCache", function($templateCache) {
     "                <div>\n" +
     "                  <p>Contacts en OIM : </p>\n" +
     "                  <label>\n" +
-    "                    Prématuré(s) :\n" +
-    "                    <input type=\"text\" ng-model=\"Text19Premat\"/>\n" +
+    "                    <input type=\"radio\" name=\"group7\" ng-model=\"Radio19OIM1\"/>\n" +
+    "                    Répartis de manière équilibrée\n" +
     "                  </label>\n" +
     "                  <div>\n" +
-    "                    <input type=\"radio\" name=\"group7\"/>\n" +
-    "                    <input type=\"text\"/>\n" +
+    "                    <input type=\"radio\" name=\"group7\" ng-model=\"Radio19OIM2\"/>\n" +
+    "                    <input type=\"text\" ng-model=\"Text19OIM\"/>\n" +
     "                  </div>\n" +
     "                </div>\n" +
     "                <div>\n" +
     "                  <p>La position dans laquelle vous fermez vos dents vous paraît-elle confortable ? </p>\n" +
     "                  <label>\n" +
-    "                    Dans le sens vertical :\n" +
-    "                    <input type=\"text\" ng-model=\"Text19OIMVerti\"/>\n" +
+    "                    <input type=\"radio\" name=\"group8\" ng-model=\"Radio19PosOui\"/>\n" +
+    "                    Oui\n" +
     "                  </label>\n" +
     "                  <label>\n" +
-    "                    Dans le sens antéro-postérieur :\n" +
-    "                    <input type=\"text\" ng-model=\"Text19OIMAnt\"/>\n" +
+    "                    <input type=\"radio\" name=\"group8\" ng-model=\"Radio19PosNon\"/>\n" +
+    "                    Non\n" +
     "                  </label>\n" +
     "                </div>\n" +
     "                <div>\n" +
     "                  <p>Mastication Unilatérale ? </p>\n" +
     "                  <label>\n" +
-    "                    Dans le sens latéral :\n" +
-    "                    <input type=\"text\" ng-model=\"Text19OIMLat\"/>\n" +
+    "                    <input type=\"radio\" name=\"group9\" ng-model=\"Radio19MasticOui\"/>\n" +
+    "                    Oui\n" +
     "                  </label>\n" +
     "                  <label>\n" +
-    "                    <input type=\"radio\" name=\"group9\"/>\n" +
+    "                    <input type=\"radio\" name=\"group9\" ng-model=\"Radio19MasticNon\"/>\n" +
     "                    Non\n" +
     "                  </label>\n" +
     "                </div>\n" +
@@ -2974,8 +2618,8 @@ module.run(["$templateCache", function($templateCache) {
     "            </li>\n" +
     "\n" +
     "                <li>\n" +
-    "                  <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
-    "                    20. Usures dentaires/bruxismes :\n" +
+    "                  <div class=\"collapsible-header\"><div class=\"demi\"><i class=\"material-icons\">filter_drama</i>\n" +
+    "                    20. Usures dentaires/bruxismes :</div>\n" +
     "                    <input type=\"checkbox\" class=\"filled-in\" id=\"negatif20\" ng-model=\"form.Checkbox20Negatif\"/>\n" +
     "                    <label for=\"negatif20\">Négatif</label>\n" +
     "                    <input type=\"checkbox\" class=\"filled-in\" id=\"non20\" ng-model=\"form.Checkbox20NonRenseigne\"/>\n" +
@@ -2984,19 +2628,19 @@ module.run(["$templateCache", function($templateCache) {
     "                  <div class=\"collapsible-body\">\n" +
     "                <div id=\"champs20\">\n" +
     "                  <label>\n" +
-    "                    <input type=\"checkbox\" ng-model=\"Checkbox20Negatif\"/>\n" +
-    "                    Négatif\n" +
+    "                    <input type=\"radio\" name=\"group10\" ng-model=\"Checkbox20Erosion\"/>\n" +
+    "                    Erosion (dents : <input type=\"text\" ng-model=\"Text20Erosion\"/>)\n" +
     "                  </label>\n" +
     "                  <label>\n" +
-    "                    <input type=\"checkbox\" ng-model=\"Checkbox20NonRenseigne\"/>\n" +
-    "                    Non Renseigné\n" +
+    "                    <input type=\"radio\" name=\"group10\" ng-model=\"Checkbox20Abrasion\"/>\n" +
+    "                    Abrasion (dents : <input type=\"text\" ng-model=\"Text20Abrasion\"/>)\n" +
     "                  </label>\n" +
     "                  <label>\n" +
-    "                    <input type=\"radio\" name=\"group10\"/>\n" +
-    "                    Attrition (dents : <input type=\"text\"/>)\n" +
+    "                    <input type=\"radio\" name=\"group10\" ng-model=\"Checkbox20Attrition\"/>\n" +
+    "                    Attrition (dents : <input type=\"text\" ng-model=\"Text20Attrition\"/>)\n" +
     "                  </label>\n" +
     "                  <label>\n" +
-    "                    <input type=\"radio\" name=\"group10\"/>\n" +
+    "                    <input type=\"radio\" name=\"group10\" ng-model=\"Checkbox20BruxismeSom\"/>\n" +
     "                    Bruxisme de sommeil (diagnostic :\n" +
     "                    <select>\n" +
     "                      <option>possible</option>\n" +
@@ -3006,7 +2650,7 @@ module.run(["$templateCache", function($templateCache) {
     "                    )\n" +
     "                  </label>\n" +
     "                  <label>\n" +
-    "                    <input type=\"radio\" name=\"group10\"/>\n" +
+    "                    <input type=\"radio\" name=\"group10\" ng-model=\"Checkbox20BruxismeEve\"/>\n" +
     "                    Bruxisme d'éveil (dents :\n" +
     "                    <select>\n" +
     "                      <option>possible</option>\n" +
@@ -3016,46 +2660,10 @@ module.run(["$templateCache", function($templateCache) {
     "                    )\n" +
     "                  </label>\n" +
     "                  <p>Infos Complémentaires : </p>\n" +
-    "                  <textarea></textarea>\n" +
+    "                  <textarea ng-model=\"Textarea20Info\"></textarea>\n" +
     "                </div>\n" +
     "              </div>\n" +
-    "              <div id=\"champs20\">\n" +
-    "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group10\" ng-model=\"Checkbox20Erosion\"/>\n" +
-    "                  Erosion (dents : <input type=\"text\" ng-model=\"Text20Erosion\"/>)\n" +
-    "                </label>\n" +
-    "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group10\" ng-model=\"Checkbox20Abrasion\"/>\n" +
-    "                  Abrasion (dents : <input type=\"text\" ng-model=\"Text20Abrasion\"/>)\n" +
-    "                </label>\n" +
-    "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group10\" ng-model=\"Checkbox20Attrition\"/>\n" +
-    "                  Attrition (dents : <input type=\"text\" ng-model=\"Text20Attrition\"/>)\n" +
-    "                </label>\n" +
-    "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group10\" ng-model=\"Checkbox20BruxismeSom\"/>\n" +
-    "                  Bruxisme de sommeil (diagnostic :\n" +
-    "                  <select>\n" +
-    "                    <option>possible</option>\n" +
-    "                    <option>probable</option>\n" +
-    "                    <option>défini</option>\n" +
-    "                  </select>\n" +
-    "                  )\n" +
-    "                </label>\n" +
-    "                <label>\n" +
-    "                  <input type=\"radio\" name=\"group10\" ng-model=\"Checkbox20BruxismeEve\"/>\n" +
-    "                  Bruxisme d'éveil (dents :\n" +
-    "                  <select>\n" +
-    "                    <option>possible</option>\n" +
-    "                    <option>probable</option>\n" +
-    "                    <option>défini</option>\n" +
-    "                  </select>\n" +
-    "                  )\n" +
-    "                </label>\n" +
-    "                <p>Infos Complémentaires : </p>\n" +
-    "                <textarea ng-model=\"Textarea20Info\"></textarea>\n" +
-    "              </div>\n" +
-    "            </div>\n" +
+    "            </li>\n" +
     "\n" +
     "                <li>\n" +
     "                  <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
@@ -3065,23 +2673,14 @@ module.run(["$templateCache", function($templateCache) {
     "                <div id=\"champs21\">\n" +
     "                  <label>\n" +
     "                    Type d'examen :\n" +
-    "                    <input type=\"text\"/>\n" +
+    "                    <input type=\"text\" ng-model=\"Text21TypeExam\"/>\n" +
     "                  </label>\n" +
     "                  <input type=\"button\" value=\"Télécharger une photo\"/>\n" +
     "                  <input type=\"button\" value=\"Ajouter un examen\"/>\n" +
     "                  <input type=\"button\" value=\"Supprimer un examen\"/>\n" +
     "                </div>\n" +
     "              </div>\n" +
-    "              <div id=\"champs21\">\n" +
-    "                <label>\n" +
-    "                  Type d'examen :\n" +
-    "                  <input type=\"text\" ng-model=\"Text21TypeExam\"/>\n" +
-    "                </label>\n" +
-    "                <input type=\"button\" value=\"Télécharger une photo\"/>\n" +
-    "                <input type=\"button\" value=\"Ajouter un examen\"/>\n" +
-    "                <input type=\"button\" value=\"Supprimer un examen\"/>\n" +
-    "              </div>\n" +
-    "            </div>\n" +
+    "            </li>\n" +
     "\n" +
     "                <li>\n" +
     "                  <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
@@ -3089,13 +2688,10 @@ module.run(["$templateCache", function($templateCache) {
     "                  </div>\n" +
     "                  <div class=\"collapsible-body\">\n" +
     "                <div id=\"champs22\">\n" +
-    "                  <textarea></textarea>\n" +
+    "                  <textarea ng-model=\"Textarea22Diag\"></textarea>\n" +
     "                </div>\n" +
     "              </div>\n" +
-    "              <div id=\"champs22\">\n" +
-    "                <textarea ng-model=\"Textarea22Diag\"></textarea>\n" +
-    "              </div>\n" +
-    "            </div>\n" +
+    "            </li>\n" +
     "\n" +
     "                <li>\n" +
     "                  <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>\n" +
@@ -3103,7 +2699,7 @@ module.run(["$templateCache", function($templateCache) {
     "                  </div>\n" +
     "                  <div class=\"collapsible-body\">\n" +
     "                <div id=\"champs23\">\n" +
-    "                  <textarea></textarea>\n" +
+    "                  <textarea ng-model=\"Textarea23Trait\"></textarea>\n" +
     "                </div>\n" +
     "\n" +
     "              <div>\n" +
@@ -3111,9 +2707,6 @@ module.run(["$templateCache", function($templateCache) {
     "                <input type=\"button\" value=\"Envoyer\"/>\n" +
     "                <input type=\"submit\" value=\"submit\" style=\"display:none\"/>\n" +
     "                <input type=\"button\" value=\"Imprimer\"/>\n" +
-    "              </div>\n" +
-    "              <div id=\"champs23\">\n" +
-    "                <textarea ng-model=\"Textarea23Trait\"></textarea>\n" +
     "              </div>\n" +
     "            </div>\n" +
     "            </li>\n" +
@@ -3148,7 +2741,7 @@ try { module = angular.module("templates"); }
 catch(err) { module = angular.module("templates", []); }
 module.run(["$templateCache", function($templateCache) {
   "use strict";
-  $templateCache.put("src/app/propos/propos.tpl.html",
+  $templateCache.put("src/app/pourquoi/pourquoi.tpl.html",
     "<div class=\"pure-g island3\">\n" +
     "  <div class=\"content pure-u-1\">\n" +
     "    <p class=\"island-panel\">\n" +
@@ -3245,7 +2838,7 @@ try { module = angular.module("templates"); }
 catch(err) { module = angular.module("templates", []); }
 module.run(["$templateCache", function($templateCache) {
   "use strict";
-  $templateCache.put("src/app/pourquoi/pourquoi.tpl.html",
+  $templateCache.put("src/app/propos/propos.tpl.html",
     "<div class=\"pure-g island3\">\n" +
     "  <div class=\"content pure-u-1\">\n" +
     "    <p class=\"island-panel\">\n" +
