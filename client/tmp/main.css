@@ -133,3 +133,82 @@ h4 {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
+
+.modal-content {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+  overflow: auto;
+  overflow-x: hidden; }
+
+.modal-content > div {
+  width: 600px;
+  position: relative;
+  margin: 10% auto;
+  padding: 5px 20px 13px 20px;
+  border-radius: 3px;
+  background: #fff; }
+
+.close {
+  background: #606061;
+  color: #FFFFFF;
+  line-height: 25px;
+  position: absolute;
+  right: -12px;
+  text-align: center;
+  top: -10px;
+  width: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: 1px 1px 3px #000;
+  -webkit-box-shadow: 1px 1px 3px #000;
+  box-shadow: 1px 1px 3px #000; }
+
+.collapsible-header [type="checkbox"] + label {
+  float: right;
+  padding-right: 35px; }
+
+.collapsible-header {
+  background-color: #ececec;
+  border-bottom: solid 3px #cccccc;
+  padding-top: 15px; }
+
+.demi {
+  width: 50%;
+  display: inline-block; }
+
+td, th {
+  padding: 0 0 0 0 !important; }
+
+@media screen and (max-width: 1000px) {
+  .modal-content > div {
+    margin: 0 auto;
+    width: 100vw;
+    position: relative;
+    padding: 5px 20px 13px 20px;
+    border-radius: 0px;
+    background: #fff; }
+  .close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: 30px;
+    text-align: center;
+    top: 10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000; } }

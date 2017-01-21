@@ -60,6 +60,8 @@ module.run(["$templateCache", function($templateCache) {
     "\n" +
     "<div id=\"loginPopin\" class=\"modal-content\" ng-show=\"showLoginPopin\">\n" +
     "    <div class=\"row\">\n" +
+    "        {{swap}}\n" +
+    "    <div ng-click=\"swapped()\">Swap</div>\n" +
     "        <a class=\"close\" href=\"#!\" title=\"Close\" ng-click=\"createLoginPopin()\">X</a>\n" +
     "        <div ng-hide=\"showRegisterPopin\">\n" +
     "            <div class=\"input-field col s6 marge2\">\n" +
@@ -164,6 +166,8 @@ module.run(["$templateCache", function($templateCache) {
     "<div class=\"pure-g\">\n" +
     "  <div class=\"island3 pure-u-1 pure-u-lg-2-3\">\n" +
     "    <h3>Fiche clinique DTM</h3>\n" +
+    "    {{swap}}\n" +
+    "    <div ng-click=\"swapped()\">Swap</div>\n" +
     "  </div>\n" +
     "</div>\n" +
     "\n" +

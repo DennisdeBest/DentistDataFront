@@ -29,6 +29,7 @@
       'common.header',
       'common.footer',
       'common.services.data',
+      'common.services.connexionService',
       'common.directives.version'
     ])
     .run(run)

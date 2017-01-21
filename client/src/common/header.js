@@ -1,9 +1,14 @@
 (function () {
     'use strict';
 
-    function headerCtrl($scope, $log, $http, $localStorage) {
-        if($localStorage.token){
+    function headerCtrl($scope, $log, $http, $localStorage, connexionService) {
+        if ($localStorage.token) {
             $scope.logged = true;
+        }
+        
+        $scope.login = connexionService.getLogin;
+        $scope.swapped = function () {
+            $scope.swap = connexionService.swapLogin();
         }
 
         $scope.showLoginPopin = false;
@@ -11,7 +16,7 @@
             $scope.showLoginPopin = !$scope.showLoginPopin;
         };
         $scope.loginAction = function () {
-            if($scope.showRegisterPopin){
+            if ($scope.showRegisterPopin) {
                 $scope.showRegisterPopin = false;
             } else {
                 var header = {
@@ -31,8 +36,8 @@
                 })
             }
         };
-        $scope.registerAction = function(){
-            if(!$scope.showRegisterPopin){
+        $scope.registerAction = function () {
+            if (!$scope.showRegisterPopin) {
                 $scope.showRegisterPopin = true;
             } else {
                 var registerUserObject = {};
@@ -51,7 +56,7 @@
         }
     }
 
-    headerCtrl.$inject = ['$scope', '$log', '$http', '$localStorage'];
+    // headerCtrl.$inject = ['$scope', '$log', '$http', '$localStorage', 'connexionService'];
     angular.module('common.header', [])
         .controller('HeaderCtrl', headerCtrl);
 })();
