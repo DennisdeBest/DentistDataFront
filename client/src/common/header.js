@@ -5,11 +5,15 @@
         if ($localStorage.token) {
             $scope.logged = true;
         }
-        
-        $scope.login = connexionService.getLogin;
+
+        $scope.login = connexionService.getLogin();
         $scope.swapped = function () {
             $scope.swap = connexionService.swapLogin();
         }
+        $scope.$watch(
+            function () { return connexionService.getLogin(); },
+            function (data) { $scope.login = data; }
+        );
 
         $scope.showLoginPopin = false;
         $scope.createLoginPopin = function () {
