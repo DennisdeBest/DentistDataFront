@@ -15,16 +15,16 @@
           <div class="input-field col s5">
             <label>Identifiant du patient</label>
             <input type="text" ng-model="form.Text0ID">
-            <button ng-click="submitForm()"></button>
           </div>
           <div class="input-field col s2">
-            <select>
+            <select name="Select0Sexe" ng-model="form.Select0Sexe">
               <option value="" disabled selected>Sexe</option>
-              <option value="1">Homme</option>
-              <option value="2">Femme</option>
+              <option value="Homme">Homme</option>
+              <option value="Femme">Femme</option>
             </select>
             <label>Sexe</label>
           </div>
+          <button ng-click="submitForm()"></button><br>
           <div class="input-field col s5">
             <label>Profession</label>
             <input type="text" ng-model="form.Text0Profession">
@@ -104,7 +104,7 @@
 
         <label><b>Fond douloureux </b>(0=pas de douleur | 10=douleur maximale)</label>
         <p class="range-field">
-          <input type="range" id="fond" min="0" max="1000" ng-model="form.Range2FondDouleur"/>
+          <input type="range" id="fond" min="0" max="10" ng-model="form.Range2FondDouleur"/>
         </p>
         <label><b>Pic douloureux </b>(0=pas de douleur | 10=douleur maximale)</label>
         <p class="range-field">
@@ -428,12 +428,22 @@
                     <tr>
                       <th> </th>
                       <th colspan="3">Côté droit</th>
+                      <th colspan="3">Côté Gauche</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>
                         Muscles 1kg
+                      </td>
+                      <td>
+                        Douleur provoquée
+                      </td>
+                      <td>
+                        Est-elle identique à la douleur habituelle ?
+                      </td>
+                      <td>
+                        Douleur(s) référée(s)
                       </td>
                       <td>
                         Douleur provoquée
@@ -458,15 +468,35 @@
                         <label for="2"></label>
                       </td>
                       <td>
-                        <select>
+                        <select name="Select11TempPost1" ng-model="form.Select11TempPost1">
                           <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <!-- <option>Autres <input type="text"></option> -->
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="37" ng-model="form.Checkbox11TempPost3"/>
+                        <label for="37"></label>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="38" ng-model="form.Checkbox11TempPost4"/>
+                        <label for="38"></label>
+                      </td>
+                      <td>
+                        <select name="Select11TempPost2" ng-model="form.Select11TempPost2">
+                          <option></option>
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -483,15 +513,35 @@
                         <label for="4"></label>
                       </td>
                       <td>
-                        <select>
+                        <select name="Select11TempMoy1" ng-model="form.Select11TempMoy1">
                           <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <!-- <option>Autres <input type="text"></option> -->
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="39" ng-model="form.Checkbox11TempMoy3"/>
+                        <label for="39"></label>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="40" ng-model="form.Checkbox11TempMoy4"/>
+                        <label for="40"></label>
+                      </td>
+                      <td>
+                        <select name="Select11TempMoy2" ng-model="form.Select11TempMoy2">
+                          <option></option>
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -508,15 +558,35 @@
                         <label for="6"></label>
                       </td>
                       <td>
-                        <select>
+                        <select name="Select11TempAnt1" ng-model="form.Select11TempAnt1">
                           <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <!-- <option>Autres <input type="text"></option> -->
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="41" ng-model="form.Checkbox11TempAnt3"/>
+                        <label for="41"></label>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="42" ng-model="form.Checkbox11TempAnt4"/>
+                        <label for="42"></label>
+                      </td>
+                      <td>
+                        <select name="Select11TempAnt2" ng-model="form.Select11TempAnt2">
+                          <option></option>
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -525,10 +595,10 @@
                         <p>Est-ce que la palpation des muscles temporaux provoque des maux de tête identiques à ceux ressentis habituellement ?</p>
                       </td>
                       <td>
-                        <input type="radio" name="group11" value="Oui" ng-model="Radio11PalpationOui"/>
+                        <input type="radio" name="group11" value="Oui" ng-model="form.Radio11PalpationOui"/>
                       </td>
                       <td>
-                        <input type="radio" name="group11" value="Non" ng-model="Radio11PalpationNon"/>
+                        <input type="radio" name="group11" value="Non" ng-model="form.Radio11PalpationNon"/>
                       </td>
                     </tr>
                     <tr>
@@ -544,15 +614,35 @@
                         <label for="10"></label>
                       </td>
                       <td>
-                        <select>
+                        <select name="Select11MasseterOri1" ng-model="form.Select11MasseterOri1">
                           <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <!-- <option>Autres <input type="text"></option> -->
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="43" ng-model="form.Checkbox11MasseterOri3"/>
+                        <label for="43"></label>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="44" ng-model="form.Checkbox11MasseterOri4"/>
+                        <label for="44"></label>
+                      </td>
+                      <td>
+                        <select name="Select11MasseterOri2" ng-model="form.Select11MasseterOri2">
+                          <option></option>
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -569,15 +659,35 @@
                         <label for="12"></label>
                       </td>
                       <td>
-                        <select>
+                        <select name="Select11MasseterCorps1" ng-model="form.Select11MasseterCorps1">
                           <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <!-- <option>Autres <input type="text"></option> -->
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="45" ng-model="form.Checkbox11MasseterCorps3"/>
+                        <label for="45"></label>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="46" ng-model="form.Checkbox11MasseterCorps4"/>
+                        <label for="46"></label>
+                      </td>
+                      <td>
+                        <select name="Select11MasseterCorps2" ng-model="form.Select11MasseterCorps2">
+                          <option></option>
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -586,26 +696,47 @@
                         Masséter (insertion zygomatique)
                       </td>
                       <td>
-                        <input type="checkbox" class="filled-in" id="13" ng-model="form.Checkbox11MasseterInsert3"/>
+                        <input type="checkbox" class="filled-in" id="13" ng-model="form.Checkbox11MasseterInsert1"/>
                         <label for="13"></label>
                       </td>
                       <td>
-                        <input type="checkbox" class="filled-in" id="14" ng-model="form.Checkbox11MasseterInsert4"/>
+                        <input type="checkbox" class="filled-in" id="14" ng-model="form.Checkbox11MasseterInsert2"/>
                         <label for="14"></label>
                       </td>
                       <td>
-                        <select>
+                        <select name="Select11MasseterInsert1" ng-model="form.Select11MasseterInsert1">
                           <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <!-- <option>Autres <input type="text"></option> -->
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="47" ng-model="form.Checkbox11MasseterInsert3"/>
+                        <label for="47"></label>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="48" ng-model="form.Checkbox11MasseterInsert4"/>
+                        <label for="48"></label>
+                      </td>
+                      <td>
+                        <select name="Select11MasseterInsert2" ng-model="form.Select11MasseterInsert2">
+                          <option></option>
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
+                    <tr></tr>
                     <tr>
                       <td>
                         <p>ATM</p>
@@ -624,15 +755,35 @@
                         <label for="16"></label>
                       </td>
                       <td>
-                        <select>
+                        <select name="Select11Pole1" ng-model="form.Select11Pole1">
                           <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <!-- <option>Autres <input type="text"></option> -->
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="49" ng-model="form.Checkbox11Pole3"/>
+                        <label for="49"></label>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="50" ng-model="form.Checkbox11Pole4"/>
+                        <label for="50"></label>
+                      </td>
+                      <td>
+                        <select name="Select11Pole2" ng-model="form.Select11Pole2">
+                          <option></option>
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -649,15 +800,35 @@
                         <label for="18"></label>
                       </td>
                       <td>
-                        <select>
+                        <select name="Select11AutourPole1" ng-model="form.Select11AutourPole1">
                           <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <!-- <option>Autres <input type="text"></option> -->
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="51" ng-model="form.Checkbox11AutourPole3"/>
+                        <label for="51"></label>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="52" ng-model="form.Checkbox11AutourPole4"/>
+                        <label for="52"></label>
+                      </td>
+                      <td>
+                        <select name="Select11AutourPole2" ng-model="form.Select11AutourPole2">
+                          <option></option>
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -679,15 +850,35 @@
                         <label for="20"></label>
                       </td>
                       <td>
-                        <select>
+                        <select name="Select11Digastrique1" ng-model="form.Select11Digastrique1">
                           <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <!-- <option>Autres <input type="text"></option> -->
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="53" ng-model="form.Checkbox11Digastrique3"/>
+                        <label for="53"></label>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="54" ng-model="form.Checkbox11Digastrique4"/>
+                        <label for="54"></label>
+                      </td>
+                      <td>
+                        <select name="Select11Digastrique2" ng-model="form.Select11Digastrique2">
+                          <option></option>
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -704,15 +895,35 @@
                         <label for="22"></label>
                       </td>
                       <td>
-                        <select>
+                        <select name="Select11PteryMed1" ng-model="form.Select11PteryMed1">
                           <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <!-- <option>Autres <input type="text"></option> -->
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="55" ng-model="form.Checkbox11PteryMed3"/>
+                        <label for="55"></label>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="56" ng-model="form.Checkbox11PteryMed4"/>
+                        <label for="56"></label>
+                      </td>
+                      <td>
+                        <select name="Select11PteryMed2" ng-model="form.Select11PteryMed2">
+                          <option></option>
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -729,15 +940,35 @@
                         <label for="24"></label>
                       </td>
                       <td>
-                        <select>
+                        <select name="Select11PteryLat1" ng-model="form.Select11PteryLat1">
                           <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <!-- <option>Autres <input type="text"></option> -->
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="57" ng-model="form.Checkbox11PteryLat3"/>
+                        <label for="57"></label>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="58" ng-model="form.Checkbox11PteryLat4"/>
+                        <label for="58"></label>
+                      </td>
+                      <td>
+                        <select name="Select11PteryLat2" ng-model="form.Select11PteryLat2">
+                          <option></option>
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -754,15 +985,35 @@
                         <label for="26"></label>
                       </td>
                       <td>
-                        <select>
+                        <select name="Select11Tendon1" ng-model="form.Select11Tendon1">
                           <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <!-- <option>Autres <input type="text"></option> -->
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="59" ng-model="form.Checkbox11Tendon3"/>
+                        <label for="59"></label>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="60" ng-model="form.Checkbox11Tendon4"/>
+                        <label for="60"></label>
+                      </td>
+                      <td>
+                        <select name="Select11Tendon2" ng-model="form.Select11Tendon2">
+                          <option></option>
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -784,15 +1035,35 @@
                         <label for="28"></label>
                       </td>
                       <td>
-                        <select>
+                        <select name="Select11Sterno1" ng-model="form.Select11Sterno1">
                           <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <!-- <option>Autres <input type="text"></option> -->
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="61" ng-model="form.Checkbox11Sterno3"/>
+                        <label for="61"></label>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="62" ng-model="form.Checkbox11Sterno4"/>
+                        <label for="62"></label>
+                      </td>
+                      <td>
+                        <select name="Select11Sterno2" ng-model="form.Select11Sterno2">
+                          <option></option>
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -809,15 +1080,35 @@
                         <label for="30"></label>
                       </td>
                       <td>
-                        <select>
+                        <select name="Select11Trapeze1" ng-model="form.Select11Trapeze1">
                           <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <!-- <option>Autres <input type="text"></option> -->
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="63" ng-model="form.Checkbox11Trapeze3"/>
+                        <label for="63"></label>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="64" ng-model="form.Checkbox11Trapeze4"/>
+                        <label for="64"></label>
+                      </td>
+                      <td>
+                        <select name="Select11Trapeze2" ng-model="form.Select11Trapeze2">
+                          <option></option>
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -839,15 +1130,35 @@
                         <label for="32"></label>
                       </td>
                       <td>
-                        <select>
+                        <select name="Select11AutreMuscle11" ng-model="form.Select11AutreMuscle11">
                           <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <!-- <option>Autres <input type="text"></option> -->
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="65" ng-model="form.Checkbox11AutreMuscle13"/>
+                        <label for="65"></label>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="66" ng-model="form.Checkbox11AutreMuscle14"/>
+                        <label for="66"></label>
+                      </td>
+                      <td>
+                        <select name="Select11AutreMuscle12" ng-model="form.Select11AutreMuscle12">
+                          <option></option>
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -864,15 +1175,35 @@
                         <label for="34"></label>
                       </td>
                       <td>
-                        <select>
+                        <select name="Select11AutreMuscle21" ng-model="form.Select11AutreMuscle21">
                           <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <!-- <option>Autres <input type="text"></option> -->
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
+                        </select>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="67" ng-model="form.Checkbox11AutreMuscle23"/>
+                        <label for="67"></label>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="68" ng-model="form.Checkbox11AutreMuscle24"/>
+                        <label for="68"></label>
+                      </td>
+                      <td>
+                        <select name="Select11AutreMuscle22" ng-model="form.Select11AutreMuscle22">
+                          <option></option>
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
                         </select>
                       </td>
                     </tr>
@@ -889,16 +1220,37 @@
                         <label for="36"></label>
                       </td>
                       <td>
-                        <select>
+                        <select name="Select11AutreMuscle31" ng-model="form.Select11AutreMuscle31">
                           <option></option>
-                          <option>M. temporal droit</option>
-                          <option>M. temporal gauche</option>
-                          <option>M. masséter droit</option>
-                          <option>M. masséter gauche</option>
-                          <option>Atm droit</option>
-                          <option>Atm gauche</option>
-                          <!-- <option>Autres <input type="text"></option> -->
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
                         </select>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="69" ng-model="form.Checkbox11AutreMuscle33"/>
+                        <label for="69"></label>
+                      </td>
+                      <td>
+                        <input type="checkbox" class="filled-in" id="70" ng-model="form.Checkbox11AutreMuscle34"/>
+                        <label for="70"></label>
+                      </td>
+                      <td>
+                        <select name="Select11AutreMuscle32" ng-model="form.Select11AutreMuscle32">
+                          <option></option>
+                          <option value="M. temporal droit">M. temporal droit</option>
+                          <option value="M. temporal gauche">M. temporal gauche</option>
+                          <option value="M. masséter droit">M. masséter droit</option>
+                          <option value="M. masséter gauche">M. masséter gauche</option>
+                          <option value="Atm droit">Atm droit</option>
+                          <option value="Atm gauche">Atm gauche</option>
+                          <!-- <option value="Autres">Autres <input type="text"></option> -->
+                        </select>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -996,6 +1348,7 @@
                   <table>
                     <thead>
                       <tr>
+                        <th></th>
                         <th colspan="3">Côté droit</th>
                         <th colspan="3">Côté gauche</th>
                       </tr>
