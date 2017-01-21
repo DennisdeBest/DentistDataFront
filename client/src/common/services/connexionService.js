@@ -1,17 +1,17 @@
 var app = angular.module('common.services.connexionService', []);
 
-app.service('connexionService', function ($http, $log, $q) {
-    $log.debug("loginService");
-    var user;
-    var logged = false;
+app.factory('connexionService', function(){
+    var login = false;
 
-    this.logout = function(){
-        logged = false;
-    };
-    this.login = function(){
-        $log.debug("Before login" + logged);
-        logged = true;
-        $log.debug("After login" + logged);
+    return {
+        swapLogin: function(){
+            login = !login;
+            console.log(login);
+        },
+        getLogin: function(){
+            return login;
+        }
+app.service('connexionService', function ($http, $log, $q) {
     }
 
     this.getLogged = function () {
