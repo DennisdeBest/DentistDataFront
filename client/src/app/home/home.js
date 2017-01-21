@@ -30,7 +30,6 @@
 
         function _getDatas() {
             var form = $scope.form;
-            é
             return {
 
                 Text0ID: form.Text0ID,
