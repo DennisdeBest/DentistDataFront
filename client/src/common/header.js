@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    function headerCtrl($scope, $log, $http, $localStorage, connexionService) {
+    function headerCtrl($scope, $log, $http, $localStorage, $location, connexionService) {
 
         //Todo watchnot working on service value update
         $scope.watch(function () {
@@ -31,6 +31,8 @@
                     headers: header
                 }).then(function successCallback(response) {
                     $log.debug(response.data.token);
+                    $scope.showLoginPopin = false;
+                    $location.path('/admin');
                     $localStorage.token = response.data.token;
                     connexionService.login();
                 }, function errorCallback(response) {
