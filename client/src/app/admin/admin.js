@@ -17,26 +17,15 @@
                         $scope.email = user.email;
                     }
                 }
-
                 if (user.roles.indexOf("ROLE_ADMIN") !== -1) {
-                    $scope.isAdmin = true;
-                    $http.get('http://devapi.dentist-data.fr/api/getUsers').success(function (data) {
-                        $log.debug(data);
-                        for (var i = 0; i < data.length; i++) {
-                            if (data[i].roles.indexOf("ROLE_CUSTOMER") === -1 && data[i].roles.indexOf("ROLE_ADMIN") === -1) {
-                                data[i].promotable = true;
-                            } else if (data[i].roles.indexOf("ROLE_CUSTOMER") !== -1) {
-                                data[i].demotable = true;
-                            }
-                        }
-                        $scope.users = data;
-                    })
+                    getUsers($scope, $http);
                 }
+            } else {
+                $localStorage.$reset();
+                $scope.errorMessage = "Votre compte n'est pas encore validé par les admin";
             }
         }).error(function (error, status) {
-            $log.debug(error);
-            $log.debug(status);
-            $scope.errorMessage = error;
+
         });
 
         $scope.logoutButton = function () {
@@ -48,10 +37,33 @@
             var userToPromote = {};
             userToPromote.userId = userId;
             $http.post('http://devapi.dentist-data.fr/api/user/promote', userToPromote).success(function (data, status) {
-                $log.debug(data);
+                getUsers($scope, $http);
+            });
+        };
+        $scope.demoteUser = function (userId) {
+            var userToPromote = {};
+            userToPromote.userId = userId;
+            $http.post('http://devapi.dentist-data.fr/api/user/demote', userToPromote).success(function (data, status) {
+                getUsers($scope, $http);
             });
         }
 
+
+    }
+
+    function getUsers($scope, $http) {
+
+        $scope.isAdmin = true;
+        $http.get('http://devapi.dentist-data.fr/api/getUsers').success(function (data) {
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].roles.indexOf("ROLE_CUSTOMER") === -1 && data[i].roles.indexOf("ROLE_ADMIN") === -1) {
+                    data[i].promotable = true;
+                } else if (data[i].roles.indexOf("ROLE_CUSTOMER") !== -1) {
+                    data[i].demotable = true;
+                }
+            }
+            $scope.users = data;
+        })
 
     }
 
