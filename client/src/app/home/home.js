@@ -5,14 +5,15 @@
      * @name  HomeCtrl
      * @description Controller
      */
-    function HomeCtrl($scope, connexionService) {
+    function HomeCtrl($scope, $http, connexionService) {
         var home = this;
         $scope.form = {};
 
         $scope.login = connexionService.getLogin();
         $scope.swapped = function () {
             $scope.swap = connexionService.swapLogin();
-        }
+        };
+
         $scope.$watch(
             function () {
                 return connexionService.getLogin();
@@ -24,7 +25,9 @@
 
         $scope.submitForm = function () {
             var datas = _getDatas();
-
+            $http.post("http://devapi.dentist-data.fr/api/form", JSON.stringify(datas)).success( function (data) {
+                $log.debug(data)
+            });
             console.log(datas);
         };
 
