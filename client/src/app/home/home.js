@@ -5,10 +5,16 @@
    * @name  HomeCtrl
    * @description Controller
    */
-  function HomeCtrl($scope, data) {
+  function HomeCtrl($scope, data, connexionService) {
     var home = this;
     home.data = data.data;
     $scope.form = {};
+
+    $scope.login = connexionService.getLogin;
+    $scope.swapped = function (){
+      $scope.swap = connexionService.swapLogin();
+    }
+
 
     $scope.submitForm = function () {
       var datas = _getDatas();
