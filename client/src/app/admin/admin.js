@@ -20,11 +20,12 @@
                 if (user.roles.indexOf("ROLE_ADMIN") !== -1) {
                     getUsers($scope, $http);
                 }
+            } else {
+                $localStorage.$reset();
+                $scope.errorMessage = "Votre compte n'est pas encore validé par les admin";
             }
         }).error(function (error, status) {
-            $log.debug(error);
-            $log.debug(status);
-            $scope.errorMessage = error;
+
         });
 
         $scope.logoutButton = function () {
