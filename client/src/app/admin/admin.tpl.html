@@ -4,6 +4,8 @@
   <div class="island3 pure-u-1 pure-u-lg-2-3">
     <h3>Welcome {{username}}</h3>
     <div ng-show="errorMessage">{{errorMessage}}</div>
+
+    <!-- Show user is the current user is an admin -->
     <div ng-show="isAdmin"><h2>Users</h2>
       <table>
         <thead>
@@ -24,9 +26,7 @@
         </tr>
         </tbody>
       </table>
-    <ul>
-      <li ng-repeat="user in users"></li>
-    </ul>
+
     </div>
   </div>
 </div>
