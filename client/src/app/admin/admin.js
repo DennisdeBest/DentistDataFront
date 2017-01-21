@@ -5,30 +5,18 @@
      * @name  AdminCtrl
      * @description Controller
      */
-    function AdminCtrl($scope, $http, $log, $localStorage, $location) {
-        $http.post('http://devapi.dentist-data.fr/api/auth', "").success(function (data, status) {
-            if (status == 200) {
-                var user;
-                if (data[0].username) {
-                    user = data[0];
-
-                    if (user) {
-                        $scope.username = user.username;
-                        $scope.email = user.email;
-                    }
-                }
-                if (user.roles.indexOf("ROLE_ADMIN") !== -1) {
-                    getUsers($scope, $http);
-                }
-            } else {
-                $localStorage.$reset();
+    function AdminCtrl($scope, $http, $log, $localStorage, $location, connexionService) {
+        var user;
+        connexionService.getUser().then(function (user) {
+            if (user.roles.indexOf("ROLE_ADMIN") !== -1) {
+                getUsers($scope, $http);
+            }
+            else {
                 $scope.errorMessage = "Votre compte n'est pas encore validé par les admin";
             }
-        }).error(function (error, status) {
-
         });
-
         $scope.logoutButton = function () {
+            connexionService.logout();
             $localStorage.$reset();
             $location.path("/");
         };
@@ -47,8 +35,6 @@
                 getUsers($scope, $http);
             });
         }
-
-
     }
 
     function getUsers($scope, $http) {
@@ -69,4 +55,5 @@
 
     angular.module('admin', [])
         .controller('AdminCtrl', AdminCtrl);
-})();
+})
+();
