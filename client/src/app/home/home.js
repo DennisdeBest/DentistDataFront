@@ -5,9 +5,8 @@
      * @name  HomeCtrl
      * @description Controller
      */
-    function HomeCtrl($scope, data, connexionService) {
+    function HomeCtrl($scope, connexionService) {
         var home = this;
-        home.data = data.data;
         $scope.form = {};
 
     $scope.login = connexionService.getLogin();
@@ -18,9 +17,6 @@
             function () { return connexionService.getLogin(); },
             function (data) { $scope.login = data; }
         );
-
-    $scope.submitForm = function () {
-      var datas = _getDatas();
 
         $scope.submitForm = function () {
             var datas = _getDatas();
@@ -336,10 +332,12 @@
         Textarea23Trait: form.Textarea23Trait
 
                 Text0ID: form.Text0ID,
+                Select0Sexe: form.Select0Sexe,
                 Text0Profession: form.Text0Profession,
                 Date0DateNaissance: form.Date0DateNaissance,
                 Date0DateConsult: form.Date0DateConsult,
                 Textarea0BilanSante: form.Textarea0BilanSante,
+
                 Checkbox1Negatif: form.Checkbox1Negatif,
                 Checkbox1NonRenseigne: form.Checkbox1NonRenseigne,
                 Textarea1Douleurs: form.Textarea1Douleurs,
@@ -347,6 +345,7 @@
                 Checkbox1DouleursMachoire: form.Checkbox1DouleursMachoire,
                 Checkbox1DouleursSpontane: form.Checkbox1DouleursSpontane,
                 Checkbox1DouleursOrale: form.Checkbox1DouleursOrale,
+
                 Checkbox2Negatif: form.Checkbox2Negatif,
                 Checkbox2NonRenseigne: form.Checkbox2NonRenseigne,
                 Text2DouleurUn: form.Text2DouleurUn,
@@ -359,6 +358,7 @@
                 Text2Circonstance: form.Text2Circonstance,
                 Text2Modifier: form.Text2Modifier,
                 Text2Traitement: form.Text2Traitement,
+
                 Checkbox3Negatif: form.Checkbox3Negatif,
                 Checkbox3NonRenseigne: form.Checkbox3NonRenseigne,
                 Text3Familial: form.Text3Familial,
@@ -367,10 +367,12 @@
                 Text3Anxiete: form.Text3Anxiete,
                 Text3Depression: form.Text3Depression,
                 Text3Stress: form.Text3Stress,
+
                 Checkbox4Negatif: form.Checkbox4Negatif,
                 Checkbox4NonRenseigne: form.Checkbox4NonRenseigne,
                 Text4Rachidienne: form.Text4Rachidienne,
                 Text4Cephalique: form.Text4Cephalique,
+
                 Checkbox5Negatif: form.Checkbox5Negatif,
                 Checkbox5NonRenseigne: form.Checkbox5NonRenseigne,
                 Radio5ApneOui: form.Radio5ApneOui,
@@ -379,9 +381,11 @@
                 Text5Traitement: form.Text5Traitement,
                 Text5ScorePSQI: form.Text5ScorePSQI,
                 Text5ScoreISI: form.Text5ScoreISI,
+
                 Checkbox6Negatif: form.Checkbox6Negatif,
                 Checkbox6NonRenseigne: form.Checkbox6NonRenseigne,
                 Text6TroublesOculaires: form.Text6TroublesOculaires,
+
                 Checkbox7Negatif: form.Checkbox7Negatif,
                 Checkbox7NonRenseigne: form.Checkbox7NonRenseigne,
                 Checkbox7Onycophagie: form.Checkbox7Onycophagie,
@@ -391,6 +395,7 @@
                 Checkbox7Tabac: form.Checkbox7Tabac,
                 Checkbox7Autres: form.Checkbox7Autres,
                 Text7Complement: form.Text7Complement,
+
                 Checkbox8Negatif: form.Checkbox8Negatif,
                 Checkbox8NonRenseigne: form.Checkbox8NonRenseigne,
                 Checkbox8Dysfontion: form.Checkbox8Dysfontion,
@@ -398,16 +403,20 @@
                 Text8Complement: form.Text8Complement,
                 Text8ScoreFriedman: form.Text8ScoreFriedman,
                 Text8ScoreMallampati: form.Text8ScoreMallampati,
+
                 Checkbox9Negatif: form.Checkbox9Negatif,
                 Checkbox9NonRenseigne: form.Checkbox9NonRenseigne,
                 Text9Complement: form.Text9Complement,
+
                 Checkbox10Negatif: form.Checkbox10Negatif,
                 Checkbox10NonRenseigne: form.Checkbox10NonRenseigne,
                 Text10Complement: form.Text10Complement,
+
                 Checkbox11Negatif: form.Checkbox11Negatif,
                 Checkbox11NonRenseigne: form.Checkbox11NonRenseigne,
                 Checkbox11TempPost1: form.Checkbox11TempPost1,
                 Checkbox11TempPost2: form.Checkbox11TempPost2,
+                Select11TempPost1: form.Select11TempPost1,
                 Checkbox11TempPost3: form.Checkbox11TempPost3,
                 Checkbox11TempPost4: form.Checkbox11TempPost4,
                 Checkbox11TempMoy1: form.Checkbox11TempMoy1,
@@ -479,6 +488,7 @@
                 Checkbox11AutreMuscle32: form.Checkbox11AutreMuscle32,
                 Checkbox11AutreMuscle33: form.Checkbox11AutreMuscle33,
                 Checkbox11AutreMuscle34: form.Checkbox11AutreMuscle34,
+
                 Checkbox12Negatif: form.Checkbox12Negatif,
                 Checkbox12NonRenseigne: form.Checkbox12NonRenseigne,
                 Radio12Dent11: form.Radio12Dent11,
@@ -496,6 +506,7 @@
                 Radio12DecalageOui: form.Radio12DecalageOui,
                 Number12DecalageOui: form.Number12DecalageOui,
                 Radio12DecalageNon: form.Radio12DecalageNon,
+
                 Checkbox13Negatif: form.Checkbox13Negatif,
                 Checkbox13NonRenseigne: form.Checkbox13NonRenseigne,
                 Number13OuvDouleur: form.Number13OuvDouleur,
@@ -533,6 +544,7 @@
                 Radio13MauxOui: form.Radio13MauxOui,
                 Radio13MauxNon: form.Radio13MauxNon,
                 Text13MauxOui: form.Text13MauxOui,
+
                 Checkbox14Negatif: form.Checkbox14Negatif,
                 Checkbox14NonRenseigne: form.Checkbox14NonRenseigne,
                 Checkbox14Rectiligne: form.Checkbox14Rectiligne,
@@ -540,6 +552,7 @@
                 Checkbox14ReflexionGauche: form.Checkbox14ReflexionGauche,
                 Checkbox14DevDroit: form.Checkbox14DevDroit,
                 Checkbox14DevGauche: form.Checkbox14DevGauche,
+
                 Checkbox15Negatif: form.Checkbox15Negatif,
                 Checkbox15NonRenseigne: form.Checkbox15NonRenseigne,
                 Checkbox15DroitPraClaq1: form.Checkbox15DroitPraClaq1,
@@ -592,6 +605,7 @@
                 Checkbox15GauchePatClaq5: form.Checkbox15GauchePatClaq5,
                 Checkbox15GauchePatCrep5: form.Checkbox15GauchePatCrep5,
                 Checkbox15GaucheDouleur5: form.Checkbox15GaucheDouleur5,
+
                 Checkbox16Negatif: form.Checkbox16Negatif,
                 Checkbox16NonRenseigne: form.Checkbox16NonRenseigne,
                 Checkbox16Ouv: form.Checkbox16Ouv,
@@ -600,14 +614,17 @@
                 Checkbox16Gauche: form.Checkbox16Gauche,
                 Text16Frequence: form.Text16Frequence,
                 Text16DerEpi: form.Text16DerEpi,
+
                 Checkbox17Negatif: form.Checkbox17Negatif,
                 Checkbox17NonRenseigne: form.Checkbox17NonRenseigne,
+
                 Checkbox18Negatif: form.Checkbox18Negatif,
                 Checkbox18NonRenseigne: form.Checkbox18NonRenseigne,
                 Radio18DroitSouple: form.Radio18DroitSouple,
                 Radio18DroitRaide: form.Radio18DroitRaide,
                 Radio18GaucheSouple: form.Radio18GaucheSouple,
                 Radio18GaucheRaide: form.Radio18GaucheRaide,
+
                 Checkbox19Negatif: form.Checkbox19Negatif,
                 Checkbox19NonRenseigne: form.Checkbox19NonRenseigne,
                 Radio19OIM1: form.Radio19OIM1,
@@ -624,6 +641,7 @@
                 Text19OIMVerti: form.Text19OIMVerti,
                 Text19OIMAnt: form.Text19OIMAnt,
                 Text19OIMLat: form.Text19OIMLat,
+
                 Checkbox20Negatif: form.Checkbox20Negatif,
                 Checkbox20NonRenseigne: form.Checkbox20NonRenseigne,
                 Checkbox20Erosion: form.Checkbox20Erosion,
@@ -635,8 +653,11 @@
                 Checkbox20BruxismeSom: form.Checkbox20BruxismeSom,
                 Checkbox20BruxismeEve: form.Checkbox20BruxismeEve,
                 Textarea20Info: form.Textarea20Info,
+
                 Text21TypeExam: form.Text21TypeExam,
+
                 Textarea22Diag: form.Textarea22Diag,
+
                 Textarea23Trait: form.Textarea23Trait
 
             }
