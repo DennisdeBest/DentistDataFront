@@ -4,14 +4,14 @@
     function headerCtrl($scope, $log, $http, $localStorage, $location, connexionService) {
 
         //Todo watchnot working on service value update
-        $scope.watch(function () {
+        /*$scope.watch(function () {
             return connexionService.getLogged();
         }, function (newValue, oldValue) {
             $log.debug("New value : " +newValue);
             $log.debug("Old value : " + oldValue);
             $scope.logged = newValue;
         });
-
+*/
 
         $scope.showLoginPopin = false;
         $scope.createLoginPopin = function () {
