@@ -5,11 +5,26 @@
         if ($localStorage.token) {
             $scope.logged = true;
         }
-        
-        $scope.login = connexionService.getLogin;
+
+        $scope.login = connexionService.getLogin();
         $scope.swapped = function () {
             $scope.swap = connexionService.swapLogin();
         }
+        $scope.$watch(
+            function () { return connexionService.getLogin(); },
+            function (data) { $scope.login = data; }
+        );
+    function headerCtrl($scope, $log, $http, $localStorage, $location, connexionService) {
+
+        //Todo watchnot working on service value update
+        /*$scope.watch(function () {
+            return connexionService.getLogged();
+        }, function (newValue, oldValue) {
+            $log.debug("New value : " +newValue);
+            $log.debug("Old value : " + oldValue);
+            $scope.logged = newValue;
+        });
+*/
 
         $scope.showLoginPopin = false;
         $scope.createLoginPopin = function () {
@@ -26,11 +41,13 @@
                 $http({
                     method: 'POST',
                     url: 'http://devapi.dentist-data.fr/api/login',
-                    headers: header,
+                    headers: header
                 }).then(function successCallback(response) {
                     $log.debug(response.data.token);
+                    $scope.showLoginPopin = false;
+                    $location.path('/admin');
                     $localStorage.token = response.data.token;
-                    $scope.logged = $localStorage.token;
+                    connexionService.login();
                 }, function errorCallback(response) {
                     $log.debug("Error")
                 })
