@@ -1,7 +1,6 @@
 (function () {
     'use strict';
-
-    function headerCtrl($scope, $log, $http, $localStorage, connexionService) {
+    function headerCtrl($scope, $log, $http, $localStorage, $location, connexionService) {
         if ($localStorage.token) {
             $scope.logged = true;
         }
@@ -9,12 +8,12 @@
         $scope.login = connexionService.getLogin();
         $scope.swapped = function () {
             $scope.swap = connexionService.swapLogin();
-        }
+        };
         $scope.$watch(
             function () { return connexionService.getLogin(); },
             function (data) { $scope.login = data; }
         );
-    function headerCtrl($scope, $log, $http, $localStorage, $location, connexionService) {
+
 
         //Todo watchnot working on service value update
         /*$scope.watch(function () {
