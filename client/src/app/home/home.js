@@ -9,10 +9,18 @@
         var home = this;
         $scope.form = {};
 
-        $scope.login = connexionService.getLogin;
+        $scope.login = connexionService.getLogin();
         $scope.swapped = function () {
             $scope.swap = connexionService.swapLogin();
-        };
+        }
+        $scope.$watch(
+            function () {
+                return connexionService.getLogin();
+            },
+            function (data) {
+                $scope.login = data;
+            }
+        );
 
         $scope.submitForm = function () {
             var datas = _getDatas();
@@ -22,16 +30,13 @@
 
         function _getDatas() {
             var form = $scope.form;
-
             return {
 
                 Text0ID: form.Text0ID,
-                Select0Sexe: form.Select0Sexe,
                 Text0Profession: form.Text0Profession,
                 Date0DateNaissance: form.Date0DateNaissance,
                 Date0DateConsult: form.Date0DateConsult,
                 Textarea0BilanSante: form.Textarea0BilanSante,
-
                 Checkbox1Negatif: form.Checkbox1Negatif,
                 Checkbox1NonRenseigne: form.Checkbox1NonRenseigne,
                 Textarea1Douleurs: form.Textarea1Douleurs,
@@ -39,7 +44,6 @@
                 Checkbox1DouleursMachoire: form.Checkbox1DouleursMachoire,
                 Checkbox1DouleursSpontane: form.Checkbox1DouleursSpontane,
                 Checkbox1DouleursOrale: form.Checkbox1DouleursOrale,
-
                 Checkbox2Negatif: form.Checkbox2Negatif,
                 Checkbox2NonRenseigne: form.Checkbox2NonRenseigne,
                 Text2DouleurUn: form.Text2DouleurUn,
@@ -52,7 +56,6 @@
                 Text2Circonstance: form.Text2Circonstance,
                 Text2Modifier: form.Text2Modifier,
                 Text2Traitement: form.Text2Traitement,
-
                 Checkbox3Negatif: form.Checkbox3Negatif,
                 Checkbox3NonRenseigne: form.Checkbox3NonRenseigne,
                 Text3Familial: form.Text3Familial,
@@ -61,12 +64,10 @@
                 Text3Anxiete: form.Text3Anxiete,
                 Text3Depression: form.Text3Depression,
                 Text3Stress: form.Text3Stress,
-
                 Checkbox4Negatif: form.Checkbox4Negatif,
                 Checkbox4NonRenseigne: form.Checkbox4NonRenseigne,
                 Text4Rachidienne: form.Text4Rachidienne,
                 Text4Cephalique: form.Text4Cephalique,
-
                 Checkbox5Negatif: form.Checkbox5Negatif,
                 Checkbox5NonRenseigne: form.Checkbox5NonRenseigne,
                 Radio5ApneOui: form.Radio5ApneOui,
@@ -75,11 +76,9 @@
                 Text5Traitement: form.Text5Traitement,
                 Text5ScorePSQI: form.Text5ScorePSQI,
                 Text5ScoreISI: form.Text5ScoreISI,
-
                 Checkbox6Negatif: form.Checkbox6Negatif,
                 Checkbox6NonRenseigne: form.Checkbox6NonRenseigne,
                 Text6TroublesOculaires: form.Text6TroublesOculaires,
-
                 Checkbox7Negatif: form.Checkbox7Negatif,
                 Checkbox7NonRenseigne: form.Checkbox7NonRenseigne,
                 Checkbox7Onycophagie: form.Checkbox7Onycophagie,
@@ -89,7 +88,6 @@
                 Checkbox7Tabac: form.Checkbox7Tabac,
                 Checkbox7Autres: form.Checkbox7Autres,
                 Text7Complement: form.Text7Complement,
-
                 Checkbox8Negatif: form.Checkbox8Negatif,
                 Checkbox8NonRenseigne: form.Checkbox8NonRenseigne,
                 Checkbox8Dysfontion: form.Checkbox8Dysfontion,
@@ -97,15 +95,12 @@
                 Text8Complement: form.Text8Complement,
                 Text8ScoreFriedman: form.Text8ScoreFriedman,
                 Text8ScoreMallampati: form.Text8ScoreMallampati,
-
                 Checkbox9Negatif: form.Checkbox9Negatif,
                 Checkbox9NonRenseigne: form.Checkbox9NonRenseigne,
                 Text9Complement: form.Text9Complement,
-
                 Checkbox10Negatif: form.Checkbox10Negatif,
                 Checkbox10NonRenseigne: form.Checkbox10NonRenseigne,
                 Text10Complement: form.Text10Complement,
-
                 Checkbox11Negatif: form.Checkbox11Negatif,
                 Checkbox11NonRenseigne: form.Checkbox11NonRenseigne,
                 Checkbox11TempPost1: form.Checkbox11TempPost1,
@@ -452,9 +447,9 @@
                 Textarea23Trait: form.Textarea23Trait
 
             }
-
         }
     }
+
 
     angular.module('home', [])
         .controller('HomeCtrl', HomeCtrl);

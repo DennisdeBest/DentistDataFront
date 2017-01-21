@@ -7,74 +7,61 @@
             <li><a href ui-sref="root.propos">{{ 'à propos' | uppercase }}</a></li>
             <li><a href ui-sref="root.nous">{{ 'qui somme nous ?' | uppercase }}</a></li>
             <li><a href ui-sref="root.pourquoi">{{ 'pourquoi ce site ?' | uppercase }}</a></li>
-            <li ng-hide="logged"><a  id="loginButton" class="waves-effect waves-light btn light-blue darken-3"
-                   ng-click="createLoginPopin()">Connexion</a></li>
-            <li ng-show="logged"><a id="accountButton" class="waves-effect waves-light btn light-blue darken-3"
-                                    href ui-sref="root.admin">Account</a></li>
+            <li ng-if="login == false"><a id="loginButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="createLoginPopin()">Connexion</a></li>
+            <li ng-if="login == true"><a id="accountButton" class="waves-effect waves-light btn light-blue darken-3" href ui-sref="root.admin">Account</a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
             <li><a href ui-sref="root.home">{{ 'home' | uppercase }}</a></li>
             <li><a href ui-sref="root.propos">{{ 'à propos' | uppercase }}</a></li>
             <li><a href ui-sref="root.nous">{{ 'qui sommes nous ?' | uppercase }}</a></li>
             <li><a href ui-sref="root.pourquoi">{{ 'pourquoi ce site ?' | uppercase }}</a></li>
-            <li ng-hide="logged"><a id="loginButton" class="waves-effect waves-light btn light-blue darken-3"
-                   ng-click="createLoginPopin()">Connexion</a></li>
-            <li ng-show="logged"><a id="accountButton" class="waves-effect waves-light btn light-blue darken-3"
-                                    href ui-sref="root.admin">Account</a></li>
+            <li ng-if="login == false"><a id="loginButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="createLoginPopin()">Connexion</a></li>
+            <li ng-if="login == true"><a id="accountButton" class="waves-effect waves-light btn light-blue darken-3" href ui-sref="root.admin">Account</a></li>
         </ul>
     </div>
 </nav>
 
 <div id="loginPopin" class="modal-content" ng-show="showLoginPopin">
     <div class="row">
-        {{swap}}
-    <div ng-click="swapped()">Swap</div>
+        {{login}}
+        <div ng-click="swapped()">Swap</div>
         <a class="close" href="#!" title="Close" ng-click="createLoginPopin()">X</a>
         <div ng-hide="showRegisterPopin">
             <div class="input-field col s6 marge2">
-                <input name="loginUsername" id="loginUsername" type="text" class="validate text-blue text-darken-2"
-                       ng-model="loginUsername">
+                <input name="loginUsername" id="loginUsername" type="text" class="validate text-blue text-darken-2" ng-model="loginUsername">
                 <label for="loginUsername">Username</label>
             </div>
             <div class="input-field col s6 marge2">
-                <input name="loginPassword" id="loginPassword" type="password" class="validate text-blue text-darken-2"
-                       ng-model="loginPassword">
+                <input name="loginPassword" id="loginPassword" type="password" class="validate text-blue text-darken-2" ng-model="loginPassword">
                 <label for="loginPassword">Password</label>
             </div>
             <div class="input-field col s12 marge2">
-                <a href="#!" id="loginButton" class="waves-effect waves-light btn light-blue darken-3"
-                   ng-click="loginAction()">Connexion</a>
-                <a href="#!" id="registerButton" class="waves-effect waves-light btn light-blue darken-3"
-                   ng-click="registerAction()">Register</a>
+                <a href="#!" id="loginButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="loginAction()">Connexion</a>
+                <a href="#!" id="registerButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="registerAction()">Register</a>
             </div>
         </div>
 
         <div ng-show="showRegisterPopin">
             <div class="input-field col s6 marge2">
-                <input name="registerUsername" id="registerUsername" type="text"
-                       class="validate text-blue text-darken-2" ng-model="registerUsername">
+                <input name="registerUsername" id="registerUsername" type="text" class="validate text-blue text-darken-2" ng-model="registerUsername">
                 <label for="registerUsername">Username</label>
             </div>
             <div class="input-field col s6 marge2">
-                <input name="registerEmail" id="registerEmail" type="text"
-                       class="validate text-blue text-darken-2" ng-model="registerEmail">
+                <input name="registerEmail" id="registerEmail" type="text" class="validate text-blue text-darken-2" ng-model="registerEmail">
                 <label for="registerEmail">Email</label>
             </div>
             <div class="input-field col s6 marge2">
-                <input name="registerPassword" id="registerPassword" type="password"
-                       class="validate text-blue text-darken-2" ng-model="registerPassword">
+                <input name="registerPassword" id="registerPassword" type="password" class="validate text-blue text-darken-2" ng-model="registerPassword">
                 <label for="registerPassword">Password</label>
             </div>
             <div class="input-field col s6 marge2">
-                <input name="registerPasswordRepeat" id="registerPasswordRepeat" type="password"
-                       class="validate text-blue text-darken-2" ng-model="registerPasswordRepeat">
+                <input name="registerPasswordRepeat" id="registerPasswordRepeat" type="password" class="validate text-blue text-darken-2"
+                    ng-model="registerPasswordRepeat">
                 <label for="registerPasswordRepeat">Password</label>
             </div>
             <div class="input-field col s12 marge2">
-                <a href="#!" id="loginButton" class="waves-effect waves-light btn light-blue darken-3"
-                   ng-click="loginAction()">Connexion</a>
-                <a href="#!" id="registerButton" class="waves-effect waves-light btn light-blue darken-3"
-                   ng-click="registerAction()">Register</a>
+                <a href="#!" id="loginButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="loginAction()">Connexion</a>
+                <a href="#!" id="registerButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="registerAction()">Register</a>
             </div>
         </div>
     </div>

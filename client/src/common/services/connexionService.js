@@ -1,23 +1,18 @@
 var app = angular.module('common.services.connexionService', []);
 
-app.service('connexionService', function ($http, $log, $q) {
-    $log.debug("loginService");
-    var user;
-    var logged = false;
+app.factory('connexionService', function () {
+    var login = false;
 
-    this.logout = function(){
-        logged = false;
+    return {
+        swapLogin: function () {
+            login = !login;
+            console.log(login);
+        },
+        getLogin: function () {
+            return login;
+        }
     };
-    this.login = function(){
-        $log.debug("Before login" + logged);
-        logged = true;
-        $log.debug("After login" + logged);
-    }
-
-    this.getLogged = function () {
-        return logged;
-    };
-
+    /*
     this.getUser = function () {
         var deferred = $q.defer();
         $http.post('http://devapi.dentist-data.fr/api/auth', "").success(function (data, status) {
@@ -39,5 +34,6 @@ app.service('connexionService', function ($http, $log, $q) {
         });
 
         return deferred.promise;
-    };
+    };*/
+    //HTTP REQUEST FOR DUNKAKA
 });
