@@ -11,7 +11,7 @@
         <li>
             <div class="collapsible-header"><i class="material-icons">assignment_ind</i>Information patient</div>
             <div class="collapsible-body">
-                <div class="row">
+                <div class="row" >
                     <div class="input-field col s5">
                         <label>Identifiant du patient</label>
                         <input type="text" ng-model="form.Text0ID">
@@ -395,6 +395,7 @@
                 <input type="text" ng-model="form.Text8ScoreMallampati">
             </div>
         </li>
+
         <li>
             <div class="collapsible-header">
                 <div class="demi"><i class="material-icons">filter_drama</i>
@@ -1327,54 +1328,38 @@
                 <div id="champs12">
                     <p>Dent de référence : </p>
                     <div>
-                        <label>
-                            <input type="radio" name="group3" ng-model="form.Radio12Dent11"/>
-                            11
-                        </label>
-                        <label>
-                            <input type="radio" name="group3" ng-model="form.Radio12Dent21"/>
-                            21
-                        </label>
-                        <label>
-                            <input type="radio" name="group3" ng-model="form.Radio12DentAutre1"/>
-                            Autre <input type="text" ng-model="form.Radio12DentAutre1Choix"/>
-                        </label>
+                        <input type="radio" name="group3" class="filled-in" id="71" ng-model="form.Radio12Dent11"/>
+                        <label for="71">11</label>
+                        <input type="radio" name="group3" class="filled-in" id="72" ng-model="form.Radio12Dent21"/>
+                        <label for="72">21</label>
+                        <input type="radio" name="group3" class="filled-in" id="73" ng-model="form.Radio12DentAutre1"/>
+                        <label for="73">Autre</label>
+                            <input type="text" name="group3" class="filled-in" id="74" ng-model="form.Radio12DentAutre1Choix"/>
+                            <label for="74"></label>
                     </div>
                     <div>
-                        <label>
-                            <input type="radio" name="group4" ng-model="form.Radio12Dent31"/>
-                            31
-                        </label>
-                        <label>
-                            <input type="radio" name="group4" ng-model="form.Radio12Dent41"/>
-                            41
-                        </label>
-                        <label>
-                            <input type="radio" name="group4" ng-model="form.Radio12DentAutre2"/>
-                            Autre <input type="text" ng-model="form.Radio12DentAutre2Choix"/>
-                        </label>
+                        <input type="radio" name="group4" class="filled-in" id="75" ng-model="form.Radio12Dent11"/>
+                        <label for="75">31</label>
+                        <input type="radio" name="group4" class="filled-in" id="76" ng-model="form.Radio12Dent21"/>
+                        <label for="76">41</label>
+                        <input type="radio" name="group4" class="filled-in" id="77" ng-model="form.Radio12DentAutre1"/>
+                        <label for="77">Autre</label>
+                            <input type="text" name="group4" class="filled-in" id="78" ng-model="form.Radio12DentAutre2Choix"/>
+                            <label for="78"></label>
                     </div>
                     <div>
                         <p>Surplomb horizontal : </p>
-                        <label>
-                            <input type="number" ng-model="form.Number12Surplomb"/>
-                            mm
-                        </label>
-                        <label>
-                            <input type="checkbox" ng-model="form.Checkbox12Surplomb"/>
-                            Si négatif
-                        </label>
+                        <input type="checkbox" id="79" ng-model="form.Checkbox12Surplomb"/>
+                        <label for="79">Si négatif</label>
+                        <input type="number" id="80" ng-model="form.Number12Surplomb"/>
+                        <label for="80">mm</label>
                     </div>
                     <div>
                         <p>Recouvrement vertical : </p>
-                        <label>
-                            <input type="number" ng-model="form.Number12Recouvrement"/>
-                            mm
-                        </label>
-                        <label>
-                            <input type="checkbox" ng-model="form.Checkbox12Recouvrement"/>
-                            Si négatif
-                        </label>
+                        <input type="checkbox" id="82" ng-model="form.Checkbox12Recouvrement"/>
+                        <label for="82">Si négatif</label>
+                        <input type="number" id="81" ng-model="form.Number12Recouvrement"/>
+                        <label for="81">mm</label>
                     </div>
                     <div>
                         <p>Existe-t-il un décalage des milieux inter-incisifs ?</p>
@@ -1394,6 +1379,7 @@
                 </div>
             </div>
         </li>
+
         <li>
             <div class="collapsible-header">
                 <div class="demi"><i class="material-icons">filter_drama</i>
