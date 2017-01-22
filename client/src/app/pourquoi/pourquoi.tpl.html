@@ -1,87 +1,15 @@
-<div class="pure-g island3">
-  <div class="content pure-u-1">
-    <p class="island-panel">
-      <strong>Note that this is only a getting started guide, for more detailed information about the build system, the available tasks, the configuration of the build or anything else, please refer to the <a href="https://github.com/vesparny/angular-kickstart/#readme" target="_blank">documentation</a> on the GitHub project.</strong>
-    </p>
-
-    <h3>What and Why</h3>
-    <p>
-      <code>angular-kickstart</code> is an opinionated kickstart for single page application development with AngularJS. It makes your development and testing easy, keeps the structure of the project consistent and allows you to create a fully optimized
-      production release withe ease. After having developed a lot of AngularJS projects I decided to collect here what I've learnt.
-    </p>
-
-    <h3>Getting started</h3>
-    <p>
-      Install
-      <strong><a href="https://github.com/joyent/node/wiki/installation" target="_blank">node.js</a></strong>. Then
-      <strong>sass, gulp and bower</strong> if you haven't yet.
-    </p>
-
-    <pre>
-    <code>
-    $ gem install sass
-    $ npm -g install gulp bower
-    </code>
-</pre>
-
-    <p>
-      After that, install
-      <code>angular-kickstart</code> - download the <a href="https://github.com/vesparny/angular-kickstart/releases/latest">latest</a> release (or clone the master branch if want to run the development version). Unzip the project and cd into it, then
-      install bower and npm dependencies, and run the application in development mode.
-    </p>
-
-    <pre>
-    <code>
-    $ npm install
-    $ bower install
-    $ gulp serve
-    </code>
-</pre>
-
-    <p>
-      You are now ready to go, your applcation is available at <code>http://127.0.0.1:3000</code>.
-    </p>
-    <p>
-      You are now ready to start coding, every file you add, edit or delete into the
-      <code>/client</code> folder, will be handled by the build system and the browser will reload.
-    </p>
-    <p>
-      When you are ready to build a production release there is a task for that.
-    </p>
-
-    <pre>
-    <code>
-    $ gulp serve:dist
-    </code>
-</pre>
-
-    <p>
-      This task will lint your code, optimize css js and images files, run unit tests. After the task has successfully finished, you can find an optimized version of your project in the
-      <code>/build/dist</code> folder.
-    </p>
-
-    <p>
-      Other tasks are available:
-    </p>
-
-    <pre>
-    <code>
-    #for developing running unit test on every file change.
-    $ gulp serve:tdd
-
-    #for running e2e test. (you application should be running on http://127.0.0.1:3000)
-    $ gulp test:e2e
-
-    #for running unit tests one time then exit.
-    $ gulp test:unit
-    </code>
-</pre>
-    <p class="text-center">
-      <a href="https://github.com/vesparny/angular-kickstart/#readme" target="_blank" class="pure-button button-xlarge pure-button-primary">
-        Full documentation on GitHub
-      </a>
-    </p>
-
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h1>Pourquoi ce site ?</div>
+        <div class="col s6 descrip">
+          Ce site a été conçu pour tenter d’harmoniser les pratiques dans la prise en charge des patients atteints de Dysfonctionnements de l’Appareil Manducateur (DAM). Il doit permettre d’enseigner les tests de dépistage des DAM et leurs facteurs de risque, de prendre en charge des patients en pratique libérale ou hospitalo-universitaire, recueillir des données à visée statistiques et améliorer la communication entre les soignants.
+          <br/><br/>Ces fiches cliniques s’appuient sur des critères diagnostiques reconnus internationalement, les Diagnostic Criteria/Temporo Mandibular Disorders (DC/TMD). Actuellement, ces critères n’ont pas de traduction française validée. Dans cette attente, nous proposons ici notre traduction.
+        </div>
+        <div class="col s6 descrip">
+          Nous sommes conscients qu’une consultation sur les troubles fonctionnels oro-faciaux ne peut être standardisée. Chaque patient, chaque praticien est unique. Pour autant, si nous voulons pouvoir évaluer nos pratiques, nous devons avoir des critères communs. C’est dans ce but que notre fiche clinique est née. Elle doit permettre de dépister les DAM et leurs facteurs de risque. À ce sujet, la liste est non exhaustive et peut être soumise à des changements. Des études pourront être lancées pour évaluer la pertinence du dépistage d’un facteur de risque ou encore l’efficacité de la prise en charge.
+          <br/><br/>Un comité scientifique, renouvelé tous les deux ans, sera en charge de la validation des protocoles d’étude et des aménagements apportés aux fiches cliniques.
+        </div>
+      </div>
   </div>
-</div>
 </div>
