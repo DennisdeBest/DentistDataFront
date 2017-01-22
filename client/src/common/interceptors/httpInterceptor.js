@@ -5,6 +5,7 @@
     return {
       request: function (config) {
         config.headers = config.headers || {};
+          $log.debug(config);
         if ($localStorage.token) {
           config.headers.Authorization = 'Bearer ' + $localStorage.token;
           $log.debug(config)
