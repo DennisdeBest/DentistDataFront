@@ -431,15 +431,10 @@
 
                 Checkbox20Negatif: form.Checkbox20Negatif,
                 Checkbox20NonRenseigne: form.Checkbox20NonRenseigne,
-                Checkbox20Erosion: form.Checkbox20Erosion,
                 Text20Erosion: form.Text20Erosion,
-                Checkbox20Abrasion: form.Checkbox20Abrasion,
                 Text20Abrasion: form.Text20Abrasion,
-                Checkbox20Attrition: form.Checkbox20Attrition,
                 Text20Attrition: form.Text20Attrition,
-                Checkbox20BruxismeSom: form.Checkbox20BruxismeSom,
                 Select20BruSom: form.Select20BruSom,
-                Checkbox20BruxismeEve: form.Checkbox20BruxismeEve,
                 Select20BruEve: form.Select20BruEve,
                 Textarea20Info: form.Textarea20Info,
 
