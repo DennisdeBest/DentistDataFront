@@ -410,7 +410,8 @@
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea ng-model="form.Text9Complement"></textarea>
+                        <textarea id="textarea8" class="materialize-textarea" ng-model="form.Text9Complement"></textarea>
+                        <label for="textarea8"></label>
                     </div>
                 </div>
             </div>
@@ -432,7 +433,8 @@
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea ng-model="form.Text10Complement"></textarea>
+                        <textarea id="textarea9" class="materialize-textarea" ng-model="form.Text10Complement"></textarea>
+                        <label for="textarea9"></label>
                     </div>
                 </div>
             </div>
@@ -1356,20 +1358,18 @@
                     </div>
                     <div>
                         <p>Recouvrement vertical : </p>
-                        <input type="checkbox" id="82" ng-model="form.Checkbox12Recouvrement"/>
-                        <label for="82">Si négatif</label>
-                        <input type="number" id="81" ng-model="form.Number12Recouvrement"/>
-                        <label for="81">mm</label>
+                        <input type="checkbox" id="81" ng-model="form.Checkbox12Recouvrement"/>
+                        <label for="81">Si négatif</label>
+                        <input type="number" id="82" ng-model="form.Number12Recouvrement"/>
+                        <label for="82">mm</label>
                     </div>
                     <div>
                         <p>Existe-t-il un décalage des milieux inter-incisifs ?</p>
                         <label>
                             <input type="radio" name="group20" ng-model="form.Radio12DecalageOui"/>
                             Oui
-                            <label>
                                 <input type="number" ng-model="form.Number12DecalageOui"/>
-                                mm
-                            </label>
+                            <label> mm</label>
                         </label>
                         <label>
                             <input type="radio" name="group20" ng-model="form.Radio12DecalageNon"/>
@@ -1403,10 +1403,8 @@
                         <tbody>
                         <tr>
                             <td>Ouverture non douloureuse :
-                                <label>
-                                    <input type="number" ng-model="form.Number13OuvDouleur"/>
-                                    mm
-                                </label>
+                                <input type="number" class="filled-in" id="83" ng-model="form.Number13OuvDouleur"/>
+                                <label for="83">mm</label>
                             </td>
                             <td>
                                 Douleur provoquée
@@ -1430,13 +1428,12 @@
 
                         <tr>
                             <td>Ouv. max. non assistée :
-                                <label>
-                                    <input type="number" ng-model="form.Number13OuvNonAssist"/>
-                                    mm
-                                </label>
+                                <input type="number" class="filled-in" id="84" ng-model="form.Number13OuvNonAssist"/>
+                                <label for="84">mm</label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13DroitDouleurProv1"/>
+                                <input type="checkbox" class="filled-in" id="85" ng-model="form.Checkbox13DroitDouleurProv1"/>
+                                <label for="85"></label>
                             </td>
                             <td>
                                 <select name="Select13DroitDouleurHab1" ng-model="form.Select13DroitDouleurHab1">
@@ -1463,7 +1460,8 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13GaucheDouleurProv1"/>
+                                <input type="checkbox" class="filled-in" id="86" ng-model="form.Checkbox13GaucheDouleurProv1"/>
+                                <label for="86"></label>
                             </td>
                             <td>
                                 <select name="Select13GaucheDouleurHab1" ng-model="form.Select13GaucheDouleurHab1">
@@ -1493,13 +1491,12 @@
 
                         <tr>
                             <td>Ouv. max. assistée :
-                                <label>
-                                    <input type="number" ng-model="form.Number13OuvAssist"/>
-                                    mm
-                                </label>
+                                <input type="number" class="filled-in" id="87" ng-model="form.Number13OuvAssist"/>
+                                <label for="87">mm</label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13DroitDouleurProv2"/>
+                                <input type="checkbox" class="filled-in" id="88" ng-model="form.Checkbox13DroitDouleurProv2"/>
+                                <label for="88"></label>
                             </td>
                             <td>
                                 <select name="Select13DroitDouleurHab2" ng-model="form.Select13DroitDouleurHab2">
@@ -1526,7 +1523,8 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13GaucheDouleurProv2"/>
+                                <input type="checkbox" class="filled-in" id="89" ng-model="form.Checkbox13GaucheDouleurProv2"/>
+                                <label for="89"></label>
                             </td>
                             <td>
                                 <select name="Select13GaucheDouleurHab2" ng-model="form.Select13GaucheDouleurHab2">
@@ -1559,7 +1557,8 @@
                                 Ouv. contre résistance :
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13DroitDouleurProv3"/>
+                                <input type="checkbox" class="filled-in" id="90" ng-model="form.Checkbox13DroitDouleurProv3"/>
+                                <label for="90"></label>
                             </td>
                             <td>
                                 <select name="Select13DroitDouleurHab3" ng-model="form.Select13DroitDouleurHab3">
@@ -1586,7 +1585,8 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13GaucheDouleurProv3"/>
+                                <input type="checkbox" class="filled-in" id="91" ng-model="form.Checkbox13GaucheDouleurProv3"/>
+                                <label for="91"></label>
                             </td>
                             <td>
                                 <select name="Select13GaucheDouleurHab3" ng-model="form.Select13GaucheDouleurHab3">
@@ -1619,7 +1619,8 @@
                                 Fermeture contre résistance :
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13DroitDouleurProv4"/>
+                                <input type="checkbox" class="filled-in" id="92" ng-model="form.Checkbox13DroitDouleurProv4"/>
+                                <label for="92"></label>
                             </td>
                             <td>
                                 <select name="Select13DroitDouleurHab4" ng-model="form.Select13DroitDouleurHab4">
@@ -1646,7 +1647,8 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13GaucheDouleurProv4"/>
+                                <input type="checkbox" class="filled-in" id="93" ng-model="form.Checkbox13GaucheDouleurProv4"/>
+                                <label for="93"></label>
                             </td>
                             <td>
                                 <select name="Select13GaucheDouleurHab4" ng-model="form.Select13GaucheDouleurHab4">
@@ -1676,13 +1678,12 @@
 
                         <tr>
                             <td>Latéralité droite :
-                                <label>
-                                    <input type="number" ng-model="form.Number13LatDroit"/>
-                                    mm
-                                </label>
+                                    <input type="number" class="filled-in" id="94" ng-model="form.Number13LatDroit"/>
+                                <label for="94">mm</label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13DroitDouleurProv5"/>
+                                <input type="checkbox" class="filled-in" id="95" ng-model="form.Checkbox13DroitDouleurProv5"/>
+                                <label for="95"></label>
                             </td>
                             <td>
                                 <select name="Select13DroitDouleurHab5" ng-model="form.Select13DroitDouleurHab5">
@@ -1709,7 +1710,8 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13GaucheDouleurProv5"/>
+                                <input type="checkbox" class="filled-in" id="96" ng-model="form.Checkbox13GaucheDouleurProv5"/>
+                                <label for="96"></label>
                             </td>
                             <td>
                                 <select name="Select13GaucheDouleurHab5" ng-model="form.Select13GaucheDouleurHab5">
@@ -1739,13 +1741,12 @@
 
                         <tr>
                             <td>Latéralité droite assistée :
-                                <label>
-                                    <input type="number" ng-model="form.Number13LatDroitAssist"/>
-                                    mm
-                                </label>
+                                <input type="number" class="filled-in" id="97" ng-model="form.Number13LatDroitAssist"/>
+                                <label for="97">mm</label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13DroitDouleurProv6"/>
+                                <input type="checkbox" class="filled-in" id="98" ng-model="form.Checkbox13DroitDouleurProv6"/>
+                                <label for="98"></label>
                             </td>
                             <td>
                                 <select name="Select13DroitDouleurHab6" ng-model="form.Select13DroitDouleurHab6">
@@ -1772,7 +1773,8 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13GaucheDouleurProv6"/>
+                                <input type="checkbox" class="filled-in" id="99" ng-model="form.Checkbox13GaucheDouleurProv6"/>
+                                <label for="99"></label>
                             </td>
                             <td>
                                 <select name="Select13GaucheDouleurHab6" ng-model="form.Select13GaucheDouleurHab6">
@@ -1805,7 +1807,8 @@
                                 Latéralité droite contre résistance :
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13DroitDouleurProv7"/>
+                                <input type="checkbox" class="filled-in" id="100" ng-model="form.Checkbox13DroitDouleurProv7"/>
+                                <label for="100"></label>
                             </td>
                             <td>
                                 <select name="Select13DroitDouleurHab7" ng-model="form.Select13DroitDouleurHab7">
@@ -1832,7 +1835,8 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13GaucheDouleurProv7"/>
+                                <input type="checkbox" class="filled-in" id="101" ng-model="form.Checkbox13GaucheDouleurProv7"/>
+                                <label for="101"></label>
                             </td>
                             <td>
                                 <select name="Select13GaucheDouleurHab7" ng-model="form.Select13GaucheDouleurHab7">
@@ -1862,13 +1866,12 @@
 
                         <tr>
                             <td>Latéralité gauche :
-                                <label>
-                                    <input type="number" ng-model="form.Number13LatGauche"/>
-                                    mm
-                                </label>
+                                <input type="number" class="filled-in" id="102" ng-model="form.Number13LatGauche"/>
+                                <label for="102">mm</label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13DroitDouleurProv8"/>
+                                <input type="checkbox" class="filled-in" id="103" ng-model="form.Checkbox13DroitDouleurProv8"/>
+                                <label for="103"></label>
                             </td>
                             <td>
                                 <select name="Select13DroitDouleurHab8" ng-model="form.Select13DroitDouleurHab8">
@@ -1895,7 +1898,8 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13GaucheDouleurProv8"/>
+                                <input type="checkbox" class="filled-in" id="104" ng-model="form.Checkbox13GaucheDouleurProv8"/>
+                                <label for="104"></label>
                             </td>
                             <td>
                                 <select name="Select13GaucheDouleurHab8" ng-model="form.Select13GaucheDouleurHab8">
@@ -1925,13 +1929,12 @@
 
                         <tr>
                             <td>Latéralité gauche assistée :
-                                <label>
-                                    <input type="number" ng-model="form.Number13LatGaucheAssist"/>
-                                    mm
-                                </label>
+                                <input type="number" class="filled-in" id="105" ng-model="form.Number13LatGaucheAssist"/>
+                                <label for="105">mm</label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13DroitDouleurProv9"/>
+                                <input type="checkbox" class="filled-in" id="106" ng-model="form.Checkbox13DroitDouleurProv9"/>
+                                <label for="106"></label>
                             </td>
                             <td>
                                 <select name="Select13DroitDouleurHab9" ng-model="form.Select13DroitDouleurHab9">
@@ -1958,7 +1961,8 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13GaucheDouleurProv9"/>
+                                <input type="checkbox" class="filled-in" id="107" ng-model="form.Checkbox13GaucheDouleurProv9"/>
+                                <label for="107"></label>
                             </td>
                             <td>
                                 <select name="Select13GaucheDouleurHab9" ng-model="form.Select13GaucheDouleurHab9">
@@ -1991,7 +1995,8 @@
                                 Latéralité gauche contre résistance :
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="Checkbox13DroitDouleurProv10"/>
+                                <input type="checkbox" class="filled-in" id="108" ng-model="Checkbox13DroitDouleurProv10"/>
+                                <label for="108"></label>
                             </td>
                             <td>
                                 <select name="Select13DroitDouleurHab10" ng-model="form.Select13DroitDouleurHab10">
@@ -2018,7 +2023,8 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13GaucheDouleurProv10"/>
+                                <input type="checkbox" class="filled-in" id="109" ng-model="form.Checkbox13GaucheDouleurProv10"/>
+                                <label for="109"></label>
                             </td>
                             <td>
                                 <select name="Select13GaucheDouleurHab10" ng-model="form.Select13GaucheDouleurHab10">
@@ -2048,13 +2054,12 @@
 
                         <tr>
                             <td>Propulsion :
-                                <label>
-                                    <input type="number" ng-model="form.Number13Propulsion"/>
-                                    mm
-                                </label>
+                                <input type="number" class="filled-in" id="110" ng-model="form.Number13Propulsion"/>
+                                <label for="110">mm</label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13DroitDouleurProv11"/>
+                                <input type="checkbox" class="filled-in" id="111" ng-model="form.Checkbox13DroitDouleurProv11"/>
+                                <label for="111"></label>
                             </td>
                             <td>
                                 <select name="Select13DroitDouleurHab11" ng-model="form.Select13DroitDouleurHab11">
@@ -2081,7 +2086,8 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13GaucheDouleurProv11"/>
+                                <input type="checkbox" class="filled-in" id="112" ng-model="form.Checkbox13GaucheDouleurProv11"/>
+                                <label for="112"></label>
                             </td>
                             <td>
                                 <select name="Select13GaucheDouleurHab11" ng-model="form.Select13GaucheDouleurHab11">
@@ -2114,7 +2120,8 @@
                                 Propulsion contre résistance :
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13DroitDouleurProv12"/>
+                                <input type="checkbox" class="filled-in" id="113" ng-model="form.Checkbox13DroitDouleurProv12"/>
+                                <label for="113"></label>
                             </td>
                             <td>
                                 <select name="Select13DroitDouleurHab12" ng-model="form.Select13DroitDouleurHab12">
@@ -2141,7 +2148,8 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox13GaucheDouleurProv12"/>
+                                <input type="checkbox" class="filled-in" id="114" ng-model="form.Checkbox13GaucheDouleurProv12"/>
+                                <label for="114"></label>
                             </td>
                             <td>
                                 <select name="Select13GaucheDouleurHab12" ng-model="form.Select13GaucheDouleurHab12">
@@ -2172,20 +2180,14 @@
                     </table>
                     <div>
                         <p>Est-ce que l'un des mouvements effectués vous a déclenché des maux de tête ? </p>
-                        <label>
-                            <input type="radio" name="group12" ng-model="form.Radio13MauxOui">
-                            Oui
-                        </label>
-                        <label>
-                            <input type="radio" name="group12" ng-model="form.Radio13MauxNon">
-                            Non
-                        </label>
+                        <input type="radio" name="group12" class="filled-in" id="115" ng-model="form.Radio13MauxOui">
+                        <label for="115">Oui</label>
+                        <input type="radio" name="group12" class="filled-in" id="116" ng-model="form.Radio13MauxNon">
+                        <label for="116">Non</label>
                     </div>
                     <div>
-                        <label>
-                            Si Oui lesquels ?
-                            <input type="text" ng-model="form.Text13MauxOui">
-                        </label>
+                        <input type="text" class="filled-in" id="117" ng-model="form.Text13MauxOui">
+                        <label for="117">Si Oui lesquels ?</label>
                     </div>
                 </div>
             </div>
@@ -2204,26 +2206,16 @@
             <div class="collapsible-body">
                 <div id="champs14">
                     <p>Forme du trajet d'ouverture : </p>
-                    <label>
-                        <input type="checkbox" ng-model="form.Checkbox14Rectiligne"/>
-                        Rectiligne
-                    </label>
-                    <label>
-                        <input type="checkbox" ng-model="form.Checkbox14ReflexionDroit"/>
-                        Réflexion corrigée à droite
-                    </label>
-                    <label>
-                        <input type="checkbox" ng-model="form.Checkbox14ReflexionGauche"/>
-                        Réflexion corrigée à gauche
-                    </label>
-                    <label>
-                        <input type="checkbox" ng-model="form.Checkbox14DevDroit"/>
-                        Déviation non corrigée à droite
-                    </label>
-                    <label>
-                        <input type="checkbox" ng-model="form.Checkbox14DevGauche"/>
-                        Déviation non corrigée à gauche
-                    </label>
+                    <input type="checkbox" class="filled-in" id="118" ng-model="form.Checkbox14Rectiligne"/>
+                    <label for="118">Rectiligne</label>
+                        <input type="checkbox" class="filled-in" id="119" ng-model="form.Checkbox14ReflexionDroit"/>
+                    <label for="119">Réflexion corrigée à droite</label>
+                        <input type="checkbox" class="filled-in" id="120" ng-model="form.Checkbox14ReflexionGauche"/>
+                    <label for="120">Réflexion corrigée à gauche</label>
+                        <input type="checkbox" class="filled-in" id="121" ng-model="form.Checkbox14DevDroit"/>
+                    <label for="121">Déviation non corrigée à droite</label>
+                        <input type="checkbox" class="filled-in" id="122" ng-model="form.Checkbox14DevGauche"/>
+                    <label for="122">Déviation non corrigée à gauche</label>
                 </div>
                 <div>
                     Canvas à foutre ici
@@ -2269,19 +2261,24 @@
                                 ATM droite
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPraClaq1"/>
+                                <input type="checkbox" class="filled-in" id="123" ng-model="form.Checkbox15DroitPraClaq1"/>
+                                <label for="123"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPraCrep1"/>
+                                <input type="checkbox" class="filled-in" id="124" ng-model="form.Checkbox15DroitPraCrep1"/>
+                                <label for="124"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPatClaq1"/>
+                                <input type="checkbox" class="filled-in" id="125" ng-model="form.Checkbox15DroitPatClaq1"/>
+                                <label for="125"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPatCrep1"/>
+                                <input type="checkbox" class="filled-in" id="126" ng-model="form.Checkbox15DroitPatCrep1"/>
+                                <label for="126"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitDouleur1"/>
+                                <input type="checkbox" class="filled-in" id="127" ng-model="form.Checkbox15DroitDouleur1"/>
+                                <label for="127"></label>
                             </td>
                             <td>
                                 <select name="Select15DouleurHab1_1" ng-model="form.Select15DouleurHab1_1">
@@ -2302,19 +2299,24 @@
                                 ATM gauche
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePraClaq1"/>
+                                <input type="checkbox" class="filled-in" id="128" ng-model="form.Checkbox15GauchePraClaq1"/>
+                                <label for="128"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePraCrep1"/>
+                                <input type="checkbox" class="filled-in" id="129" ng-model="form.Checkbox15GauchePraCrep1"/>
+                                <label for="129"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePatClaq1"/>
+                                <input type="checkbox" class="filled-in" id="130" ng-model="form.Checkbox15GauchePatClaq1"/>
+                                <label for="130"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePatCrep1"/>
+                                <input type="checkbox" class="filled-in" id="131" ng-model="form.Checkbox15GauchePatCrep1"/>
+                                <label for="131"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GaucheDouleur1"/>
+                                <input type="checkbox" class="filled-in" id="132" ng-model="form.Checkbox15GaucheDouleur1"/>
+                                <label for="132"></label>
                             </td>
                             <td>
                                 <select name="Select15DouleurHab1_2" ng-model="form.Select15DouleurHab1_2">
@@ -2336,19 +2338,24 @@
                                 ATM droite
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPraClaq2"/>
+                                <input type="checkbox" class="filled-in" id="133" ng-model="form.Checkbox15DroitPraClaq2"/>
+                                <label for="133"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPraCrep2"/>
+                                <input type="checkbox" class="filled-in" id="134" ng-model="form.Checkbox15DroitPraCrep2"/>
+                                <label for="134"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPatClaq2"/>
+                                <input type="checkbox" class="filled-in" id="135" ng-model="form.Checkbox15DroitPatClaq2"/>
+                                <label for="135"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPatCrep2"/>
+                                <input type="checkbox" class="filled-in" id="136" ng-model="form.Checkbox15DroitPatCrep2"/>
+                                <label for="136"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitDouleur2"/>
+                                <input type="checkbox" class="filled-in" id="137" ng-model="form.Checkbox15DroitDouleur2"/>
+                                <label for="137"></label>
                             </td>
                             <td>
                                 <select name="Select15DouleurHab2_1" ng-model="form.Select15DouleurHab2_1">
@@ -2369,19 +2376,24 @@
                                 ATM gauche
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePraClaq2"/>
+                                <input type="checkbox" class="filled-in" id="138" ng-model="form.Checkbox15GauchePraClaq2"/>
+                                <label for="138"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePraCrep2"/>
+                                <input type="checkbox" class="filled-in" id="139" ng-model="form.Checkbox15GauchePraCrep2"/>
+                                <label for="139"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePatClaq2"/>
+                                <input type="checkbox" class="filled-in" id="140" ng-model="form.Checkbox15GauchePatClaq2"/>
+                                <label for="140"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePatCrep2"/>
+                                <input type="checkbox" class="filled-in" id="141" ng-model="form.Checkbox15GauchePatCrep2"/>
+                                <label for="141"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GaucheDouleur2"/>
+                                <input type="checkbox" class="filled-in" id="142" ng-model="form.Checkbox15GaucheDouleur2"/>
+                                <label for="142"></label>
                             </td>
                             <td>
                                 <select name="Select15DouleurHab2_2" ng-model="form.Select15DouleurHab2_2">
@@ -2403,19 +2415,24 @@
                                 ATM droite
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPraClaq3"/>
+                                <input type="checkbox" class="filled-in" id="143" ng-model="form.Checkbox15DroitPraClaq3"/>
+                                <label for="143"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPraCrep3"/>
+                                <input type="checkbox" class="filled-in" id="144" ng-model="form.Checkbox15DroitPraCrep3"/>
+                                <label for="144"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPatClaq3"/>
+                                <input type="checkbox" class="filled-in" id="145" ng-model="form.Checkbox15DroitPatClaq3"/>
+                                <label for="145"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPatCrep3"/>
+                                <input type="checkbox" class="filled-in" id="146" ng-model="form.Checkbox15DroitPatCrep3"/>
+                                <label for="146"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitDouleur3"/>
+                                <input type="checkbox" class="filled-in" id="147" ng-model="form.Checkbox15DroitDouleur3"/>
+                                <label for="147"></label>
                             </td>
                             <td>
                                 <select name="Select15DouleurHab3_1" ng-model="form.Select15DouleurHab3_1">
@@ -2436,19 +2453,24 @@
                                 ATM gauche
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePraClaq3"/>
+                                <input type="checkbox" class="filled-in" id="148" ng-model="form.Checkbox15GauchePraClaq3"/>
+                                <label for="148"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePraCrep3"/>
+                                <input type="checkbox" class="filled-in" id="149" ng-model="form.Checkbox15GauchePraCrep3"/>
+                                <label for="149"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePatClaq3"/>
+                                <input type="checkbox" class="filled-in" id="150" ng-model="form.Checkbox15GauchePatClaq3"/>
+                                <label for="150"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePatCrep3"/>
+                                <input type="checkbox" class="filled-in" id="151" ng-model="form.Checkbox15GauchePatCrep3"/>
+                                <label for="151"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GaucheDouleur3"/>
+                                <input type="checkbox" class="filled-in" id="152" ng-model="form.Checkbox15GaucheDouleur3"/>
+                                <label for="152"></label>
                             </td>
                             <td>
                                 <select name="Select15DouleurHab3_2" ng-model="form.Select15DouleurHab3_2">
@@ -2470,19 +2492,24 @@
                                 ATM droite
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPraClaq4"/>
+                                <input type="checkbox" class="filled-in" id="153" ng-model="form.Checkbox15DroitPraClaq4"/>
+                                <label for="153"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPraCrep4"/>
+                                <input type="checkbox" class="filled-in" id="154" ng-model="form.Checkbox15DroitPraCrep4"/>
+                                <label for="154"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPatClaq4"/>
+                                <input type="checkbox" class="filled-in" id="155" ng-model="form.Checkbox15DroitPatClaq4"/>
+                                <label for="155"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPatCrep4"/>
+                                <input type="checkbox" class="filled-in" id="156" ng-model="form.Checkbox15DroitPatCrep4"/>
+                                <label for="156"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitDouleur4"/>
+                                <input type="checkbox" class="filled-in" id="157" ng-model="form.Checkbox15DroitDouleur4"/>
+                                <label for="157"></label>
                             </td>
                             <td>
                                 <select name="Select15DouleurHab4_1" ng-model="form.Select15DouleurHab4_1">
@@ -2503,19 +2530,24 @@
                                 ATM gauche
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePraClaq4"/>
+                                <input type="checkbox" class="filled-in" id="158" ng-model="form.Checkbox15GauchePraClaq4"/>
+                                <label for="158"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePraCrep4"/>
+                                <input type="checkbox" class="filled-in" id="159" ng-model="form.Checkbox15GauchePraCrep4"/>
+                                <label for="159"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePatClaq4"/>
+                                <input type="checkbox" class="filled-in" id="160" ng-model="form.Checkbox15GauchePatClaq4"/>
+                                <label for="160"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePatCrep4"/>
+                                <input type="checkbox" class="filled-in" id="161" ng-model="form.Checkbox15GauchePatCrep4"/>
+                                <label for="161"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GaucheDouleur4"/>
+                                <input type="checkbox" class="filled-in" id="162" ng-model="form.Checkbox15GaucheDouleur4"/>
+                                <label for="162"></label>
                             </td>
                             <td>
                                 <select name="Select15DouleurHab4_2" ng-model="form.Select15DouleurHab4_2">
@@ -2537,19 +2569,24 @@
                                 ATM droite
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPraClaq5"/>
+                                <input type="checkbox" class="filled-in" id="163" ng-model="form.Checkbox15DroitPraClaq5"/>
+                                <label for="163"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPraCrep5"/>
+                                <input type="checkbox" class="filled-in" id="164" ng-model="form.Checkbox15DroitPraCrep5"/>
+                                <label for="164"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPatClaq5"/>
+                                <input type="checkbox" class="filled-in" id="165" ng-model="form.Checkbox15DroitPatClaq5"/>
+                                <label for="165"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitPatCrep5"/>
+                                <input type="checkbox" class="filled-in" id="166" ng-model="form.Checkbox15DroitPatCrep5"/>
+                                <label for="166"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15DroitDouleur5"/>
+                                <input type="checkbox" class="filled-in" id="167" ng-model="form.Checkbox15DroitDouleur5"/>
+                                <label for="167"></label>
                             </td>
                             <td>
                                 <select name="Select15DouleurHab5_1" ng-model="form.Select15DouleurHab5_1">
@@ -2570,19 +2607,24 @@
                                 ATM gauche
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePraClaq5"/>
+                                <input type="checkbox" class="filled-in" id="168" ng-model="form.Checkbox15GauchePraClaq5"/>
+                                <label for="168"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePraCrep5"/>
+                                <input type="checkbox" class="filled-in" id="169" ng-model="form.Checkbox15GauchePraCrep5"/>
+                                <label for="169"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePatClaq5"/>
+                                <input type="checkbox" class="filled-in" id="170" ng-model="form.Checkbox15GauchePatClaq5"/>
+                                <label for="170"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GauchePatCrep5"/>
+                                <input type="checkbox" class="filled-in" id="171" ng-model="form.Checkbox15GauchePatCrep5"/>
+                                <label for="171"></label>
                             </td>
                             <td>
-                                <input type="checkbox" ng-model="form.Checkbox15GaucheDouleur5"/>
+                                <input type="checkbox" class="filled-in" id="172" ng-model="form.Checkbox15GaucheDouleur5"/>
+                                <label for="172"></label>
                             </td>
                             <td>
                                 <select name="Select15DouleurHab5_2" ng-model="form.Select15DouleurHab5_2">
@@ -2618,32 +2660,20 @@
                         <p>
                             Vous est-il arrivé d'être bloqué(e) ?
                         </p>
-                        <label>
-                            <input type="checkbox" ng-model="form.Checkbox16Ouv"/>
-                            Bouche Ouverte
-                        </label>
-                        <label>
-                            <input type="checkbox" ng-model="form.Checkbox16Ferm"/>
-                            Bouche Fermée
-                        </label>
-                        <label>
-                            <input type="checkbox" ng-model="form.Checkbox16Droit"/>
-                            ATM droite
-                        </label>
-                        <label>
-                            <input type="checkbox" ng-model="form.Checkbox16Gauche"/>
-                            ATM gauche
-                        </label>
+                            <input type="checkbox" class="filled-in" id="173" ng-model="form.Checkbox16Ouv"/>
+                        <label for="173">Bouche Ouverte</label>
+                            <input type="checkbox" class="filled-in" id="174" ng-model="form.Checkbox16Ferm"/>
+                        <label for="174">Bouche Fermée</label>
+                            <input type="checkbox" class="filled-in" id="175" ng-model="form.Checkbox16Droit"/>
+                        <label for="175">ATM droite</label>
+                            <input type="checkbox" class="filled-in" id="176" ng-model="form.Checkbox16Gauche"/>
+                        <label for="176">ATM gauche</label>
                     </div>
                     <div>
-                        <label>
-                            Fréquence :
-                            <input type="text" ng-model="form.Text16Frequence"/>
-                        </label>
-                        <label>
-                            Dernier épisode :
-                            <input type="text" ng-model="form.Text16DerEpi"/>
-                        </label>
+                        <label for="177">Fréquence :</label>
+                        <input type="text" class="filled-in" id="177" ng-model="form.Text16Frequence"/>
+                        <label for="178">Dernier épisode :</label>
+                        <input type="text" class="filled-in" id="178" ng-model="form.Text16DerEpi"/>
                     </div>
                 </div>
             </div>
@@ -2751,25 +2781,17 @@
                 <div id="champs18">
                     <div>
                         <p>ATM droite : </p>
-                        <label>
-                            <input type="radio" name="group5" ng-model="form.Radio18DroitSouple"/>
-                            Souple
-                        </label>
-                        <label>
-                            <input type="radio" name="group5" ng-model="form.Radio18DroitRaide"/>
-                            Raide
-                        </label>
+                            <input type="radio" name="group5" class="filled-in" id="179" ng-model="form.Radio18DroitSouple"/>
+                        <label for="179">Souple</label>
+                            <input type="radio" name="group5" class="filled-in" id="180" ng-model="form.Radio18DroitRaide"/>
+                        <label for="180">Raide</label>
                     </div>
                     <div>
                         <p>ATM gauche : </p>
-                        <label>
-                            <input type="radio" name="group6" ng-model="form.Radio18GaucheSouple">
-                            Souple
-                        </label>
-                        <label>
-                            <input type="radio" name="group6" ng-model="form.Radio18GaucheRaide">
-                            Raide
-                        </label>
+                            <input type="radio" name="group6" class="filled-in" id="181" ng-model="form.Radio18GaucheSouple">
+                        <label for="181">Souple</label>
+                            <input type="radio" name="group6" class="filled-in" id="182" ng-model="form.Radio18GaucheRaide">
+                        <label for="182">Raide</label>
                     </div>
                 </div>
             </div>
@@ -2791,78 +2813,56 @@
                     <div>Canvas à mettre ici</div>
                     <div>
                         <p>Contacts en OIM : </p>
-                        <label>
-                            <input type="radio" name="group7" ng-model="form.Radio19OIM1"/>
-                            Répartis de manière équilibrée
-                        </label>
+                            <input type="radio" name="group7" class="filled-in" id="183" ng-model="form.Radio19OIM1"/>
+                            <label for="183">Répartis de manière équilibrée</label>
                         <div>
-                            <input type="radio" name="group7" ng-model="form.Radio19OIM2"/>
-                            <input type="text" ng-model="Text19OIM"/>
+                            <input type="radio" name="group7" class="filled-in" id="184" ng-model="form.Radio19OIM2"/>
+                            <label for="184"></label>
+                            <input type="text" class="filled-in" id="185" ng-model="Text19OIM"/>
+                            <label for="185"></label>
                         </div>
                     </div>
                     <div>
                         <p>La position dans laquelle vous fermez vos dents vous paraît-elle confortable ? </p>
-                        <label>
-                            <input type="radio" name="group8" ng-model="form.Radio19PosOui"/>
-                            Oui
-                        </label>
-                        <label>
-                            <input type="radio" name="group8" ng-model="form.Radio19PosNon"/>
-                            Non
-                        </label>
+                            <input type="radio" class="filled-in" id="186" name="group8" ng-model="form.Radio19PosOui"/>
+                        <label for="186">Oui</label>
+                            <input type="radio" class="filled-in" id="187" name="group8" ng-model="form.Radio19PosNon"/>
+                        <label for="187">Non</label>
                     </div>
                     <div>
                         <p>Mastication Unilatérale ? </p>
-                        <label>
-                            <input type="radio" name="group9" ng-model="form.Radio19MasticOui"/>
-                            Oui
-                        </label>
-                        <label>
-                            <input type="radio" name="group9" ng-model="form.Radio19MasticNon"/>
-                            Non
-                        </label>
+                            <input type="radio" name="group9" class="filled-in" id="188" ng-model="form.Radio19MasticOui"/>
+                        <label for="188">Oui</label>
+                            <input type="radio" name="group9" class="filled-in" id="189" ng-model="form.Radio19MasticNon"/>
+                        <label for="189">Non</label>
                     </div>
                     <div>
                         <div>
-                            <label>
-                                Interférence(s) en litéralité droite :
-                                <input type="text" ng-model="form.Text19InterDroit"/>
-                            </label>
+                            <input type="text" class="filled-in" id="190" ng-model="form.Text19InterDroit"/>
+                            <label for="190">Interférence(s) en litéralité droite :</label>
                         </div>
                         <div>
-                            <label>
-                                Interférence(s) en litéralité gauche :
-                                <input type="text" ng-model="form.Text19InterGauche"/>
-                            </label>
+                            <input type="text" class="filled-in" id="191" ng-model="form.Text19InterGauche"/>
+                            <label for="191">Interférence(s) en litéralité gauche :</label>
                         </div>
                         <div>
-                            <label>
-                                Interférence(s) en propulsion :
-                                <input type="text" ng-model="form.Text19Propul"/>
-                            </label>
+                            <input type="text" class="filled-in" id="192" ng-model="form.Text19Propul"/>
+                            <label for="192">Interférence(s) en propulsion :</label>
                         </div>
                         <div>
-                            <label>
-                                Prématuré(s) :
-                                <input type="text" ng-model="form.Text19Premat"/>
-                            </label>
+                            <input type="text" class="filled-in" id="193" ng-model="form.Text19Premat"/>
+                            <label for="193">Prématuré(s) :</label>
                         </div>
                         <div>
                             <p>
                                 Différentiel ORC-OIM :
                             </p>
-                            <label>
-                                Dans le sens vertical :
-                                <input type="text" ng-model="form.Text19OIMVerti"/>
-                            </label>
-                            <label>
-                                Dans le sens antéro-postérieur :
-                                <input type="text" ng-model="form.Text19OIMAnt"/>
-                            </label>
-                            <label>
-                                Dans le sens latéral :
-                                <input type="text" ng-model="form.Text19OIMLat"/>
-                            </label>
+                            <input type="text" class="filled-in" id="194" ng-model="form.Text19OIMVerti"/>
+                            <label for="194">Dans le sens vertical :</label>
+                            <input type="text" class="filled-in" id="195" ng-model="form.Text19OIMAnt"/>
+                            <label for="195">Dans le sens antéro-postérieur :</label>
+                            <input type="text" class="filled-in" id="196" ng-model="form.Text19OIMLat"/>
+                            <label for="196">Dans le sens latéral :</label>
                         </div>
                     </div>
                 </div>
@@ -2881,40 +2881,27 @@
             </div>
             <div class="collapsible-body">
                 <div id="champs20">
-                    <label>
-                        <input type="radio" name="group10" ng-model="form.Checkbox20Erosion"/>
-                        Erosion (dents : <input type="text" ng-model="form.Text20Erosion"/>)
-                    </label>
-                    <label>
-                        <input type="radio" name="group10" ng-model="form.Checkbox20Abrasion"/>
-                        Abrasion (dents : <input type="text" ng-model="form.Text20Abrasion"/>)
-                    </label>
-                    <label>
-                        <input type="radio" name="group10" ng-model="form.Checkbox20Attrition"/>
-                        Attrition (dents : <input type="text" ng-model="form.Text20Attrition"/>)
-                    </label>
-                    <label>
-                        <input type="radio" name="group10" ng-model="form.Checkbox20BruxismeSom"/>
-                        Bruxisme de sommeil (diagnostic :
-                        <select name="Select20BruSom" ng-model="form.Select20BruSom">
-                            <option value="possible">possible</option>
-                            <option value="probable">probable</option>
-                            <option value="défini">défini</option>
-                        </select>
-                        )
-                    </label>
-                    <label>
-                        <input type="radio" name="group10" ng-model="form.Checkbox20BruxismeEve"/>
-                        Bruxisme d'éveil (dents :
-                        <select name="Select20BruEve" ng-model="form.Select20BruEve">
-                            <option value="possible">possible</option>
-                            <option value="probable">probable</option>
-                            <option value="défini">défini</option>
-                        </select>
-                        )
-                    </label>
+                    <label for="197">Erosion dents :</label>
+                    <input type="text" class="filled-in" id="197" ng-model="form.Text20Erosion"/>
+                    <label for="198">Abrasion dents : </label>
+                    <input type="text" class="filled-in" id="198" ng-model="form.Text20Abrasion"/>
+                    <label for="199">Attrition dents :</label>
+                    <input type="text" class="filled-in" id="199" ng-model="form.Text20Attrition"/>
+                    <label>Bruxisme de sommeil :</label>
+                    <select name="Select20BruSom" ng-model="form.Select20BruSom">
+                        <option value="possible">possible</option>
+                        <option value="probable">probable</option>
+                        <option value="défini">défini</option>
+                    </select>
+                    <label>Bruxisme d'éveil :</label>
+                    <select name="Select20BruEve" ng-model="form.Select20BruEve">
+                        <option value="possible">possible</option>
+                        <option value="probable">probable</option>
+                        <option value="défini">défini</option>
+                    </select>
                     <p>Infos Complémentaires : </p>
-                    <textarea ng-model="form.Textarea20Info"></textarea>
+                    <textarea id="textarea10" class="materialize-textarea" ng-model="form.Textarea20Info"></textarea>
+                    <label for="textarea10"></label>
                 </div>
             </div>
         </li>
@@ -2925,10 +2912,8 @@
             </div>
             <div class="collapsible-body">
                 <div id="champs21">
-                    <label>
-                        Type d'examen :
-                        <input type="text" ng-model="form.Text21TypeExam"/>
-                    </label>
+                    <label for="200">Type d'examen :</label>
+                    <input type="text" class="filled-in" id="200" ng-model="form.Text21TypeExam"/>
                     <input type="button" value="Télécharger une photo"/>
                     <input type="button" value="Ajouter un examen"/>
                     <input type="button" value="Supprimer un examen"/>
@@ -2942,7 +2927,8 @@
             </div>
             <div class="collapsible-body">
                 <div id="champs22">
-                    <textarea ng-model="form.Textarea22Diag"></textarea>
+                    <textarea id="textarea11" class="materialize-textarea" ng-model="form.Textarea22Diag"></textarea>
+                    <label for="textarea11"></label>
                 </div>
             </div>
         </li>
@@ -2952,7 +2938,8 @@
             </div>
             <div class="collapsible-body">
                 <div id="champs23">
-                    <textarea ng-model="form.Textarea23Trait"></textarea>
+                    <textarea id="textarea12" class="materialize-textarea" ng-model="form.Textarea23Trait"></textarea>
+                    <label for="textarea12"></label>
                 </div>
             </div>
         </li>
