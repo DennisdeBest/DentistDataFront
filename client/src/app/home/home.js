@@ -21,6 +21,9 @@
                 $scope.login = data;
             }
         );
+        
+        $scope.isAdmin = connexionService.getAdmin();
+        $scope.isCustomer = connexionService.getCustomer();
 
         $scope.submitForm = function () {
             var datas = _getDatas();

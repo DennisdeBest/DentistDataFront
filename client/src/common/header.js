@@ -5,10 +5,19 @@
             $scope.logged = true;
         }
 
+        $scope.userRole = undefined;
+
         $scope.login = connexionService.getLogin();
         $scope.swapped = function () {
             $scope.swap = connexionService.swapLogin();
         };
+        // $scope.getUserData = function () {
+        //     $scope.users = connexionService.getUser().then(function(data){
+        //         $scope.userRole = data;
+        //     });
+    
+        // }
+
         $scope.$watch(
             function () { return connexionService.getLogin(); },
             function (data) { $scope.login = data; }
@@ -46,7 +55,7 @@
                     $scope.showLoginPopin = false;
                     $location.path('/admin');
                     $localStorage.token = response.data.token;
-                    connexionService.login();
+                    // connexionService.login();
                 }, function errorCallback(response) {
                     $log.debug("Error")
                 })
