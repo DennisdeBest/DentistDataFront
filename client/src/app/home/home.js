@@ -5,7 +5,7 @@
      * @name  HomeCtrl
      * @description Controller
      */
-    function HomeCtrl($scope, connexionService) {
+    function HomeCtrl($scope, $http, $log, connexionService) {
         var home = this;
         $scope.form = {};
 
