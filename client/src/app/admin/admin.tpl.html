@@ -1,32 +1,57 @@
 <div class="pure-g">
-<a  id="logoutButton" class="waves-effect waves-light btn light-blue darken-3"
-                          ng-click="logoutButton()">Déconnexion</a>
-  <div class="island3 pure-u-1 pure-u-lg-2-3">
-    <h3>Welcome {{username}}</h3>
-    <div ng-show="errorMessage">{{errorMessage}}</div>
+    <a id="logoutButton" class="waves-effect waves-light btn light-blue darken-3"
+       ng-click="logoutButton()">Déconnexion</a>
+    <div class="island3 pure-u-1 pure-u-lg-2-3">
+        <h3>Welcome {{username}}</h3>
+        <div ng-show="errorMessage">{{errorMessage}}</div>
 
-    <!-- Show user is the current user is an admin -->
-    <div ng-show="isAdmin"><h2>Users</h2>
-      <table>
-        <thead>
-        <tr>
-          <th>Username</th><th>Email</th><th>Roles</th><th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="user in users">
-          <td>{{user.username}}</td>
-          <td>{{user.email}}</td>
-          <td><ul><li ng-repeat="role in user.roles">{{role}}</li> </ul></td>
-          <td><a ng-if="user.promotable" class="waves-effect waves-light btn light-green darken-3"
-                 ng-click="promoteUser(user.id)">Promote</a>
-            <a ng-if="user.demotable" class="waves-effect waves-light btn red darken-2"
-               ng-click="demoteUser(user.id)">Demote</a>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+        <!-- Show user is the current user is an admin -->
+        <div ng-show="isAdmin"><h2>Users</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Roles</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="user in users">
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                    <td>
+                        <ul>
+                            <li ng-repeat="role in user.roles">{{role}}</li>
+                        </ul>
+                    </td>
+                    <td><a ng-if="user.promotable" class="waves-effect waves-light btn light-green darken-3"
+                           ng-click="promoteUser(user.id)">Promote</a>
+                        <a ng-if="user.demotable" class="waves-effect waves-light btn red darken-2"
+                           ng-click="demoteUser(user.id)">Demote</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
 
+            <h4>Formulaires</h4>
+            <table>
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="form in forms">
+                    <td>{{form.form0._text0_i_d}}</td>
+                    <td><a class="waves-effect waves-light btn light-green darken-3">Affichage</a>
+                        <a class="waves-effect waves-light btn red darken-2">Suppr.</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
     </div>
-  </div>
 </div>

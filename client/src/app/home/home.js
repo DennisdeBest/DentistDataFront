@@ -27,7 +27,9 @@
 
         $scope.submitForm = function () {
             var datas = _getDatas();
-
+            $http.post("http://devapi.dentist-data.fr/api/form", JSON.stringify(datas)).success( function (data) {
+                $log.debug(data)
+            });
             console.log(datas);
         };
 
