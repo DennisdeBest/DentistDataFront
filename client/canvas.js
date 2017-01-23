@@ -214,11 +214,11 @@ $(document).ready(function () {
             document.getElementById('A').addEventListener("click", this.setDlrTool.bind(this, "A"), false);
             document.getElementById('T').addEventListener("click", this.setDlrTool.bind(this, "T"), false);
             document.getElementById('EA').addEventListener("click", this.clear_dlr.bind(this), false);
-            document.getElementById('EF').addEventListener("click", this.pop_dlr.bind(this), false);
-            document.getElementById('AC').addEventListener("click", this.insertColor.bind(this), false);
-            document.getElementById('RC').addEventListener("click", this.removeColor.bind(this), false);
-            document.getElementById('AC_e').addEventListener("click", this.insertColor.bind(this), false);
-            document.getElementById('RC_e').addEventListener("click", this.removeColor.bind(this), false);
+            // document.getElementById('EF').addEventListener("click", this.pop_dlr.bind(this), false);
+            // document.getElementById('AC').addEventListener("click", this.insertColor.bind(this), false);
+            // document.getElementById('RC').addEventListener("click", this.removeColor.bind(this), false);
+            // document.getElementById('AC_e').addEventListener("click", this.insertColor.bind(this), false);
+            // document.getElementById('RC_e').addEventListener("click", this.removeColor.bind(this), false);
         }
 
         this.touch_start = function (e) {
