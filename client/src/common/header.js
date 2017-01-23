@@ -11,6 +11,12 @@
         $scope.swapped = function () {
             $scope.swap = connexionService.swapLogin();
         };
+
+        $scope.logoutButton = function () {
+            connexionService.logout();
+            $localStorage.$reset();
+            $location.path("/");
+        };
         // $scope.getUserData = function () {
         //     $scope.users = connexionService.getUser().then(function(data){
         //         $scope.userRole = data;

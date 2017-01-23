@@ -9,16 +9,10 @@
      window.onload = function() {
        Materialize.updateTextFields();
      };
-  function NousCtrl($scope, ReturningVisitorService) {
-      $scope.test = "Testsdgfsdfgsgdsgfdsgfsqg";
-      if(ReturningVisitorService.get("nous")) {
-          $scope.returning = "Welcome Back !";
-      } else {
-          $scope.returning = "Welcome";
-      }
-      ReturningVisitorService.add("nous");
+  function NousCtrl($scope) {
+     
   }
-    NousCtrl.$inject = ['$scope', 'ReturningVisitorService'];
+    NousCtrl.$inject = ['$scope'];
   angular.module('nous', [])
     .controller('NousCtrl', NousCtrl);
 })();
