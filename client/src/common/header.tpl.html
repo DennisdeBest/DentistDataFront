@@ -1,5 +1,6 @@
 <nav>
     <div class="nav-wrapper light-blue lighten-1">
+        <img src="assets/images/logo_dentist.png" alt="">
         <a href="#!" class="brand-logo">Dentist-Data</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
@@ -9,7 +10,7 @@
             <li><a href ui-sref="root.pourquoi">{{ 'pourquoi ce site ?' | uppercase }}</a></li>
             <li ng-if="login == false"><a id="loginButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="createLoginPopin()">Connexion</a></li>
             <li ng-if="login == true"><a id="accountButton" class="waves-effect waves-light btn light-blue darken-3" href ui-sref="root.admin">Mon compte</a></li>
-            <li ng-if="login == true" ng-click="logoutButton();"><i class="material-icons waves-effect waves-light btn light-blue darken-3">power_settings_new</i></li>
+            <li ng-if="login == true" ng-click="logoutButton();"><a class="btn-floating btn-large waves-effect waves-light light-blue darken-3"><i class="material-icons">power_settings_new</i></a>
         </ul>
         <ul class="side-nav" id="mobile-demo">
             <li><a href ui-sref="root.home">{{ 'home' | uppercase }}</a></li>
@@ -18,6 +19,7 @@
             <li><a href ui-sref="root.pourquoi">{{ 'pourquoi ce site ?' | uppercase }}</a></li>
             <li ng-if="login == false"><a id="loginButton" class="waves-effect waves-light btn light-blue darken-3" ng-click="createLoginPopin()">Connexion</a></li>
             <li ng-if="login == true"><a id="accountButton" class="waves-effect waves-light btn light-blue darken-3" href ui-sref="root.admin">Mon compte</a></li>
+            <li ng-if="login == true" ng-click="logoutButton();"><a class="waves-effect waves-light btn light-blue darken-3">Déconnexion</a></li>
         </ul>
     </div>
 </nav>

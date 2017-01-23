@@ -22,7 +22,6 @@
             </select>
             <label>Sexe</label>
           </div>
-          <button ng-click="submitForm()"></button><br>
           <div class="input-field col s5">
             <label>Profession</label>
             <input type="text" ng-model="form.Text0Profession">
@@ -2925,7 +2924,7 @@
       </div>
               <div>
                 <!--<input type="reset" value="Réinitialiser le questionnaire"/>-->
-                <input ng-if="isAdmin == true || isCustomer == true" class="waves-effect waves-light btn light-blue darken-3" type="button" value="Envoyer"/>
+                <input ng-if="login == true || isCustomer == true" class="waves-effect waves-light btn light-blue darken-3" ng-click="submitForm()" type="button" value="Envoyer"/>
                 <input type="submit" value="submit" style="display:none"/>
-                <input class="waves-effect waves-light btn light-blue darken-3" type="button" value="Imprimer"/>
+                <input class="waves-effect waves-light btn light-blue darken-3" type="button"  value="Imprimer"/>
               </div>
