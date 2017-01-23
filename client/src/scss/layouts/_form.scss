@@ -95,6 +95,27 @@ h1{
    color: #4291b2;
  }
 
+ .picker__close, .picker__today {
+    color: #4291b2 !important;
+}
+
+.picker__day.picker__day--today {
+    color: #4291b2 !important;
+}
+
+ .picker__date-display, .picker__weekday-display{
+    background-color: #4291b2;
+}
+
+input[type=range] + .thumb{
+  background-color: #4291b2;
+}
+
+
+ .nav-wrapper img{
+   height: 65px;
+ }
+
 @media screen and (max-width: 1000px) {
   .modal-content > div {
     margin: 0 auto;
