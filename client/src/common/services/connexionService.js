@@ -5,6 +5,10 @@ app.factory('connexionService', function ($q, $http, $log, $localStorage) {
     var isAdmin = false;
     var isCustomer = false;
 
+    if($localStorage.token){
+        login = true;
+    }
+
     return {
         swapLogin: function () {
             login = !login;
